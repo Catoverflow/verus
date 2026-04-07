@@ -35,6 +35,13 @@ use super::calc_macro::*;
 
 } // verus!
 // Proofs that shift right is equivalent to division by power of 2.
+//
+// The proof recurses on shift, stepping by 4 bits at a time to reduce
+// recursion depth (e.g. 32 steps for u128 instead of 127). Base cases
+// (shift 0..3) are proved directly with concrete constants. The recursive
+// step proves x >> shift == (x >> (shift - 4)) / 16 via bit_vector, then
+// bridges to pow2 with arithmetic lemmas. The divisor 16 fits in all
+// unsigned types including u8.
 macro_rules! lemma_shr_is_div {
     ($name:ident, $uN:ty) => {
         #[cfg(verus_keep_ghost)]
@@ -49,29 +56,39 @@ macro_rules! lemma_shr_is_div {
                 #[trigger] (x >> shift) == x as nat / pow2(shift as nat),
             decreases shift,
         {
+            reveal(pow);
             if shift == 0 {
                 assert(x >> 0 == x) by (bit_vector);
-                reveal(pow);
                 assert(pow2(0) == 1) by (compute_only);
+            } else if shift == 1 {
+                assert(x >> 1 == x / 2) by (bit_vector);
+                assert(pow2(1) == 2) by (compute_only);
+            } else if shift == 2 {
+                assert(x >> 2 == x / 4) by (bit_vector);
+                assert(pow2(2) == 4) by (compute_only);
+            } else if shift == 3 {
+                assert(x >> 3 == x / 8) by (bit_vector);
+                assert(pow2(3) == 8) by (compute_only);
             } else {
-                assert(x >> shift == (x >> ((sub(shift, 1)) as $uN)) / 2) by (bit_vector)
+                assert(x >> shift == (x >> (sub(shift, 4) as $uN)) / 16) by (bit_vector)
                     requires
-                        0 < shift < <$uN>::BITS,
+                        4 <= shift < <$uN>::BITS,
                 ;
                 calc!{ (==)
                     (x >> shift) as nat;
                         {}
-                    ((x >> ((sub(shift, 1)) as $uN)) / 2) as nat;
-                        { $name(x, (shift - 1) as $uN); }
-                    (x as nat / pow2((shift - 1) as nat)) / 2;
+                    ((x >> (sub(shift, 4) as $uN)) / 16) as nat;
+                        { $name(x, (shift - 4) as $uN); }
+                    (x as nat / pow2((shift - 4) as nat)) / 16;
                         {
-                            lemma_pow2_pos((shift - 1) as nat);
+                            lemma_pow2_pos((shift - 4) as nat);
                             lemma2_to64();
-                            lemma_div_denominator(x as int, pow2((shift - 1) as nat) as int, 2);
+                            assert(pow2(4) == 16) by (compute_only);
+                            lemma_div_denominator(x as int, pow2((shift - 4) as nat) as int, 16);
                         }
-                    x as nat / (pow2((shift - 1) as nat) * pow2(1));
+                    x as nat / (pow2((shift - 4) as nat) * pow2(4));
                         {
-                            lemma_pow2_adds((shift - 1) as nat, 1);
+                            lemma_pow2_adds((shift - 4) as nat, 4);
                         }
                     x as nat / pow2(shift as nat);
                 }
