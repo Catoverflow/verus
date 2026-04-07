@@ -35,13 +35,6 @@ use super::calc_macro::*;
 
 } // verus!
 // Proofs that shift right is equivalent to division by power of 2.
-//
-// The proof recurses on shift, stepping by 4 bits at a time to reduce
-// recursion depth (e.g. 32 steps for u128 instead of 127). Base cases
-// (shift 0..3) are proved directly with concrete constants. The recursive
-// step proves x >> shift == (x >> (shift - 4)) / 16 via bit_vector, then
-// bridges to pow2 with arithmetic lemmas. The divisor 16 fits in all
-// unsigned types including u8.
 macro_rules! lemma_shr_is_div {
     ($name:ident, $uN:ty) => {
         #[cfg(verus_keep_ghost)]
@@ -56,6 +49,7 @@ macro_rules! lemma_shr_is_div {
                 #[trigger] (x >> shift) == x as nat / pow2(shift as nat),
             decreases shift,
         {
+            // Step by 4 to reduce recursion depth (divisor 16 fits in all unsigned types).
             reveal(pow);
             if shift == 0 {
                 assert(x >> 0 == x) by (bit_vector);
