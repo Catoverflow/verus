@@ -288,6 +288,8 @@ pub fn main() {
         let total_air: u128 =
             compute_total(&verifier, |v| v.time_air - (v.time_smt_init + v.time_smt_run));
 
+        let total_phase1: u128 = compute_total(&verifier, |v| v.time_phase1);
+
         let mut verify_times = verifier
             .bucket_stats
             .iter()
@@ -366,6 +368,7 @@ pub fn main() {
                 }).collect::<Vec<serde_json::Value>>(),
                 "air": {
                     "total": total_air,
+                    "phase1-context-collection": total_phase1,
                     "module-times" : air_times.iter().map(|(m, t)| {
                         serde_json::json!({
                             "module" : rust_verify::verifier::module_name(m),
@@ -455,6 +458,12 @@ pub fn main() {
                 "        total air-time:        {:>10} ms   ({} threads)",
                 total_air, verifier.num_threads
             );
+            if total_phase1 > 0 {
+                println!(
+                    "            phase1-ctx-collect:    {:>10} ms   (sequential, parallel-queries mode)",
+                    total_phase1
+                );
+            }
             if verifier.args.time_expanded {
                 for (i, (m, t)) in air_times.iter().take(3).enumerate() {
                     println!(

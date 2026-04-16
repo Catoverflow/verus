@@ -5,8 +5,8 @@ verus_extra_verus_args = ["--no-report-long-running", "--num-threads", "4"]
 
 [[project]]
 name = "anvil"
-git_url = "https://github.com/anvil-verifier/anvil"
-refspec = "00f9660d71586479bd3ba4f74589bcc1f3183384"
+git_url = "https://github.com/catoverflow/anvil"
+refspec = "9600c93470a9950e861c0cf92286b6dd595ca82a"
 crate_roots = ["src/esr_composition.rs"]
 extra_verus_args = ["--crate-type=lib",
               "-L", "dependency=src/deps_hack/target/debug/deps",
@@ -16,7 +16,6 @@ extra_verus_args = ["--crate-type=lib",
               "-A", "warnings"]
 prepare_script = """
 pushd src/deps_hack
-cargo clean
 cargo build
 popd
 """

@@ -1,0 +1,99 @@
+{
+  "func-details": {},
+  "runner": {
+    "cvc5_version": "unknown",
+    "date": "2026-04-16-02-06-20-491",
+    "label": "baseline",
+    "run_configuration": {
+      "cargo_verus": false,
+      "crate_roots": [
+        "src/esr_composition.rs"
+      ],
+      "extra_cargo_args": null,
+      "extra_verus_args": [
+        "--crate-type=lib",
+        "-L",
+        "dependency=src/deps_hack/target/debug/deps",
+        "--extern=deps_hack=src/deps_hack/target/debug/libdeps_hack.rlib",
+        "--verify-module",
+        "vreplicaset_controller",
+        "--rlimit",
+        "50",
+        "-A",
+        "warnings"
+      ],
+      "git_url": "https://github.com/catoverflow/anvil",
+      "ignore": false,
+      "name": "anvil",
+      "prepare_script": "",
+      "prepare_script_windows": null,
+      "refspec": "9600c93470a9950e861c0cf92286b6dd595ca82a",
+      "requires_singular": false
+    },
+    "stderr": "error: extern location for deps_hack does not exist: src/deps_hack/target/debug/libdeps_hack.rlib\n --> src/shim_layer/fault_injection.rs:1:5\n  |\n1 | use deps_hack::anyhow::Result;\n  |     ^^^^^^^^^\n\nerror: aborting due to 1 previous error\n\n",
+    "success": false,
+    "verification_duration_ms": 4715.0,
+    "verus_features": [
+      "singular"
+    ],
+    "verus_git_url": "https://github.com/catoverflow/verus.git",
+    "verus_refspec": "parallel",
+    "z3_version": "4.12.5"
+  },
+  "times-ms": {
+    "air": {
+      "module-times": [],
+      "total": 0
+    },
+    "estimated-cpu-time": 4673,
+    "num-threads": 1,
+    "rust": {
+      "compile": 0,
+      "init-and-types": 4528,
+      "total": 4528,
+      "trait-conflicts": 0
+    },
+    "smt": {
+      "rlimit-init": 0,
+      "rlimit-run": 0,
+      "smt-init": 0,
+      "smt-init-module-times": [],
+      "smt-run": 0,
+      "smt-run-module-times": [],
+      "total": 0
+    },
+    "total": 4673,
+    "total-verify": 0,
+    "total-verify-module-times": [],
+    "verification": {
+      "total": 0,
+      "vir": {
+        "hir": 0,
+        "import": 0,
+        "rust-to-vir": 0,
+        "total": 0
+      }
+    },
+    "verus-build": {
+      "profile": "release",
+      "version": "0.2026.04.15.894da18.dirty"
+    }
+  },
+  "verification-results": {
+    "encountered-error": true,
+    "encountered-vir-error": false,
+    "errors": 0,
+    "is-verifying-entire-crate": false,
+    "verified": 0
+  },
+  "verus": {
+    "commit": "894da181b3b94a58f92fc610a66d4a933dc94fa1",
+    "platform": {
+      "arch": "x86_64",
+      "os": "linux"
+    },
+    "profile": "release",
+    "toolchain": "1.94.0-x86_64-unknown-linux-gnu",
+    "version": "0.2026.04.15.894da18.dirty"
+  }
+}

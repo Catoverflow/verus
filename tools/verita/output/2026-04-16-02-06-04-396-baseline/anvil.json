@@ -1,8 +1,9 @@
 {
+  "func-details": {},
   "runner": {
     "cvc5_version": "unknown",
-    "date": "2026-04-15-22-18-29-227",
-    "label": "anvil",
+    "date": "2026-04-16-02-06-04-396",
+    "label": "baseline",
     "run_configuration": {
       "cargo_verus": false,
       "crate_roots": [
@@ -21,22 +22,22 @@
         "-A",
         "warnings"
       ],
-      "git_url": "https://github.com/anvil-verifier/anvil",
+      "git_url": "https://github.com/catoverflow/anvil",
       "ignore": false,
       "name": "anvil",
-      "prepare_script": "pushd src/deps_hack\ncargo clean\ncargo +1.94.0 build\npopd\n",
-      "prepare_script_windows": "$ErrorActionPreference = 'Stop'\nPush-Location src/deps_hack\ncargo clean\ncargo +1.94.0 build\nPop-Location\n",
-      "refspec": "main",
+      "prepare_script": "",
+      "prepare_script_windows": null,
+      "refspec": "9600c93470a9950e861c0cf92286b6dd595ca82a",
       "requires_singular": false
     },
-    "stderr": "error[E0514]: found crate `deps_hack` compiled by an incompatible version of rustc\n --> src/shim_layer/fault_injection.rs:1:5\n  |\n1 | use deps_hack::anyhow::Result;\n  |     ^^^^^^^^^\n  |\n  = note: the following crate versions were found:\n          crate `deps_hack` compiled by rustc 1.94.0 (4a4ef493e 2026-03-02): /tmp/verita.RdWlJHUAlg4L/anvil/src/deps_hack/target/debug/libdeps_hack.rlib\n  = help: please recompile that crate using this compiler (rustc 1.91.0 (f8297e351 2025-10-28)) (consider running `cargo clean` first)\n\nerror: aborting due to 1 previous error\n\nFor more information about this error, try `rustc --explain E0514`.\n",
+    "stderr": "error: extern location for deps_hack does not exist: src/deps_hack/target/debug/libdeps_hack.rlib\n --> src/shim_layer/fault_injection.rs:1:5\n  |\n1 | use deps_hack::anyhow::Result;\n  |     ^^^^^^^^^\n\nerror: aborting due to 1 previous error\n\n",
     "success": false,
-    "verification_duration_ms": 4490.0,
+    "verification_duration_ms": 4717.0,
     "verus_features": [
       "singular"
     ],
-    "verus_git_url": "https://github.com/verus-lang/verus.git",
-    "verus_refspec": "main",
+    "verus_git_url": "https://github.com/catoverflow/verus.git",
+    "verus_refspec": "parallel",
     "z3_version": "4.12.5"
   },
   "times-ms": {
@@ -44,22 +45,24 @@
       "module-times": [],
       "total": 0
     },
-    "estimated-cpu-time": 4427,
+    "estimated-cpu-time": 4656,
     "num-threads": 1,
     "rust": {
       "compile": 0,
-      "init-and-types": 4285,
-      "total": 4285,
+      "init-and-types": 4503,
+      "total": 4503,
       "trait-conflicts": 0
     },
     "smt": {
+      "rlimit-init": 0,
+      "rlimit-run": 0,
       "smt-init": 0,
       "smt-init-module-times": [],
       "smt-run": 0,
       "smt-run-module-times": [],
       "total": 0
     },
-    "total": 4427,
+    "total": 4656,
     "total-verify": 0,
     "total-verify-module-times": [],
     "verification": {
@@ -73,7 +76,7 @@
     },
     "verus-build": {
       "profile": "release",
-      "version": "0.2025.11.30.840fa61.dirty"
+      "version": "0.2026.04.15.894da18.dirty"
     }
   },
   "verification-results": {
@@ -84,13 +87,13 @@
     "verified": 0
   },
   "verus": {
-    "commit": "840fa612cd962b12be913429a1bd3e60f0196ebb",
+    "commit": "894da181b3b94a58f92fc610a66d4a933dc94fa1",
     "platform": {
       "arch": "x86_64",
       "os": "linux"
     },
     "profile": "release",
-    "toolchain": "1.91.0-x86_64-unknown-linux-gnu",
-    "version": "0.2025.11.30.840fa61.dirty"
+    "toolchain": "1.94.0-x86_64-unknown-linux-gnu",
+    "version": "0.2026.04.15.894da18.dirty"
   }
 }

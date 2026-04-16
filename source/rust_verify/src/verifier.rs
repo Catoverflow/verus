@@ -349,6 +349,8 @@ pub struct BucketStats {
     pub time_smt_run: Duration,
     /// total time to verify the bucket
     pub time_verify: Duration,
+    /// time spent in Phase 1 (sequential context-op collection) for parallel-queries mode
+    pub time_phase1: Duration,
     /// rlimit used to initialize and run the SMT solver
     pub rlimit_count: Option<(u64, u64)>,
 }
@@ -532,6 +534,7 @@ impl std::ops::Add for RunCommandQueriesResult {
 struct VerifyBucketOut {
     time_smt_init: Duration,
     time_smt_run: Duration,
+    time_phase1: Duration,
     rlimit_count: Option<(u64, u64)>,
 }
 pub(crate) enum VerifyErr {
@@ -1628,7 +1631,21 @@ impl Verifier {
 
         for worker in workers {
             match worker.join() {
-                Ok(thread_verifier) => self.merge(thread_verifier),
+                Ok(mut thread_verifier) => {
+                    // Accumulate the worker's time_air for this bucket into the main verifier's
+                    // bucket stats rather than replacing them. The worker's entry includes time
+                    // spent replaying context declarations and running queries in its fresh Z3
+                    // context; the main verifier's entry already has the sequential context-op
+                    // time. Using extend() (replace) would leave time_air too small relative to
+                    // time_smt_init + time_smt_run, causing a Duration subtraction underflow in
+                    // main.rs when computing AIR-only time.
+                    if let Some(worker_stats) = thread_verifier.bucket_stats.remove(&shared_bucket_id) {
+                        if let Some(main_stats) = self.bucket_stats.get_mut(&shared_bucket_id) {
+                            main_stats.time_air += worker_stats.time_air;
+                        }
+                    }
+                    self.merge(thread_verifier);
+                }
                 Err(_) => {
                     return Err(vir::messages::error_bare("parallel query worker thread panicked"));
                 }
@@ -1803,6 +1820,7 @@ impl Verifier {
 
         if self.args.parallel_queries {
             // ── Phase 1: sequential context collection ──────────────────────────────
+            let phase1_start = Instant::now();
             let bucket = self.get_bucket(bucket_id);
             let mut opgen = OpGenerator::new(ctx, krate, bucket.clone());
             let mut all_context_ops: Vec<Op> = vec![];
@@ -1831,6 +1849,7 @@ impl Verifier {
                     }
                 }
             }
+            let time_phase1 = phase1_start.elapsed();
 
             // ── Batch 1: initial queries in parallel ────────────────────────────────
             let batch1 = self.run_parallel_query_batch(
@@ -1941,6 +1960,7 @@ impl Verifier {
             return Ok(VerifyBucketOut {
                 time_smt_init: time_smt_init + spunoff_time_smt_init,
                 time_smt_run: time_smt_run + spunoff_time_smt_run,
+                time_phase1,
                 rlimit_count: rlimit_count.map(|rc| {
                     let spunoff =
                         spunoff_rlimit_count.expect("spunoff rlimit count should be present");
@@ -2406,6 +2426,7 @@ impl Verifier {
         Ok(VerifyBucketOut {
             time_smt_init: time_smt_init + spunoff_time_smt_init,
             time_smt_run: time_smt_run + spunoff_time_smt_run,
+            time_phase1: Duration::ZERO,
             rlimit_count: rlimit_count.map(|rlimit_count| {
                 let spunoff_rlimit_count =
                     spunoff_rlimit_count.expect("spunoff rlimit count should be present");
@@ -2493,7 +2514,7 @@ impl Verifier {
         }
         let krate_sst = vir::poly::poly_krate_for_module(&mut ctx, &krate_sst);
 
-        let VerifyBucketOut { time_smt_init, time_smt_run, rlimit_count } =
+        let VerifyBucketOut { time_smt_init, time_smt_run, time_phase1, rlimit_count } =
             self.verify_bucket(reporter, &krate_sst, source_map, bucket_id, &mut ctx)?;
 
         global_ctx = ctx.free();
@@ -2503,6 +2524,7 @@ impl Verifier {
         let stats_bucket = self.bucket_stats.get_mut(bucket_id).expect("bucket should exist");
         stats_bucket.time_smt_init = time_smt_init;
         stats_bucket.time_smt_run = time_smt_run;
+        stats_bucket.time_phase1 = time_phase1;
         stats_bucket.time_verify = time_verify_end - time_verify_start;
         stats_bucket.rlimit_count = rlimit_count;
 
