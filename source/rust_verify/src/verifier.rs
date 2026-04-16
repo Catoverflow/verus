@@ -266,6 +266,79 @@ impl Diagnostics for QueuedReporter {
     }
 }
 
+/// A Diagnostics reporter that buffers messages for retrieval, used in parallel query threads.
+struct BufferedReporter {
+    messages: std::sync::Mutex<Vec<(vir::messages::Message, vir::messages::MessageLevel)>>,
+}
+
+impl BufferedReporter {
+    fn new() -> Self {
+        Self { messages: std::sync::Mutex::new(Vec::new()) }
+    }
+    fn into_messages(self) -> Vec<(vir::messages::Message, vir::messages::MessageLevel)> {
+        self.messages.into_inner().unwrap()
+    }
+}
+
+impl air::messages::Diagnostics for BufferedReporter {
+    fn report_as(&self, msg: &air::messages::ArcDynMessage, level: vir::messages::MessageLevel) {
+        let msg: vir::messages::Message =
+            msg.clone().downcast().expect("unexpected value in Any -> Message conversion");
+        self.messages.lock().unwrap().push((msg, level));
+    }
+    fn report_as_multi(
+        &self,
+        msgs: Vec<(air::messages::ArcDynMessage, vir::messages::MessageLevel)>,
+    ) {
+        let mut locked = self.messages.lock().unwrap();
+        for (msg, level) in msgs {
+            let msg: vir::messages::Message =
+                msg.clone().downcast().expect("unexpected value in Any -> Message conversion");
+            locked.push((msg, level));
+        }
+    }
+    fn report_as_now(
+        &self,
+        msg: &air::messages::ArcDynMessage,
+        level: vir::messages::MessageLevel,
+    ) {
+        self.report_as(msg, level);
+    }
+    fn report(&self, msg: &air::messages::ArcDynMessage) {
+        let air_msg: &vir::messages::MessageX =
+            msg.downcast_ref().expect("unexpected value in Any -> Message conversion");
+        self.report_as(msg, air_msg.level);
+    }
+    fn report_now(&self, msg: &air::messages::ArcDynMessage) {
+        self.report(msg);
+    }
+}
+
+impl Diagnostics for BufferedReporter {
+    fn use_progress_bars(&self) -> bool {
+        false
+    }
+    fn add_progress_bar(&self, _pb: vir::def::CommandContext) {}
+    fn complete_progress_bar(&self, _f: vir::def::CommandContext) {}
+}
+
+/// Result from a single parallel query task
+struct ParallelQueryTaskResult {
+    task_idx: usize,
+    function: vir::sst::FunctionSst,
+    query_op: crate::commands::QueryOp,
+    commands_with_context_list: std::sync::Arc<Vec<vir::def::CommandsWithContext>>,
+    snap_map: std::sync::Arc<Vec<(vir::messages::Span, vir::def::SnapPos)>>,
+    func_check_sst: Option<std::sync::Arc<vir::sst::FuncCheckSst>>,
+    any_invalid: bool,
+    any_timed_out: bool,
+    default_prover_failed_assert_ids: Vec<air::ast::AssertId>,
+    func_curr_smt_time: Duration,
+    spunoff_time_smt_init: Duration,
+    spunoff_time_smt_run: Duration,
+    messages: Vec<(vir::messages::Message, vir::messages::MessageLevel)>,
+}
+
 #[derive(Default)]
 pub struct BucketStats {
     /// cumulative time in AIR to verify the bucket (this includes SMT solver time)
@@ -1228,7 +1301,8 @@ impl Verifier {
     fn new_air_context_with_bucket_context<'m>(
         &mut self,
         message_interface: Arc<dyn air::messages::MessageInterface>,
-        ctx: &vir::context::Ctx,
+        fuel_commands: Commands,
+        arch_word_bits: vir::ast::ArchWordBits,
         diagnostics: &impl air::messages::Diagnostics,
         bucket_id: &BucketId,
         function_path: &vir::ast::Path,
@@ -1237,6 +1311,7 @@ impl Verifier {
         assoc_type_decl_commands: Commands,
         trait_type_bounds_commands: Commands,
         assoc_type_impl_commands: Commands,
+        opaque_type_impl_commands: Commands,
         function_decl_commands: Arc<Vec<(Commands, String)>>,
         ops: &Vec<Op>,
         is_rerun: bool,
@@ -1251,7 +1326,7 @@ impl Verifier {
             bucket_id,
             Some((function_path, context_counter)),
             is_rerun,
-            PreludeConfig { arch_word_bits: ctx.arch_word_bits, solver: self.args.solver },
+            PreludeConfig { arch_word_bits, solver: self.args.solver },
             profile_file_name,
         )?;
 
@@ -1261,7 +1336,7 @@ impl Verifier {
         air_context.comment(&format!("query spun off because: {}", spinoff_reason));
         air_context.blank_line();
         air_context.comment("Fuel");
-        for command in ctx.fuel().iter() {
+        for command in fuel_commands.iter() {
             Self::check_internal_result(air_context.command(
                 &*message_interface,
                 diagnostics,
@@ -1306,6 +1381,13 @@ impl Verifier {
             &assoc_type_impl_commands,
             "Associated-Type-Impls",
         );
+        self.run_commands(
+            bucket_id,
+            diagnostics,
+            &mut air_context,
+            &opaque_type_impl_commands,
+            "Opaque-Type-Constructors",
+        );
         for commands in &*function_decl_commands {
             self.run_commands(bucket_id, diagnostics, &mut air_context, &commands.0, &commands.1);
         }
@@ -1327,6 +1409,240 @@ impl Verifier {
         }
 
         Ok(air_context)
+    }
+
+    /// Run a batch of query ops in parallel, each in its own fresh Z3 context.
+    /// Returns results sorted by task_idx.
+    fn run_parallel_query_batch(
+        &mut self,
+        reporter: &impl Diagnostics,
+        _source_map: Option<&SourceMap>,
+        fuel_commands: &Commands,
+        arch_word_bits: vir::ast::ArchWordBits,
+        trait_decl_commands: &Commands,
+        datatype_commands: &Commands,
+        assoc_type_decl_commands: &Commands,
+        trait_type_bounds_commands: &Commands,
+        assoc_type_impl_commands: &Commands,
+        opaque_type_impl_commands: &Commands,
+        function_decl_commands: &Arc<Vec<(Commands, String)>>,
+        bucket_id: &BucketId,
+        tasks: Vec<(usize, Op, Arc<Vec<Op>>)>,
+    ) -> Result<Vec<ParallelQueryTaskResult>, VirErr> {
+        if tasks.is_empty() {
+            return Ok(vec![]);
+        }
+        let n_tasks = tasks.len();
+        let n_workers = std::cmp::max(1, std::cmp::min(self.args.num_threads, n_tasks));
+
+        let task_queue = Arc::new(std::sync::Mutex::new(
+            std::collections::VecDeque::from(tasks),
+        ));
+
+        // Clone all shared data (all Arc-based, cheap)
+        let shared_fuel = fuel_commands.clone();
+        let shared_arch = arch_word_bits;
+        let shared_trait_decl = trait_decl_commands.clone();
+        let shared_datatype = datatype_commands.clone();
+        let shared_assoc_type_decl = assoc_type_decl_commands.clone();
+        let shared_trait_bounds = trait_type_bounds_commands.clone();
+        let shared_assoc_type_impl = assoc_type_impl_commands.clone();
+        let shared_opaque_type_impl = opaque_type_impl_commands.clone();
+        let shared_func_decl = function_decl_commands.clone();
+        let shared_bucket_id = bucket_id.clone();
+
+        let (result_sender, result_receiver) =
+            std::sync::mpsc::channel::<ParallelQueryTaskResult>();
+
+        let mut workers = Vec::new();
+        for _ in 0..n_workers {
+            let mut thread_verifier = self.from_self();
+            // Initialize bucket_stats so run_commands doesn't panic
+            thread_verifier.bucket_stats.insert(shared_bucket_id.clone(), Default::default());
+
+            let thread_taskq = task_queue.clone();
+            let thread_result_sender = result_sender.clone();
+            let thread_fuel = shared_fuel.clone();
+            let thread_arch = shared_arch;
+            let thread_trait_decl = shared_trait_decl.clone();
+            let thread_datatype = shared_datatype.clone();
+            let thread_assoc_type_decl = shared_assoc_type_decl.clone();
+            let thread_trait_bounds = shared_trait_bounds.clone();
+            let thread_assoc_type_impl = shared_assoc_type_impl.clone();
+            let thread_opaque_type_impl = shared_opaque_type_impl.clone();
+            let thread_func_decl = shared_func_decl.clone();
+            let thread_bucket_id = shared_bucket_id.clone();
+
+            let worker = std::thread::spawn(move || {
+                let thread_mi: Arc<dyn air::messages::MessageInterface> =
+                    Arc::new(vir::messages::VirMessageInterface {});
+                loop {
+                    let task_opt = { thread_taskq.lock().unwrap().pop_front() };
+                    let Some((task_idx, op, ctx_snapshot)) = task_opt else { break; };
+
+                    let function = op.get_function();
+                    let (query_op, commands_with_context_list, snap_map, profile_rerun, func_check_sst) =
+                        match &op.kind {
+                            crate::commands::OpKind::Query {
+                                query_op,
+                                commands_with_context_list,
+                                snap_map,
+                                profile_rerun,
+                                func_check_sst,
+                            } => (*query_op, commands_with_context_list.clone(), snap_map.clone(), *profile_rerun, func_check_sst.clone()),
+                            _ => unreachable!("expected Query op"),
+                        };
+
+                    // Skip profile reruns in parallel mode
+                    if profile_rerun {
+                        continue;
+                    }
+
+                    let is_recommend = query_op.is_recommend();
+                    let level = match query_op {
+                        crate::commands::QueryOp::SpecTermination => vir::messages::MessageLevel::Error,
+                        crate::commands::QueryOp::Body(crate::commands::Style::Normal) => vir::messages::MessageLevel::Error,
+                        crate::commands::QueryOp::Body(crate::commands::Style::RecommendsFollowupFromError) => vir::messages::MessageLevel::Note,
+                        crate::commands::QueryOp::Body(crate::commands::Style::RecommendsChecked) => vir::messages::MessageLevel::Warning,
+                        crate::commands::QueryOp::Body(crate::commands::Style::Expanded) => vir::messages::MessageLevel::Note,
+                        crate::commands::QueryOp::Body(crate::commands::Style::CheckApiSafety) => vir::messages::MessageLevel::Error,
+                    };
+
+                    let mut any_invalid = false;
+                    let mut any_timed_out = false;
+                    let mut default_prover_failed_assert_ids = vec![];
+                    let mut func_curr_smt_time = Duration::ZERO;
+                    let mut spunoff_time_smt_init = Duration::ZERO;
+                    let mut spunoff_time_smt_run = Duration::ZERO;
+                    let buffered_reporter = BufferedReporter::new();
+                    let mut spinoff_context_counter = 1;
+
+                    for cmds in commands_with_context_list.iter() {
+                        if is_recommend && cmds.skip_recommends {
+                            continue;
+                        }
+                        if cmds.prover_choice == vir::def::ProverChoice::Singular {
+                            // Skip singular in parallel mode
+                            continue;
+                        }
+
+                        // Always create a fresh Z3 context for parallel queries
+                        let mut task_air_context = match thread_verifier.new_air_context_with_bucket_context(
+                            thread_mi.clone(),
+                            thread_fuel.clone(),
+                            thread_arch,
+                            &buffered_reporter,
+                            &thread_bucket_id,
+                            &(function.x.name).path,
+                            thread_trait_decl.clone(),
+                            thread_datatype.clone(),
+                            thread_assoc_type_decl.clone(),
+                            thread_trait_bounds.clone(),
+                            thread_assoc_type_impl.clone(),
+                            thread_opaque_type_impl.clone(),
+                            thread_func_decl.clone(),
+                            &ctx_snapshot,
+                            is_recommend,
+                            spinoff_context_counter,
+                            &cmds.context.span,
+                            None, // no profile file in parallel mode
+                            "parallel-query",
+                        ) {
+                            Ok(ctx) => ctx,
+                            Err(_) => break,
+                        };
+
+                        if cmds.prover_choice == vir::def::ProverChoice::BitVector {
+                            task_air_context.disable_incremental_solving();
+                        }
+                        spinoff_context_counter += 1;
+
+                        if let Some(rlimit) = function.x.attrs.rlimit {
+                            Verifier::set_rlimit(&mut task_air_context, rlimit);
+                        }
+
+                        let iter_curr_smt_time = task_air_context.get_time().1;
+
+                        let diagnostics_to_report: std::cell::RefCell<
+                            Option<util::PanicOnDropVec<(Message, MessageLevel)>>,
+                        > = std::cell::RefCell::new(Some(util::PanicOnDropVec::new(Vec::new())));
+
+                        let run_result = thread_verifier.run_commands_queries(
+                            &buffered_reporter,
+                            None, // source_map not available in thread
+                            Some(level),
+                            &diagnostics_to_report,
+                            &mut task_air_context,
+                            cmds.clone(),
+                            &HashMap::new(),
+                            &snap_map,
+                            &thread_bucket_id,
+                            &function.x.name,
+                            &op.to_air_comment(),
+                            None,
+                            &mut default_prover_failed_assert_ids,
+                        );
+
+                        // Flush diagnostics_to_report into buffered_reporter
+                        if let Some(msgs) = diagnostics_to_report.into_inner() {
+                            for (msg, level) in msgs.into_inner().into_iter() {
+                                buffered_reporter.messages.lock().unwrap().push((msg, level));
+                            }
+                        }
+
+                        func_curr_smt_time += task_air_context.get_time().1 - iter_curr_smt_time;
+                        let (t_init, t_run) = task_air_context.get_time();
+                        spunoff_time_smt_init += t_init;
+                        spunoff_time_smt_run += t_run;
+
+                        any_invalid |= run_result.invalidity;
+                        any_timed_out |= run_result.timed_out;
+                    }
+
+                    let messages = buffered_reporter.into_messages();
+                    thread_result_sender.send(ParallelQueryTaskResult {
+                        task_idx,
+                        function: function.clone(),
+                        query_op,
+                        commands_with_context_list,
+                        snap_map,
+                        func_check_sst,
+                        any_invalid,
+                        any_timed_out,
+                        default_prover_failed_assert_ids,
+                        func_curr_smt_time,
+                        spunoff_time_smt_init,
+                        spunoff_time_smt_run,
+                        messages,
+                    })
+                    .expect("result channel open");
+                }
+                thread_verifier
+            });
+            workers.push(worker);
+        }
+
+        drop(result_sender);
+        let mut results: Vec<ParallelQueryTaskResult> = result_receiver.into_iter().collect();
+        results.sort_by_key(|r| r.task_idx);
+
+        for worker in workers {
+            match worker.join() {
+                Ok(thread_verifier) => self.merge(thread_verifier),
+                Err(_) => {
+                    return Err(vir::messages::error_bare("parallel query worker thread panicked"));
+                }
+            }
+        }
+
+        // Report all buffered messages to the real reporter
+        for result in &results {
+            for (msg, level) in &result.messages {
+                reporter.report_as(&msg.clone().to_any(), *level);
+            }
+        }
+
+        Ok(results)
     }
 
     // Verify a single bucket
@@ -1378,10 +1694,13 @@ impl Verifier {
             SmtSolver::Cvc5 => None,
         };
 
+        let fuel_commands = ctx.fuel();
+        let arch_word_bits = ctx.arch_word_bits;
+
         let module = &ctx.module_path();
         air_context.blank_line();
         air_context.comment("Fuel");
-        for command in ctx.fuel().iter() {
+        for command in fuel_commands.iter() {
             Self::check_internal_result(air_context.command(
                 &*message_interface,
                 reporter,
@@ -1481,6 +1800,155 @@ impl Verifier {
         ctx.fun = None;
 
         let function_decl_commands = Arc::new(function_decl_commands);
+
+        if self.args.parallel_queries {
+            // ── Phase 1: sequential context collection ──────────────────────────────
+            let bucket = self.get_bucket(bucket_id);
+            let mut opgen = OpGenerator::new(ctx, krate, bucket.clone());
+            let mut all_context_ops: Vec<Op> = vec![];
+            let mut initial_tasks: Vec<(usize, Op, Arc<Vec<Op>>)> = vec![];
+            let mut task_idx = 0usize;
+
+            while let Some(mut function_opgen) = opgen.next()? {
+                loop {
+                    let Some(op) = function_opgen.next() else { break; };
+                    match &op.kind {
+                        OpKind::Context(_, commands) => {
+                            self.run_commands(
+                                bucket_id,
+                                reporter,
+                                &mut air_context,
+                                commands,
+                                &op.to_air_comment(),
+                            );
+                            all_context_ops.push(op);
+                        }
+                        OpKind::Query { .. } => {
+                            let snapshot = Arc::new(all_context_ops.clone());
+                            initial_tasks.push((task_idx, op, snapshot));
+                            task_idx += 1;
+                        }
+                    }
+                }
+            }
+
+            // ── Batch 1: initial queries in parallel ────────────────────────────────
+            let batch1 = self.run_parallel_query_batch(
+                reporter,
+                source_map,
+                &fuel_commands,
+                arch_word_bits,
+                &trait_decl_commands,
+                &datatype_commands,
+                &assoc_type_decl_commands,
+                &trait_type_bounds_commands,
+                &assoc_type_impl_commands,
+                &opaque_type_impl_commands,
+                &function_decl_commands,
+                bucket_id,
+                initial_tasks,
+            )?;
+
+            // Update timing stats from batch 1
+            for result in &batch1 {
+                spunoff_time_smt_init += result.spunoff_time_smt_init;
+                spunoff_time_smt_run += result.spunoff_time_smt_run;
+
+                if !result.commands_with_context_list.is_empty() {
+                    let func_time =
+                        self.func_times.entry(bucket_id.clone()).or_insert(HashMap::new());
+                    let func_stats =
+                        func_time.entry(result.function.x.name.clone()).or_insert(
+                            FunctionSmtStats {
+                                smt_time: Duration::ZERO,
+                                rlimit_count: matches!(self.args.solver, SmtSolver::Z3).then(|| 0),
+                            },
+                        );
+                    func_stats.smt_time += result.func_curr_smt_time;
+                }
+            }
+
+            // ── Collect retry tasks (recommends checks for failed functions) ─────────
+            let full_snapshot = Arc::new(all_context_ops.clone());
+            let mut retry_tasks: Vec<(usize, Op, Arc<Vec<Op>>)> = vec![];
+            let mut retry_idx = 0usize;
+
+            for result in &batch1 {
+                let needs_recommends = (result.any_invalid
+                    && !self.args.no_auto_recommends_check
+                    && !result.any_timed_out)
+                    || result.function.x.attrs.check_recommends;
+
+                if needs_recommends
+                    && (matches!(result.query_op, QueryOp::Body(Style::Normal))
+                        || matches!(result.query_op, QueryOp::SpecTermination))
+                {
+                    let from_error = result.any_invalid;
+                    let recommend_style = if from_error {
+                        Style::RecommendsFollowupFromError
+                    } else {
+                        Style::RecommendsChecked
+                    };
+                    ctx.fun = vir::ast_to_sst_func::mk_fun_ctx(&result.function, true);
+                    if let Some(fsst) = &result.function.x.recommends_check {
+                        if let Ok((commands, snap_map)) =
+                            vir::sst_to_air_func::func_sst_to_air(ctx, &result.function, fsst)
+                        {
+                            let retry_op = Op::query(
+                                QueryOp::Body(recommend_style),
+                                commands,
+                                snap_map,
+                                &result.function,
+                                Some(fsst.clone()),
+                            );
+                            retry_tasks.push((retry_idx, retry_op, full_snapshot.clone()));
+                            retry_idx += 1;
+                        }
+                    }
+                    ctx.fun = None;
+                }
+            }
+
+            // ── Batch 2: retry queries in parallel (if any) ─────────────────────────
+            if !retry_tasks.is_empty() {
+                let batch2 = self.run_parallel_query_batch(
+                    reporter,
+                    source_map,
+                    &fuel_commands,
+                    arch_word_bits,
+                    &trait_decl_commands,
+                    &datatype_commands,
+                    &assoc_type_decl_commands,
+                    &trait_type_bounds_commands,
+                    &assoc_type_impl_commands,
+                    &opaque_type_impl_commands,
+                    &function_decl_commands,
+                    bucket_id,
+                    retry_tasks,
+                )?;
+
+                for result in &batch2 {
+                    spunoff_time_smt_init += result.spunoff_time_smt_init;
+                    spunoff_time_smt_run += result.spunoff_time_smt_run;
+                }
+            }
+
+            ctx.fun = None;
+
+            let (time_smt_init, time_smt_run) = air_context.get_time();
+            let rlimit_count = air_context.get_rlimit_count();
+
+            return Ok(VerifyBucketOut {
+                time_smt_init: time_smt_init + spunoff_time_smt_init,
+                time_smt_run: time_smt_run + spunoff_time_smt_run,
+                rlimit_count: rlimit_count.map(|rc| {
+                    let spunoff =
+                        spunoff_rlimit_count.expect("spunoff rlimit count should be present");
+                    (rc.0 + spunoff.0, rc.1 + spunoff.1)
+                }),
+            });
+        }
+        // (existing sequential code continues below)
 
         let bucket = self.get_bucket(bucket_id);
         let mut opgen = OpGenerator::new(ctx, krate, bucket.clone());
@@ -1621,7 +2089,8 @@ impl Verifier {
                                 };
                                 spinoff_z3_context = self.new_air_context_with_bucket_context(
                                     message_interface.clone(),
-                                    function_opgen.ctx(),
+                                    fuel_commands.clone(),
+                                    arch_word_bits,
                                     reporter,
                                     bucket_id,
                                     &(function.x.name).path,
@@ -1630,6 +2099,7 @@ impl Verifier {
                                     assoc_type_decl_commands.clone(),
                                     trait_type_bounds_commands.clone(),
                                     assoc_type_impl_commands.clone(),
+                                    opaque_type_impl_commands.clone(),
                                     function_decl_commands.clone(),
                                     &all_context_ops,
                                     is_recommend,

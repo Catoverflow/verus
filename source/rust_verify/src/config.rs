@@ -119,6 +119,7 @@ pub struct ArgsX {
     pub check_api_safety: bool,
     pub new_mut_ref: bool,
     pub no_bv_simplify: bool,
+    pub parallel_queries: bool,
 }
 
 impl ArgsX {
@@ -167,6 +168,7 @@ impl ArgsX {
             check_api_safety: Default::default(),
             new_mut_ref: Default::default(),
             no_bv_simplify: Default::default(),
+            parallel_queries: Default::default(),
         }
     }
 }
@@ -411,6 +413,7 @@ pub fn parse_args_with_imports(
     const EXTENDED_CHECK_API_SAFETY: &str = "check-api-safety";
     const EXTENDED_NEW_MUT_REF: &str = "new-mut-ref";
     const EXTENDED_NO_BV_SIMPLIFY: &str = "no-bv-simplify";
+    const EXTENDED_PARALLEL_QUERIES: &str = "parallel-queries";
     const EXTENDED_KEYS: &[(&str, &str)] = &[
         (EXTENDED_IGNORE_UNEXPECTED_SMT, "Ignore unexpected SMT output"),
         (EXTENDED_DEBUG, "Enable debugging of proof failures"),
@@ -439,6 +442,7 @@ pub fn parse_args_with_imports(
             EXTENDED_NO_BV_SIMPLIFY,
             "internal option to disable simplification of bit-vector assertions before sending to the SMT solver",
         ),
+        (EXTENDED_PARALLEL_QUERIES, "Run function proof queries in parallel within each bucket (experimental)"),
     ];
 
     let default_num_threads: usize = std::thread::available_parallelism()
@@ -833,6 +837,7 @@ pub fn parse_args_with_imports(
         check_api_safety: extended.contains_key(EXTENDED_CHECK_API_SAFETY),
         new_mut_ref: extended.contains_key(EXTENDED_NEW_MUT_REF),
         no_bv_simplify: extended.contains_key(EXTENDED_NO_BV_SIMPLIFY),
+        parallel_queries: extended.contains_key(EXTENDED_PARALLEL_QUERIES),
     };
 
     if args.compile && args.no_erasure_check {

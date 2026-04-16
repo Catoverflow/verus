@@ -1,0 +1,96 @@
+{
+  "runner": {
+    "cvc5_version": "unknown",
+    "date": "2026-04-15-22-18-29-227",
+    "label": "anvil",
+    "run_configuration": {
+      "cargo_verus": false,
+      "crate_roots": [
+        "src/esr_composition.rs"
+      ],
+      "extra_cargo_args": null,
+      "extra_verus_args": [
+        "--crate-type=lib",
+        "-L",
+        "dependency=src/deps_hack/target/debug/deps",
+        "--extern=deps_hack=src/deps_hack/target/debug/libdeps_hack.rlib",
+        "--verify-module",
+        "vreplicaset_controller",
+        "--rlimit",
+        "50",
+        "-A",
+        "warnings"
+      ],
+      "git_url": "https://github.com/anvil-verifier/anvil",
+      "ignore": false,
+      "name": "anvil",
+      "prepare_script": "pushd src/deps_hack\ncargo clean\ncargo +1.94.0 build\npopd\n",
+      "prepare_script_windows": "$ErrorActionPreference = 'Stop'\nPush-Location src/deps_hack\ncargo clean\ncargo +1.94.0 build\nPop-Location\n",
+      "refspec": "main",
+      "requires_singular": false
+    },
+    "stderr": "error[E0514]: found crate `deps_hack` compiled by an incompatible version of rustc\n --> src/shim_layer/fault_injection.rs:1:5\n  |\n1 | use deps_hack::anyhow::Result;\n  |     ^^^^^^^^^\n  |\n  = note: the following crate versions were found:\n          crate `deps_hack` compiled by rustc 1.94.0 (4a4ef493e 2026-03-02): /tmp/verita.RdWlJHUAlg4L/anvil/src/deps_hack/target/debug/libdeps_hack.rlib\n  = help: please recompile that crate using this compiler (rustc 1.91.0 (f8297e351 2025-10-28)) (consider running `cargo clean` first)\n\nerror: aborting due to 1 previous error\n\nFor more information about this error, try `rustc --explain E0514`.\n",
+    "success": false,
+    "verification_duration_ms": 4490.0,
+    "verus_features": [
+      "singular"
+    ],
+    "verus_git_url": "https://github.com/verus-lang/verus.git",
+    "verus_refspec": "main",
+    "z3_version": "4.12.5"
+  },
+  "times-ms": {
+    "air": {
+      "module-times": [],
+      "total": 0
+    },
+    "estimated-cpu-time": 4427,
+    "num-threads": 1,
+    "rust": {
+      "compile": 0,
+      "init-and-types": 4285,
+      "total": 4285,
+      "trait-conflicts": 0
+    },
+    "smt": {
+      "smt-init": 0,
+      "smt-init-module-times": [],
+      "smt-run": 0,
+      "smt-run-module-times": [],
+      "total": 0
+    },
+    "total": 4427,
+    "total-verify": 0,
+    "total-verify-module-times": [],
+    "verification": {
+      "total": 0,
+      "vir": {
+        "hir": 0,
+        "import": 0,
+        "rust-to-vir": 0,
+        "total": 0
+      }
+    },
+    "verus-build": {
+      "profile": "release",
+      "version": "0.2025.11.30.840fa61.dirty"
+    }
+  },
+  "verification-results": {
+    "encountered-error": true,
+    "encountered-vir-error": false,
+    "errors": 0,
+    "is-verifying-entire-crate": false,
+    "verified": 0
+  },
+  "verus": {
+    "commit": "840fa612cd962b12be913429a1bd3e60f0196ebb",
+    "platform": {
+      "arch": "x86_64",
+      "os": "linux"
+    },
+    "profile": "release",
+    "toolchain": "1.91.0-x86_64-unknown-linux-gnu",
+    "version": "0.2025.11.30.840fa61.dirty"
+  }
+}

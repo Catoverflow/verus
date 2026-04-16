@@ -1,0 +1,7 @@
+{
+  "runner": {
+    "invalid_output_json": true,
+    "stderr": "/home/catoverflow/Project/verus/source/target-verus/release/rust_verify: error while loading shared libraries: librustc_driver-24b10b5e3eb5af70.so: cannot open shared object file: No such file or directory\n",
+    "success": false
+  }
+}
