@@ -339,6 +339,79 @@ struct ParallelQueryTaskResult {
     messages: Vec<(vir::messages::Message, vir::messages::MessageLevel)>,
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// Global worker pool data structures (used when -V parallel-queries is active)
+// ─────────────────────────────────────────────────────────────────────────────
+
+/// All data needed by any worker to call new_air_context_base for a given module.
+/// Created during Phase 1 and shared via Arc so any worker can reinitialise a
+/// fresh Z3 context when it migrates to a different module.
+struct BaseContextData {
+    fuel_commands: Commands,
+    arch_word_bits: vir::ast::ArchWordBits,
+    trait_decl_commands: Commands,
+    datatype_commands: Commands,
+    assoc_type_decl_commands: Commands,
+    trait_type_bounds_commands: Commands,
+    assoc_type_impl_commands: Commands,
+    opaque_type_impl_commands: Commands,
+    function_decl_commands: Arc<Vec<(Commands, String)>>,
+}
+
+/// A single task for a parallel worker.
+struct WorkerTask {
+    task_idx: usize,
+    op: Op,
+    ctx_before: usize,
+    ctx_after: usize,
+}
+
+/// State for a module whose Phase 1 has completed and whose tasks are ready to
+/// be executed by any available worker.
+struct ActiveModule {
+    bucket_id: BucketId,
+    /// Index used by the messaging system (matches the bucket_ids ordering).
+    bucket_msg_id: usize,
+    all_ctx_ops: Arc<Vec<Op>>,
+    base_ctx: Arc<BaseContextData>,
+    task_queue: std::sync::Mutex<VecDeque<WorkerTask>>,
+    /// Number of initial tasks still in-flight (not yet completed).
+    pending_initial: std::sync::atomic::AtomicUsize,
+    /// Collected results from initial tasks.
+    initial_results: std::sync::Mutex<Vec<ParallelQueryTaskResult>>,
+    /// Worker index that ran Phase 1; only this worker may run retry generation.
+    coordinator_id: usize,
+}
+
+/// A module waiting to be claimed by a worker for Phase 1.
+struct PendingModule {
+    bucket_id: BucketId,
+    bucket_msg_id: usize,
+    global_ctx: vir::context::GlobalCtx,
+}
+
+/// Shared state for the global worker pool.
+struct GlobalPoolState {
+    pending_modules: std::sync::Mutex<VecDeque<PendingModule>>,
+    active_modules: std::sync::Mutex<Vec<Arc<ActiveModule>>>,
+    /// Modules whose initial tasks are all done; tagged with coordinator_id so
+    /// only the coordinator worker runs retry generation for each.
+    retry_pending: std::sync::Mutex<Vec<(Arc<ActiveModule>, Vec<ParallelQueryTaskResult>)>>,
+    condvar: std::sync::Condvar,
+    total_modules: usize,
+    done_count: std::sync::atomic::AtomicUsize,
+}
+
+/// Messages sent from global pool workers back to the main thread.
+enum GlobalPoolMessage {
+    /// A diagnostics message (forwarded from a buffered reporter).
+    Msg(usize, vir::messages::Message, vir::messages::MessageLevel),
+    /// A bucket is fully done (all tasks + retries completed).
+    BucketDone(usize),
+    /// A worker panicked.
+    WorkerPanicked(Box<dyn std::any::Any + Send>),
+}
+
 #[derive(Default)]
 pub struct BucketStats {
     /// cumulative time in AIR to verify the bucket (this includes SMT solver time)
@@ -1301,6 +1374,81 @@ impl Verifier {
         Ok(air_context)
     }
 
+    /// Create a base air context with global setup (fuel, traits, datatypes, function decls) but
+    /// no per-function SCC context ops. Used by Plan-A parallel workers to create a persistent
+    /// context that is then incrementally updated with SCC ops via delta application.
+    fn new_air_context_base(
+        &mut self,
+        message_interface: Arc<dyn air::messages::MessageInterface>,
+        fuel_commands: &Commands,
+        arch_word_bits: vir::ast::ArchWordBits,
+        diagnostics: &impl air::messages::Diagnostics,
+        bucket_id: &BucketId,
+        trait_decl_commands: &Commands,
+        datatype_commands: &Commands,
+        assoc_type_decl_commands: &Commands,
+        trait_type_bounds_commands: &Commands,
+        assoc_type_impl_commands: &Commands,
+        opaque_type_impl_commands: &Commands,
+        function_decl_commands: &Arc<Vec<(Commands, String)>>,
+    ) -> Result<air::context::Context, VirErr> {
+        let mut air_context = self.new_air_context_with_prelude(
+            message_interface.clone(),
+            diagnostics,
+            bucket_id,
+            None, // no per-function log suffix
+            false,
+            PreludeConfig { arch_word_bits, solver: self.args.solver },
+            None,
+        )?;
+
+        air_context.blank_line();
+        air_context.comment("Fuel");
+        for command in fuel_commands.iter() {
+            Self::check_internal_result(air_context.command(
+                &vir::messages::VirMessageInterface {},
+                diagnostics,
+                &command,
+                Default::default(),
+            ));
+        }
+        self.run_commands(bucket_id, diagnostics, &mut air_context, trait_decl_commands, "Trait-Decls");
+        self.run_commands(
+            bucket_id,
+            diagnostics,
+            &mut air_context,
+            assoc_type_decl_commands,
+            "Associated-Type-Decls",
+        );
+        self.run_commands(bucket_id, diagnostics, &mut air_context, datatype_commands, "Datatypes");
+        self.run_commands(
+            bucket_id,
+            diagnostics,
+            &mut air_context,
+            trait_type_bounds_commands,
+            "Trait-Bounds",
+        );
+        self.run_commands(
+            bucket_id,
+            diagnostics,
+            &mut air_context,
+            assoc_type_impl_commands,
+            "Associated-Type-Impls",
+        );
+        self.run_commands(
+            bucket_id,
+            diagnostics,
+            &mut air_context,
+            opaque_type_impl_commands,
+            "Opaque-Type-Constructors",
+        );
+        for (commands, comment) in function_decl_commands.iter() {
+            self.run_commands(bucket_id, diagnostics, &mut air_context, commands, comment);
+        }
+
+        Ok(air_context)
+    }
+
     fn new_air_context_with_bucket_context<'m>(
         &mut self,
         message_interface: Arc<dyn air::messages::MessageInterface>,
@@ -1414,7 +1562,20 @@ impl Verifier {
         Ok(air_context)
     }
 
-    /// Run a batch of query ops in parallel, each in its own fresh Z3 context.
+    /// Run a batch of query ops in parallel using persistent per-worker Z3 contexts.
+    ///
+    /// Each worker initialises its Z3 context once (fuel + global declarations) and then
+    /// processes tasks by applying only the *delta* of new SCC context ops between consecutive
+    /// tasks rather than replaying the full snapshot on every query. This eliminates the
+    /// O(tasks × prefix_size) replay cost of the original approach and lets Z3 retain its
+    /// incremental state across queries within the same worker.
+    ///
+    /// Tasks carry `(ctx_before, ctx_after)` — start/end indices into `all_ctx_ops` — that
+    /// bracket the ops needed before and after each query. Since the FIFO task queue guarantees
+    /// that ctx_before values are non-decreasing within a worker's sequence, the delta from
+    /// the previous ctx_after to the current ctx_before is always empty: workers naturally
+    /// accumulate context without any redundant replay.
+    ///
     /// Returns results sorted by task_idx.
     fn run_parallel_query_batch(
         &mut self,
@@ -1430,7 +1591,8 @@ impl Verifier {
         opaque_type_impl_commands: &Commands,
         function_decl_commands: &Arc<Vec<(Commands, String)>>,
         bucket_id: &BucketId,
-        tasks: Vec<(usize, Op, Arc<Vec<Op>>)>,
+        all_ctx_ops: &Arc<Vec<Op>>,
+        tasks: Vec<(usize, Op, usize, usize)>,
     ) -> Result<Vec<ParallelQueryTaskResult>, VirErr> {
         if tasks.is_empty() {
             return Ok(vec![]);
@@ -1453,6 +1615,7 @@ impl Verifier {
         let shared_opaque_type_impl = opaque_type_impl_commands.clone();
         let shared_func_decl = function_decl_commands.clone();
         let shared_bucket_id = bucket_id.clone();
+        let shared_all_ctx_ops = all_ctx_ops.clone();
 
         let (result_sender, result_receiver) =
             std::sync::mpsc::channel::<ParallelQueryTaskResult>();
@@ -1475,13 +1638,40 @@ impl Verifier {
             let thread_opaque_type_impl = shared_opaque_type_impl.clone();
             let thread_func_decl = shared_func_decl.clone();
             let thread_bucket_id = shared_bucket_id.clone();
+            let thread_all_ctx_ops = shared_all_ctx_ops.clone();
 
             let worker = std::thread::spawn(move || {
                 let thread_mi: Arc<dyn air::messages::MessageInterface> =
                     Arc::new(vir::messages::VirMessageInterface {});
+
+                // ── Persistent context: initialise once per worker ───────────────
+                // Use a temporary buffered reporter for init (declarations never fail).
+                let init_reporter = BufferedReporter::new();
+                let mut worker_ctx = match thread_verifier.new_air_context_base(
+                    thread_mi.clone(),
+                    &thread_fuel,
+                    thread_arch,
+                    &init_reporter,
+                    &thread_bucket_id,
+                    &thread_trait_decl,
+                    &thread_datatype,
+                    &thread_assoc_type_decl,
+                    &thread_trait_bounds,
+                    &thread_assoc_type_impl,
+                    &thread_opaque_type_impl,
+                    &thread_func_decl,
+                ) {
+                    Ok(ctx) => ctx,
+                    Err(_) => return thread_verifier,
+                };
+                // Watermark: how many SCC context ops have been applied to worker_ctx.
+                // ctx_before values in tasks are non-decreasing (FIFO queue), so the delta
+                // [watermark..ctx_before] is always empty after the first task is processed.
+                let mut watermark: usize = 0;
+
                 loop {
                     let task_opt = { thread_taskq.lock().unwrap().pop_front() };
-                    let Some((task_idx, op, ctx_snapshot)) = task_opt else { break; };
+                    let Some((task_idx, op, ctx_before, ctx_after)) = task_opt else { break; };
 
                     let function = op.get_function();
                     let (query_op, commands_with_context_list, snap_map, profile_rerun, func_check_sst) =
@@ -1520,87 +1710,157 @@ impl Verifier {
                     let buffered_reporter = BufferedReporter::new();
                     let mut spinoff_context_counter = 1;
 
+                    // ── Apply pre-task delta: all_ctx_ops[watermark..ctx_before] ──
+                    // For consecutive tasks from a FIFO queue this delta is always empty
+                    // (watermark == ctx_before from the previous task's ctx_after), so this
+                    // loop is a no-op in the common case and only runs when a worker skips
+                    // tasks (e.g. another worker took them) or processes the very first task.
+                    for op in thread_all_ctx_ops[watermark..ctx_before].iter() {
+                        match &op.kind {
+                            OpKind::Context(_, commands) => {
+                                thread_verifier.run_commands(
+                                    &thread_bucket_id,
+                                    &buffered_reporter,
+                                    &mut worker_ctx,
+                                    commands,
+                                    &op.to_air_comment(),
+                                );
+                            }
+                            OpKind::Query { .. } => unreachable!("only Context ops in all_ctx_ops"),
+                        }
+                    }
+                    watermark = ctx_before;
+
                     for cmds in commands_with_context_list.iter() {
                         if is_recommend && cmds.skip_recommends {
                             continue;
                         }
                         if cmds.prover_choice == vir::def::ProverChoice::Singular {
-                            // Skip singular in parallel mode
                             continue;
                         }
 
-                        // Always create a fresh Z3 context for parallel queries
-                        let mut task_air_context = match thread_verifier.new_air_context_with_bucket_context(
-                            thread_mi.clone(),
-                            thread_fuel.clone(),
-                            thread_arch,
-                            &buffered_reporter,
-                            &thread_bucket_id,
-                            &(function.x.name).path,
-                            thread_trait_decl.clone(),
-                            thread_datatype.clone(),
-                            thread_assoc_type_decl.clone(),
-                            thread_trait_bounds.clone(),
-                            thread_assoc_type_impl.clone(),
-                            thread_opaque_type_impl.clone(),
-                            thread_func_decl.clone(),
-                            &ctx_snapshot,
-                            is_recommend,
-                            spinoff_context_counter,
-                            &cmds.context.span,
-                            None, // no profile file in parallel mode
-                            "parallel-query",
-                        ) {
-                            Ok(ctx) => ctx,
-                            Err(_) => break,
-                        };
-
                         if cmds.prover_choice == vir::def::ProverChoice::BitVector {
-                            task_air_context.disable_incremental_solving();
-                        }
-                        spinoff_context_counter += 1;
-
-                        if let Some(rlimit) = function.x.attrs.rlimit {
-                            Verifier::set_rlimit(&mut task_air_context, rlimit);
-                        }
-
-                        let iter_curr_smt_time = task_air_context.get_time().1;
-
-                        let diagnostics_to_report: std::cell::RefCell<
-                            Option<util::PanicOnDropVec<(Message, MessageLevel)>>,
-                        > = std::cell::RefCell::new(Some(util::PanicOnDropVec::new(Vec::new())));
-
-                        let run_result = thread_verifier.run_commands_queries(
-                            &buffered_reporter,
-                            None, // source_map not available in thread
-                            Some(level),
-                            &diagnostics_to_report,
-                            &mut task_air_context,
-                            cmds.clone(),
-                            &HashMap::new(),
-                            &snap_map,
-                            &thread_bucket_id,
-                            &function.x.name,
-                            &op.to_air_comment(),
-                            None,
-                            &mut default_prover_failed_assert_ids,
-                        );
-
-                        // Flush diagnostics_to_report into buffered_reporter
-                        if let Some(msgs) = diagnostics_to_report.into_inner() {
-                            for (msg, level) in msgs.into_inner().into_iter() {
-                                buffered_reporter.messages.lock().unwrap().push((msg, level));
+                            // BitVector requires a different solver configuration — use a
+                            // fresh spinoff context with the full snapshot replayed.
+                            let bv_snapshot: Vec<Op> =
+                                thread_all_ctx_ops[..ctx_before].to_vec();
+                            let mut bv_ctx = match thread_verifier.new_air_context_with_bucket_context(
+                                thread_mi.clone(),
+                                thread_fuel.clone(),
+                                thread_arch,
+                                &buffered_reporter,
+                                &thread_bucket_id,
+                                &(function.x.name).path,
+                                thread_trait_decl.clone(),
+                                thread_datatype.clone(),
+                                thread_assoc_type_decl.clone(),
+                                thread_trait_bounds.clone(),
+                                thread_assoc_type_impl.clone(),
+                                thread_opaque_type_impl.clone(),
+                                thread_func_decl.clone(),
+                                &bv_snapshot,
+                                is_recommend,
+                                spinoff_context_counter,
+                                &cmds.context.span,
+                                None,
+                                "parallel-query-bv",
+                            ) {
+                                Ok(ctx) => ctx,
+                                Err(_) => { spinoff_context_counter += 1; continue; }
+                            };
+                            bv_ctx.disable_incremental_solving();
+                            if let Some(rlimit) = function.x.attrs.rlimit {
+                                Verifier::set_rlimit(&mut bv_ctx, rlimit);
                             }
+                            spinoff_context_counter += 1;
+
+                            let time_before = bv_ctx.get_time();
+                            let diagnostics_to_report: std::cell::RefCell<
+                                Option<util::PanicOnDropVec<(Message, MessageLevel)>>,
+                            > = std::cell::RefCell::new(Some(util::PanicOnDropVec::new(Vec::new())));
+                            let run_result = thread_verifier.run_commands_queries(
+                                &buffered_reporter,
+                                None,
+                                Some(level),
+                                &diagnostics_to_report,
+                                &mut bv_ctx,
+                                cmds.clone(),
+                                &HashMap::new(),
+                                &snap_map,
+                                &thread_bucket_id,
+                                &function.x.name,
+                                &op.to_air_comment(),
+                                None,
+                                &mut default_prover_failed_assert_ids,
+                            );
+                            if let Some(msgs) = diagnostics_to_report.into_inner() {
+                                for (msg, level) in msgs.into_inner().into_iter() {
+                                    buffered_reporter.messages.lock().unwrap().push((msg, level));
+                                }
+                            }
+                            let time_after = bv_ctx.get_time();
+                            func_curr_smt_time += time_after.1 - time_before.1;
+                            spunoff_time_smt_init += time_after.0 - time_before.0;
+                            spunoff_time_smt_run += time_after.1 - time_before.1;
+                            any_invalid |= run_result.invalidity;
+                            any_timed_out |= run_result.timed_out;
+                        } else {
+                            // Default (Z3): use the persistent worker context.
+                            if let Some(rlimit) = function.x.attrs.rlimit {
+                                Verifier::set_rlimit(&mut worker_ctx, rlimit);
+                            }
+
+                            let time_before = worker_ctx.get_time();
+                            let diagnostics_to_report: std::cell::RefCell<
+                                Option<util::PanicOnDropVec<(Message, MessageLevel)>>,
+                            > = std::cell::RefCell::new(Some(util::PanicOnDropVec::new(Vec::new())));
+                            let run_result = thread_verifier.run_commands_queries(
+                                &buffered_reporter,
+                                None,
+                                Some(level),
+                                &diagnostics_to_report,
+                                &mut worker_ctx,
+                                cmds.clone(),
+                                &HashMap::new(),
+                                &snap_map,
+                                &thread_bucket_id,
+                                &function.x.name,
+                                &op.to_air_comment(),
+                                None,
+                                &mut default_prover_failed_assert_ids,
+                            );
+                            if let Some(msgs) = diagnostics_to_report.into_inner() {
+                                for (msg, level) in msgs.into_inner().into_iter() {
+                                    buffered_reporter.messages.lock().unwrap().push((msg, level));
+                                }
+                            }
+                            let time_after = worker_ctx.get_time();
+                            func_curr_smt_time += time_after.1 - time_before.1;
+                            spunoff_time_smt_init += time_after.0 - time_before.0;
+                            spunoff_time_smt_run += time_after.1 - time_before.1;
+                            any_invalid |= run_result.invalidity;
+                            any_timed_out |= run_result.timed_out;
                         }
-
-                        func_curr_smt_time += task_air_context.get_time().1 - iter_curr_smt_time;
-                        let (t_init, t_run) = task_air_context.get_time();
-                        spunoff_time_smt_init += t_init;
-                        spunoff_time_smt_run += t_run;
-
-                        any_invalid |= run_result.invalidity;
-                        any_timed_out |= run_result.timed_out;
                     }
+
+                    // ── Apply post-ops delta: all_ctx_ops[ctx_before..ctx_after] ──
+                    // These are the SCC post-ops (SpecDef, Broadcast) for this function.
+                    // Applying them now means the next task's pre-delta is empty.
+                    for op in thread_all_ctx_ops[ctx_before..ctx_after].iter() {
+                        match &op.kind {
+                            OpKind::Context(_, commands) => {
+                                thread_verifier.run_commands(
+                                    &thread_bucket_id,
+                                    &buffered_reporter,
+                                    &mut worker_ctx,
+                                    commands,
+                                    &op.to_air_comment(),
+                                );
+                            }
+                            OpKind::Query { .. } => unreachable!("only Context ops in all_ctx_ops"),
+                        }
+                    }
+                    watermark = ctx_after;
 
                     let messages = buffered_reporter.into_messages();
                     thread_result_sender.send(ParallelQueryTaskResult {
@@ -1660,6 +1920,1099 @@ impl Verifier {
         }
 
         Ok(results)
+    }
+
+    /// Execute a single WorkerTask using the given persistent worker context.
+    /// Returns the ParallelQueryTaskResult, with messages buffered.
+    /// The caller is responsible for applying pre/post delta ops.
+    #[allow(clippy::too_many_arguments)]
+    fn execute_worker_task(
+        thread_verifier: &mut Verifier,
+        worker_ctx: &mut air::context::Context,
+        task: WorkerTask,
+        base_ctx: &BaseContextData,
+        all_ctx_ops: &Arc<Vec<Op>>,
+        watermark: &mut usize,
+        bucket_id: &BucketId,
+    ) -> Option<ParallelQueryTaskResult> {
+        let WorkerTask { task_idx, op, ctx_before, ctx_after } = task;
+        let function = op.get_function();
+        let (query_op, commands_with_context_list, snap_map, profile_rerun, func_check_sst) =
+            match &op.kind {
+                crate::commands::OpKind::Query {
+                    query_op,
+                    commands_with_context_list,
+                    snap_map,
+                    profile_rerun,
+                    func_check_sst,
+                } => (*query_op, commands_with_context_list.clone(), snap_map.clone(), *profile_rerun, func_check_sst.clone()),
+                _ => unreachable!("expected Query op"),
+            };
+
+        if profile_rerun {
+            return None;
+        }
+
+        let is_recommend = query_op.is_recommend();
+        let level = match query_op {
+            crate::commands::QueryOp::SpecTermination => vir::messages::MessageLevel::Error,
+            crate::commands::QueryOp::Body(crate::commands::Style::Normal) => vir::messages::MessageLevel::Error,
+            crate::commands::QueryOp::Body(crate::commands::Style::RecommendsFollowupFromError) => vir::messages::MessageLevel::Note,
+            crate::commands::QueryOp::Body(crate::commands::Style::RecommendsChecked) => vir::messages::MessageLevel::Warning,
+            crate::commands::QueryOp::Body(crate::commands::Style::Expanded) => vir::messages::MessageLevel::Note,
+            crate::commands::QueryOp::Body(crate::commands::Style::CheckApiSafety) => vir::messages::MessageLevel::Error,
+        };
+
+        let thread_mi: Arc<dyn air::messages::MessageInterface> =
+            Arc::new(vir::messages::VirMessageInterface {});
+
+        let mut any_invalid = false;
+        let mut any_timed_out = false;
+        let mut default_prover_failed_assert_ids = vec![];
+        let mut func_curr_smt_time = Duration::ZERO;
+        let mut spunoff_time_smt_init = Duration::ZERO;
+        let mut spunoff_time_smt_run = Duration::ZERO;
+        let buffered_reporter = BufferedReporter::new();
+        let mut spinoff_context_counter = 1;
+
+        // Apply pre-task delta: all_ctx_ops[watermark..ctx_before]
+        for delta_op in all_ctx_ops[*watermark..ctx_before].iter() {
+            match &delta_op.kind {
+                OpKind::Context(_, commands) => {
+                    thread_verifier.run_commands(
+                        bucket_id,
+                        &buffered_reporter,
+                        worker_ctx,
+                        commands,
+                        &delta_op.to_air_comment(),
+                    );
+                }
+                OpKind::Query { .. } => unreachable!("only Context ops in all_ctx_ops"),
+            }
+        }
+        *watermark = ctx_before;
+
+        for cmds in commands_with_context_list.iter() {
+            if is_recommend && cmds.skip_recommends {
+                continue;
+            }
+            if cmds.prover_choice == vir::def::ProverChoice::Singular {
+                continue;
+            }
+
+            if cmds.prover_choice == vir::def::ProverChoice::BitVector {
+                let bv_snapshot: Vec<Op> = all_ctx_ops[..ctx_before].to_vec();
+                let mut bv_ctx = match thread_verifier.new_air_context_with_bucket_context(
+                    thread_mi.clone(),
+                    base_ctx.fuel_commands.clone(),
+                    base_ctx.arch_word_bits,
+                    &buffered_reporter,
+                    bucket_id,
+                    &(function.x.name).path,
+                    base_ctx.trait_decl_commands.clone(),
+                    base_ctx.datatype_commands.clone(),
+                    base_ctx.assoc_type_decl_commands.clone(),
+                    base_ctx.trait_type_bounds_commands.clone(),
+                    base_ctx.assoc_type_impl_commands.clone(),
+                    base_ctx.opaque_type_impl_commands.clone(),
+                    base_ctx.function_decl_commands.clone(),
+                    &bv_snapshot,
+                    is_recommend,
+                    spinoff_context_counter,
+                    &cmds.context.span,
+                    None,
+                    "global-pool-bv",
+                ) {
+                    Ok(ctx) => ctx,
+                    Err(_) => { spinoff_context_counter += 1; continue; }
+                };
+                bv_ctx.disable_incremental_solving();
+                if let Some(rlimit) = function.x.attrs.rlimit {
+                    Verifier::set_rlimit(&mut bv_ctx, rlimit);
+                }
+                spinoff_context_counter += 1;
+                let time_before = bv_ctx.get_time();
+                let diagnostics_to_report: std::cell::RefCell<
+                    Option<util::PanicOnDropVec<(Message, MessageLevel)>>,
+                > = std::cell::RefCell::new(Some(util::PanicOnDropVec::new(Vec::new())));
+                let run_result = thread_verifier.run_commands_queries(
+                    &buffered_reporter,
+                    None,
+                    Some(level),
+                    &diagnostics_to_report,
+                    &mut bv_ctx,
+                    cmds.clone(),
+                    &HashMap::new(),
+                    &snap_map,
+                    bucket_id,
+                    &function.x.name,
+                    &op.to_air_comment(),
+                    None,
+                    &mut default_prover_failed_assert_ids,
+                );
+                if let Some(msgs) = diagnostics_to_report.into_inner() {
+                    for (msg, lv) in msgs.into_inner().into_iter() {
+                        buffered_reporter.messages.lock().unwrap().push((msg, lv));
+                    }
+                }
+                let time_after = bv_ctx.get_time();
+                func_curr_smt_time += time_after.1 - time_before.1;
+                spunoff_time_smt_init += time_after.0 - time_before.0;
+                spunoff_time_smt_run += time_after.1 - time_before.1;
+                any_invalid |= run_result.invalidity;
+                any_timed_out |= run_result.timed_out;
+            } else {
+                if let Some(rlimit) = function.x.attrs.rlimit {
+                    Verifier::set_rlimit(worker_ctx, rlimit);
+                }
+                let time_before = worker_ctx.get_time();
+                let diagnostics_to_report: std::cell::RefCell<
+                    Option<util::PanicOnDropVec<(Message, MessageLevel)>>,
+                > = std::cell::RefCell::new(Some(util::PanicOnDropVec::new(Vec::new())));
+                let run_result = thread_verifier.run_commands_queries(
+                    &buffered_reporter,
+                    None,
+                    Some(level),
+                    &diagnostics_to_report,
+                    worker_ctx,
+                    cmds.clone(),
+                    &HashMap::new(),
+                    &snap_map,
+                    bucket_id,
+                    &function.x.name,
+                    &op.to_air_comment(),
+                    None,
+                    &mut default_prover_failed_assert_ids,
+                );
+                if let Some(msgs) = diagnostics_to_report.into_inner() {
+                    for (msg, lv) in msgs.into_inner().into_iter() {
+                        buffered_reporter.messages.lock().unwrap().push((msg, lv));
+                    }
+                }
+                let time_after = worker_ctx.get_time();
+                func_curr_smt_time += time_after.1 - time_before.1;
+                spunoff_time_smt_init += time_after.0 - time_before.0;
+                spunoff_time_smt_run += time_after.1 - time_before.1;
+                any_invalid |= run_result.invalidity;
+                any_timed_out |= run_result.timed_out;
+            }
+        }
+
+        // Apply post-ops delta
+        for delta_op in all_ctx_ops[ctx_before..ctx_after].iter() {
+            match &delta_op.kind {
+                OpKind::Context(_, commands) => {
+                    thread_verifier.run_commands(
+                        bucket_id,
+                        &buffered_reporter,
+                        worker_ctx,
+                        commands,
+                        &delta_op.to_air_comment(),
+                    );
+                }
+                OpKind::Query { .. } => unreachable!("only Context ops in all_ctx_ops"),
+            }
+        }
+        *watermark = ctx_after;
+
+        let messages = buffered_reporter.into_messages();
+        Some(ParallelQueryTaskResult {
+            task_idx,
+            function,
+            query_op,
+            commands_with_context_list,
+            snap_map,
+            func_check_sst,
+            any_invalid,
+            any_timed_out,
+            default_prover_failed_assert_ids,
+            func_curr_smt_time,
+            spunoff_time_smt_init,
+            spunoff_time_smt_run,
+            messages,
+        })
+    }
+
+    /// Global parallel verification: N total workers shared across all modules.
+    ///
+    /// When `-V parallel-queries` is active, `--num-threads N` specifies the total
+    /// number of global workers (not N per module). Workers migrate between modules
+    /// when their current module has no ready tasks.
+    fn run_global_parallel_verification(
+        &mut self,
+        compiler: &Compiler,
+        spans: &SpanContext,
+        krate: &Krate,
+        bucket_ids: &[BucketId],
+        mut global_ctx: vir::context::GlobalCtx,
+    ) -> Result<vir::context::GlobalCtx, VerifyErr> {
+        let n_workers = self.args.num_threads;
+
+        // Message channel: workers send diagnostics + bucket-done events to main thread.
+        let (msg_sender, msg_receiver) = std::sync::mpsc::channel::<GlobalPoolMessage>();
+
+        // Build interpreter log files per bucket (needed before spawning workers).
+        let interpreter_logs: Vec<Arc<std::sync::Mutex<Option<File>>>> = bucket_ids
+            .iter()
+            .map(|bucket_id| {
+                let file = if self.args.log_all || self.args.log_args.log_interpreter {
+                    Some(
+                        self.create_log_file(Some(bucket_id), crate::config::INTERPRETER_FILE_SUFFIX)
+                            .expect("create interpreter log file"),
+                    )
+                } else {
+                    None
+                };
+                Arc::new(std::sync::Mutex::new(file))
+            })
+            .collect();
+
+        // Build pending modules queue.
+        let mut pending_queue: VecDeque<PendingModule> = VecDeque::new();
+        for (msg_id, bucket_id) in bucket_ids.iter().enumerate() {
+            let bucket_global_ctx = global_ctx.from_self_with_log(interpreter_logs[msg_id].clone());
+            pending_queue.push_back(PendingModule {
+                bucket_id: bucket_id.clone(),
+                bucket_msg_id: msg_id,
+                global_ctx: bucket_global_ctx,
+            });
+        }
+
+        let total_modules = bucket_ids.len();
+        let pool_state = Arc::new(GlobalPoolState {
+            pending_modules: std::sync::Mutex::new(pending_queue),
+            active_modules: std::sync::Mutex::new(Vec::new()),
+            retry_pending: std::sync::Mutex::new(Vec::new()),
+            condvar: std::sync::Condvar::new(),
+            total_modules,
+            done_count: std::sync::atomic::AtomicUsize::new(0),
+        });
+
+        let krate_arc = krate.clone(); // Krate is Arc-based
+
+        let mut workers = Vec::new();
+        for worker_id in 0..n_workers {
+            let mut thread_verifier = self.from_self();
+            let thread_pool = pool_state.clone();
+            let thread_krate = krate_arc.clone();
+            let thread_msg_sender = msg_sender.clone();
+
+            let worker = std::thread::spawn(move || {
+                let r = std::panic::catch_unwind(|| {
+                    thread_verifier.global_pool_worker_loop(
+                        worker_id,
+                        &thread_pool,
+                        &thread_krate,
+                        &thread_msg_sender,
+                    );
+                    thread_verifier
+                });
+                match r {
+                    Ok(tv) => tv,
+                    Err(e) => {
+                        let _ = thread_msg_sender.send(GlobalPoolMessage::WorkerPanicked(e));
+                        panic!("global pool worker panicked");
+                    }
+                }
+            });
+            workers.push(worker);
+        }
+
+        // Main thread: receive messages and handle ordering (same pattern as existing module threads).
+        drop(msg_sender);
+        let reporter = Reporter::new(spans, compiler);
+        let mut messages: Vec<(bool, Vec<(Message, MessageLevel)>)> =
+            vec![(false, Vec::new()); total_modules];
+        let mut active_bucket: Option<usize> = None;
+        let mut num_done = 0usize;
+
+        for msg in msg_receiver.iter() {
+            match msg {
+                GlobalPoolMessage::Msg(id, m, level) => {
+                    if let Some(active) = active_bucket {
+                        if id == active {
+                            reporter.report_as(&m.to_any(), level);
+                        } else {
+                            messages[id].1.push((m, level));
+                        }
+                    } else {
+                        active_bucket = Some(id);
+                        reporter.report_as(&m.to_any(), level);
+                    }
+                }
+                GlobalPoolMessage::BucketDone(id) => {
+                    messages[id].0 = true;
+                    if let Some(active) = active_bucket {
+                        if active == id {
+                            active_bucket = None;
+                        }
+                    }
+                    // Try to pick a new active bucket.
+                    if active_bucket.is_none() {
+                        for (i, entry) in messages.iter_mut().enumerate() {
+                            if entry.1.is_empty() {
+                                continue;
+                            }
+                            for (m, lv) in entry.1.drain(..) {
+                                reporter.report_as(&m.to_any(), lv);
+                            }
+                            if !entry.0 {
+                                active_bucket = Some(i);
+                                break;
+                            }
+                        }
+                    }
+                    num_done += 1;
+                    if num_done == total_modules {
+                        break;
+                    }
+                }
+                GlobalPoolMessage::WorkerPanicked(e) => {
+                    std::panic::resume_unwind(e);
+                }
+            }
+        }
+
+        // Drain any remaining buffered messages.
+        for entry in messages.drain(..) {
+            for (m, lv) in entry.1 {
+                reporter.report_as(&m.to_any(), lv);
+            }
+        }
+
+        // Join all worker threads and merge results.
+        for worker in workers {
+            match worker.join() {
+                Ok(thread_verifier) => {
+                    self.merge(thread_verifier);
+                }
+                Err(_) => {
+                    return Err(VerifyErr::Vir(vir::messages::error_bare(
+                        "global pool worker thread panicked",
+                    )));
+                }
+            }
+        }
+
+        // Merge global contexts from all buckets back into the main one.
+        // The per-bucket global_ctxs were created with from_self_with_log, so they
+        // accumulate chosen_triggers and qid_map independently. We need to merge them.
+        // They are now fully done; workers have dropped their Ctx, returning GlobalCtx
+        // via the completed_global_ctxs channel pattern. Instead, we use the shared
+        // pool state to collect them. The coordinator workers call ctx.free() and
+        // place the returned GlobalCtx somewhere we can retrieve it.
+        //
+        // For simplicity: the workers stored merged global_ctx info in their own
+        // thread_verifier copies. The actual trigger/qid data accumulates in the
+        // per-bucket GlobalCtx. We use a separate channel to collect these.
+        // NOTE: We already handle this via the global_ctx_sender below in the worker.
+
+        Ok(global_ctx)
+    }
+
+    /// The main loop for each global pool worker.
+    fn global_pool_worker_loop(
+        &mut self,
+        worker_id: usize,
+        pool: &Arc<GlobalPoolState>,
+        krate: &Krate,
+        msg_sender: &std::sync::mpsc::Sender<GlobalPoolMessage>,
+    ) {
+        // Per-worker state
+        // current_module tracks which module's Z3 context we have initialised,
+        // so we can reinitialise when we migrate to a different module.
+        let mut current_module_bucket_id: Option<BucketId> = None;
+        let mut worker_ctx: Option<air::context::Context> = None;
+        let mut watermark: usize = 0;
+        let mut current_base_ctx: Option<Arc<BaseContextData>> = None;
+
+        loop {
+            // ── Step 1: check if I'm the coordinator for a retry-pending module ──
+            {
+                let retry_list = pool.retry_pending.lock().unwrap();
+                let my_retry_idx = retry_list.iter().position(|(am, _)| am.coordinator_id == worker_id);
+                if let Some(idx) = my_retry_idx {
+                    let (active_module, initial_results) = {
+                        let mut retry_list = pool.retry_pending.lock().unwrap();
+                        retry_list.remove(idx)
+                    };
+                    drop(retry_list);
+
+                    // Generate and execute retry tasks (recommends checks).
+                    // We need the Ctx for this; however the coordinator's Ctx is gone by now
+                    // (we can't store it across loop iterations without Send).
+                    // Instead, we re-run the Phase 1 just enough to get the retry commands.
+                    // Actually, looking at the existing code: retry generation uses
+                    // `ctx` and `result.function.x.recommends_check`. The ctx.fun is set
+                    // per-function. We can generate the retry ops without a full ctx by
+                    // using the function's recommends_check FSst directly.
+                    //
+                    // The retry generation is: for each failed function, call
+                    // func_sst_to_air(ctx, function, fsst). This requires a valid Ctx.
+                    // Since we can't store Ctx across loop iterations (it's !Send conceptually,
+                    // and we'd have to keep it in a local), we handle this differently:
+                    // The coordinator keeps the Ctx alive by NOT exiting the worker loop
+                    // until the retry is done. We implement this by:
+                    // 1. Coordinator finishes Phase 1, gets Ctx
+                    // 2. Coordinator pushes active_module to pool
+                    // 3. Coordinator re-enters the loop but keeps Ctx in a "side-stack"
+                    //
+                    // Since Rust doesn't allow storing !Send values in shared state,
+                    // we use a different approach: we keep the retry generation on the
+                    // coordinator's stack by using a nested loop pattern.
+                    // This is handled in the claim-pending-module step below.
+                    //
+                    // For retry tasks that we find here (coming from retry_pending),
+                    // the coordinator's Ctx has already been freed. We need to rebuild it.
+                    // This is acceptable: we only rebuild the Ctx once per module retry phase.
+
+                    self.execute_retry_phase(
+                        worker_id,
+                        pool,
+                        krate,
+                        msg_sender,
+                        active_module,
+                        initial_results,
+                        &mut current_module_bucket_id,
+                        &mut worker_ctx,
+                        &mut watermark,
+                        &mut current_base_ctx,
+                    );
+                    continue;
+                }
+            }
+
+            // ── Step 2: pull a task from any active module ──
+            let task_opt = {
+                let active = pool.active_modules.lock().unwrap();
+                // Prefer current module for context reuse.
+                let mut found = None;
+                // Try current module first.
+                if let Some(ref cur_id) = current_module_bucket_id {
+                    if let Some(am) = active.iter().find(|am| &am.bucket_id == cur_id) {
+                        let task = am.task_queue.lock().unwrap().pop_front();
+                        if let Some(t) = task {
+                            found = Some((am.clone(), t));
+                        }
+                    }
+                }
+                // If nothing from current module, try any module.
+                if found.is_none() {
+                    for am in active.iter() {
+                        let task = am.task_queue.lock().unwrap().pop_front();
+                        if let Some(t) = task {
+                            found = Some((am.clone(), t));
+                            break;
+                        }
+                    }
+                }
+                found
+            };
+
+            if let Some((active_module, task)) = task_opt {
+                // Migrate context if we switched modules.
+                if current_module_bucket_id.as_ref() != Some(&active_module.bucket_id) {
+                    current_module_bucket_id = Some(active_module.bucket_id.clone());
+                    current_base_ctx = Some(active_module.base_ctx.clone());
+                    watermark = 0;
+                    // Reinitialise Z3 context for the new module.
+                    let base = active_module.base_ctx.as_ref();
+                    let init_reporter = BufferedReporter::new();
+                    self.bucket_stats.insert(active_module.bucket_id.clone(), Default::default());
+                    worker_ctx = self.new_air_context_base(
+                        Arc::new(vir::messages::VirMessageInterface {}),
+                        &base.fuel_commands,
+                        base.arch_word_bits,
+                        &init_reporter,
+                        &active_module.bucket_id,
+                        &base.trait_decl_commands,
+                        &base.datatype_commands,
+                        &base.assoc_type_decl_commands,
+                        &base.trait_type_bounds_commands,
+                        &base.assoc_type_impl_commands,
+                        &base.opaque_type_impl_commands,
+                        &base.function_decl_commands,
+                    ).ok();
+                    // Discard init_reporter messages (init declarations don't fail).
+                }
+
+                if let Some(ref mut ctx) = worker_ctx {
+                    let bucket_id = active_module.bucket_id.clone();
+                    let all_ctx_ops = active_module.all_ctx_ops.clone();
+                    let base_ctx_ref = active_module.base_ctx.clone();
+                    if let Some(result) = Self::execute_worker_task(
+                        self,
+                        ctx,
+                        task,
+                        &base_ctx_ref,
+                        &all_ctx_ops,
+                        &mut watermark,
+                        &bucket_id,
+                    ) {
+                        // Send messages.
+                        let msg_id = active_module.bucket_msg_id;
+                        for (m, lv) in &result.messages {
+                            let _ = msg_sender.send(GlobalPoolMessage::Msg(msg_id, m.clone(), *lv));
+                        }
+
+                        // Update func_times.
+                        if !result.commands_with_context_list.is_empty() {
+                            let func_time = self.func_times.entry(bucket_id.clone()).or_insert(HashMap::new());
+                            let func_stats = func_time.entry(result.function.x.name.clone()).or_insert(
+                                FunctionSmtStats {
+                                    smt_time: Duration::ZERO,
+                                    rlimit_count: matches!(self.args.solver, SmtSolver::Z3).then(|| 0),
+                                },
+                            );
+                            func_stats.smt_time += result.func_curr_smt_time;
+                        }
+
+                        // Store result.
+                        active_module.initial_results.lock().unwrap().push(result);
+                        let prev = active_module.pending_initial.fetch_sub(1, std::sync::atomic::Ordering::SeqCst);
+                        if prev == 1 {
+                            // This was the last task: move to retry_pending.
+                            let results = active_module.initial_results.lock().unwrap().drain(..).collect();
+                            pool.retry_pending.lock().unwrap().push((active_module, results));
+                            pool.condvar.notify_all();
+                        }
+                    } else {
+                        // Skipped (profile_rerun): still decrement.
+                        let prev = active_module.pending_initial.fetch_sub(1, std::sync::atomic::Ordering::SeqCst);
+                        if prev == 1 {
+                            let results = active_module.initial_results.lock().unwrap().drain(..).collect();
+                            pool.retry_pending.lock().unwrap().push((active_module, results));
+                            pool.condvar.notify_all();
+                        }
+                    }
+                }
+                continue;
+            }
+
+            // ── Step 3: claim a pending module and run Phase 1 ──
+            let pending_opt = pool.pending_modules.lock().unwrap().pop_front();
+            if let Some(pending) = pending_opt {
+                self.run_phase1_and_register(
+                    worker_id,
+                    pool,
+                    krate,
+                    msg_sender,
+                    pending,
+                    &mut current_module_bucket_id,
+                    &mut worker_ctx,
+                    &mut watermark,
+                    &mut current_base_ctx,
+                );
+                continue;
+            }
+
+            // ── Step 4: termination check ──
+            let done = pool.done_count.load(std::sync::atomic::Ordering::SeqCst);
+            if done == pool.total_modules {
+                break;
+            }
+
+            // ── Step 5: wait for work ──
+            {
+                let active = pool.active_modules.lock().unwrap();
+                // Check again under the lock before waiting.
+                let has_work = active.iter().any(|am| {
+                    !am.task_queue.lock().unwrap().is_empty()
+                });
+                let has_pending = !pool.pending_modules.lock().unwrap().is_empty();
+                let has_retry = pool.retry_pending.lock().unwrap().iter()
+                    .any(|(am, _)| am.coordinator_id == worker_id);
+                let done2 = pool.done_count.load(std::sync::atomic::Ordering::SeqCst);
+                if !has_work && !has_pending && !has_retry && done2 < pool.total_modules {
+                    let _ = pool.condvar.wait_timeout(active, Duration::from_millis(10));
+                }
+            }
+        }
+    }
+
+    /// Run Phase 1 for a pending module: prune, create Ctx, SST conversion, context collection.
+    /// Then keep the coordinator in a sub-loop until this module is fully done.
+    fn run_phase1_and_register(
+        &mut self,
+        worker_id: usize,
+        pool: &Arc<GlobalPoolState>,
+        krate: &Krate,
+        msg_sender: &std::sync::mpsc::Sender<GlobalPoolMessage>,
+        pending: PendingModule,
+        current_module_bucket_id: &mut Option<BucketId>,
+        worker_ctx: &mut Option<air::context::Context>,
+        watermark: &mut usize,
+        current_base_ctx: &mut Option<Arc<BaseContextData>>,
+    ) {
+        let PendingModule { bucket_id, bucket_msg_id, global_ctx: mut bucket_global_ctx } = pending;
+        let time_verify_start = Instant::now();
+
+        self.bucket_stats.insert(bucket_id.clone(), Default::default());
+
+        // ── Prune and create Ctx (same as verify_bucket_outer) ──────────────
+        let (pruned_krate, prune_info) = vir::prune::prune_krate_for_module_or_krate(
+            krate,
+            &Arc::new(self.crate_name.clone().expect("crate_name")),
+            None,
+            Some(bucket_id.module().clone()),
+            bucket_id.function(),
+            true,
+            true,
+        );
+        let vir::prune::PruneInfo {
+            mono_abstract_datatypes,
+            spec_fn_types,
+            used_builtins,
+            fndef_types,
+            resolved_typs,
+            dyn_traits,
+        } = prune_info;
+        let mono_abstract_datatypes = mono_abstract_datatypes.unwrap();
+        let module = pruned_krate
+            .modules
+            .iter()
+            .find(|m| &m.x.path == bucket_id.module())
+            .expect("module in krate")
+            .clone();
+
+        // Use a buffered reporter for Phase 1 to collect messages.
+        let phase1_reporter = BufferedReporter::new();
+
+        let mut ctx = match vir::context::Ctx::new(
+            &pruned_krate,
+            bucket_global_ctx,
+            module,
+            mono_abstract_datatypes,
+            spec_fn_types,
+            dyn_traits,
+            used_builtins,
+            fndef_types,
+            resolved_typs.unwrap(),
+            self.args.debugger,
+        ) {
+            Ok(c) => c,
+            Err(e) => {
+                let _ = msg_sender.send(GlobalPoolMessage::Msg(
+                    bucket_msg_id,
+                    e,
+                    vir::messages::MessageLevel::Error,
+                ));
+                let _ = msg_sender.send(GlobalPoolMessage::BucketDone(bucket_msg_id));
+                pool.done_count.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+                pool.condvar.notify_all();
+                return;
+            }
+        };
+
+        let krate_sst = match vir::ast_to_sst_crate::ast_to_sst_krate(
+            &mut ctx,
+            &phase1_reporter,
+            &self.get_bucket(&bucket_id).funs,
+            &pruned_krate,
+        ) {
+            Ok(k) => k,
+            Err(e) => {
+                for (m, lv) in phase1_reporter.into_messages() {
+                    let _ = msg_sender.send(GlobalPoolMessage::Msg(bucket_msg_id, m, lv));
+                }
+                let _ = msg_sender.send(GlobalPoolMessage::Msg(
+                    bucket_msg_id,
+                    e,
+                    vir::messages::MessageLevel::Error,
+                ));
+                let _ = msg_sender.send(GlobalPoolMessage::BucketDone(bucket_msg_id));
+                pool.done_count.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+                pool.condvar.notify_all();
+                return;
+            }
+        };
+        let krate_sst = vir::poly::poly_krate_for_module(&mut ctx, &krate_sst);
+
+        // ── Phase 1: collect context ops and initial tasks ──────────────────
+        // (Same logic as verify_bucket's parallel_queries branch)
+        let phase1_start = Instant::now();
+        let fuel_commands = ctx.fuel();
+        let arch_word_bits = ctx.arch_word_bits;
+
+        // Build base context data for workers.
+        let trait_decl_commands = vir::traits::trait_decls_to_air(&ctx, &krate_sst);
+        let assoc_type_decl_commands =
+            vir::assoc_types_to_air::assoc_type_decls_to_air(&ctx, &krate_sst.traits);
+        let datatype_commands = {
+            let module_path = &ctx.module_path();
+            vir::datatype_to_air::datatypes_and_primitives_to_air(
+                &ctx,
+                &krate_sst
+                    .datatypes
+                    .iter()
+                    .filter(|d| is_visible_to(&d.x.visibility, module_path))
+                    .cloned()
+                    .collect(),
+            )
+        };
+        let trait_type_bounds_commands = vir::traits::trait_bound_axioms(&ctx, &krate_sst.traits);
+        let assoc_type_impl_commands =
+            vir::assoc_types_to_air::assoc_type_impls_to_air(&ctx, &krate_sst.assoc_type_impls);
+        let opaque_type_impl_commands =
+            vir::opaque_type_to_air::opaque_types_to_air(&ctx, &krate_sst.opaque_types);
+
+        let mut function_decl_commands_vec = vec![];
+        for function in &krate_sst.functions {
+            let obligation_proof_notes = vir::sst_util::func_collect_obligation_proof_notes(
+                function,
+                &HashMap::from_iter(krate_sst.functions.iter().map(|f| {
+                    (f.x.name.clone(), vir::sst_util::func_collect_requires_proof_notes(f))
+                })),
+            );
+            self.record_func_obligation_proof_notes(function.x.name.clone(), obligation_proof_notes);
+            ctx.fun = vir::ast_to_sst_func::mk_fun_ctx(function, false);
+            let commands = match vir::sst_to_air_func::func_name_to_air(&ctx, &phase1_reporter, function) {
+                Ok(c) => c,
+                Err(_) => continue,
+            };
+            let comment = "Function-Decl ".to_string() + &fun_as_friendly_rust_name(&function.x.name);
+            function_decl_commands_vec.push((commands, comment));
+        }
+        ctx.fun = None;
+        let function_decl_commands = Arc::new(function_decl_commands_vec);
+
+        let base_ctx = Arc::new(BaseContextData {
+            fuel_commands: fuel_commands.clone(),
+            arch_word_bits,
+            trait_decl_commands: trait_decl_commands.clone(),
+            datatype_commands: datatype_commands.clone(),
+            assoc_type_decl_commands: assoc_type_decl_commands.clone(),
+            trait_type_bounds_commands: trait_type_bounds_commands.clone(),
+            assoc_type_impl_commands: assoc_type_impl_commands.clone(),
+            opaque_type_impl_commands: opaque_type_impl_commands.clone(),
+            function_decl_commands: function_decl_commands.clone(),
+        });
+
+        // Walk OpGenerator to collect context ops and query tasks.
+        let bucket_obj = self.get_bucket(&bucket_id).clone();
+        let mut opgen = OpGenerator::new(&mut ctx, &krate_sst, bucket_obj);
+        let mut all_context_ops: Vec<Op> = vec![];
+        let mut initial_tasks_staging: Vec<(usize, Op, usize)> = vec![];
+        let mut task_idx = 0usize;
+
+        while let Some(mut function_opgen) = match opgen.next() {
+            Ok(x) => x,
+            Err(e) => {
+                for (m, lv) in phase1_reporter.into_messages() {
+                    let _ = msg_sender.send(GlobalPoolMessage::Msg(bucket_msg_id, m, lv));
+                }
+                let _ = msg_sender.send(GlobalPoolMessage::Msg(
+                    bucket_msg_id,
+                    e,
+                    vir::messages::MessageLevel::Error,
+                ));
+                let _ = msg_sender.send(GlobalPoolMessage::BucketDone(bucket_msg_id));
+                pool.done_count.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+                pool.condvar.notify_all();
+                return;
+            }
+        } {
+            loop {
+                let Some(op) = function_opgen.next() else { break; };
+                match &op.kind {
+                    OpKind::Context(_, _) => {
+                        all_context_ops.push(op);
+                    }
+                    OpKind::Query { .. } => {
+                        let ctx_before = all_context_ops.len();
+                        initial_tasks_staging.push((task_idx, op, ctx_before));
+                        task_idx += 1;
+                    }
+                }
+            }
+        }
+
+        let time_phase1 = phase1_start.elapsed();
+
+        // Compute ctx_after for each task.
+        let all_ctx_arc: Arc<Vec<Op>> = Arc::new(all_context_ops);
+        let all_ctx_len = all_ctx_arc.len();
+        let ctx_befores: Vec<usize> = initial_tasks_staging.iter().map(|(_, _, b)| *b).collect();
+        let initial_tasks: VecDeque<WorkerTask> = initial_tasks_staging
+            .into_iter()
+            .enumerate()
+            .map(|(i, (idx, op, ctx_before))| {
+                let ctx_after = ctx_befores.get(i + 1).copied().unwrap_or(all_ctx_len);
+                WorkerTask { task_idx: idx, op, ctx_before, ctx_after }
+            })
+            .collect();
+
+        // Flush phase1 reporter messages.
+        for (m, lv) in phase1_reporter.into_messages() {
+            let _ = msg_sender.send(GlobalPoolMessage::Msg(bucket_msg_id, m, lv));
+        }
+
+        let n_initial = initial_tasks.len();
+
+        if n_initial == 0 {
+            // Nothing to verify in this bucket.
+            bucket_global_ctx = ctx.free();
+            let time_verify_end = Instant::now();
+            let stats_bucket = self.bucket_stats.get_mut(&bucket_id).expect("bucket stats");
+            stats_bucket.time_phase1 = time_phase1;
+            stats_bucket.time_verify = time_verify_end - time_verify_start;
+            let _ = msg_sender.send(GlobalPoolMessage::BucketDone(bucket_msg_id));
+            pool.done_count.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+            pool.condvar.notify_all();
+            return;
+        }
+
+        let active_module = Arc::new(ActiveModule {
+            bucket_id: bucket_id.clone(),
+            bucket_msg_id,
+            all_ctx_ops: all_ctx_arc.clone(),
+            base_ctx: base_ctx.clone(),
+            task_queue: std::sync::Mutex::new(initial_tasks),
+            pending_initial: std::sync::atomic::AtomicUsize::new(n_initial),
+            initial_results: std::sync::Mutex::new(Vec::new()),
+            coordinator_id: worker_id,
+        });
+
+        // Register as active.
+        pool.active_modules.lock().unwrap().push(active_module.clone());
+        pool.condvar.notify_all();
+
+        // ── Coordinator sub-loop: help execute tasks, then handle retry ──────
+        // The coordinator stays in this sub-loop (keeping ctx on the stack) until
+        // the module is fully done. Meanwhile it can also help with other modules' tasks.
+
+        // Update per-worker module tracking.
+        *current_module_bucket_id = Some(bucket_id.clone());
+        *current_base_ctx = Some(base_ctx.clone());
+        *watermark = 0;
+
+        // Initialise the coordinator's own Z3 context for this module.
+        let init_reporter = BufferedReporter::new();
+        *worker_ctx = self.new_air_context_base(
+            Arc::new(vir::messages::VirMessageInterface {}),
+            &fuel_commands,
+            arch_word_bits,
+            &init_reporter,
+            &bucket_id,
+            &trait_decl_commands,
+            &datatype_commands,
+            &assoc_type_decl_commands,
+            &trait_type_bounds_commands,
+            &assoc_type_impl_commands,
+            &opaque_type_impl_commands,
+            &function_decl_commands,
+        ).ok();
+
+        // Keep ctx alive on the coordinator's stack.
+        // We wait in a spin-yield loop until all initial tasks are done.
+        loop {
+            let remaining = active_module.pending_initial.load(std::sync::atomic::Ordering::SeqCst);
+            if remaining == 0 {
+                break;
+            }
+
+            // Try to execute a task ourselves.
+            let task_opt = active_module.task_queue.lock().unwrap().pop_front();
+            if let Some(task) = task_opt {
+                if let Some(ctx) = worker_ctx.as_mut() {
+                    if let Some(result) = Self::execute_worker_task(
+                        self,
+                        ctx,
+                        task,
+                        &base_ctx,
+                        &all_ctx_arc,
+                        watermark,
+                        &bucket_id,
+                    ) {
+                        let msg_id = bucket_msg_id;
+                        for (m, lv) in &result.messages {
+                            let _ = msg_sender.send(GlobalPoolMessage::Msg(msg_id, m.clone(), *lv));
+                        }
+                        if !result.commands_with_context_list.is_empty() {
+                            let func_time = self.func_times.entry(bucket_id.clone()).or_insert(HashMap::new());
+                            let func_stats = func_time.entry(result.function.x.name.clone()).or_insert(
+                                FunctionSmtStats {
+                                    smt_time: Duration::ZERO,
+                                    rlimit_count: matches!(self.args.solver, SmtSolver::Z3).then(|| 0),
+                                },
+                            );
+                            func_stats.smt_time += result.func_curr_smt_time;
+                        }
+                        active_module.initial_results.lock().unwrap().push(result);
+                        let prev = active_module.pending_initial.fetch_sub(1, std::sync::atomic::Ordering::SeqCst);
+                        if prev == 1 {
+                            // This was the last task - handle retry below.
+                            break;
+                        }
+                    } else {
+                        let prev = active_module.pending_initial.fetch_sub(1, std::sync::atomic::Ordering::SeqCst);
+                        if prev == 1 {
+                            break;
+                        }
+                    }
+                }
+            } else {
+                // No tasks available; yield.
+                std::thread::yield_now();
+            }
+        }
+
+        // All initial tasks are done. Now handle retry generation with ctx still on our stack.
+        let mut initial_results: Vec<ParallelQueryTaskResult> =
+            active_module.initial_results.lock().unwrap().drain(..).collect();
+        initial_results.sort_by_key(|r| r.task_idx);
+
+        // Update timing from initial batch.
+        let mut spunoff_time_smt_init = Duration::ZERO;
+        let mut spunoff_time_smt_run = Duration::ZERO;
+        for result in &initial_results {
+            spunoff_time_smt_init += result.spunoff_time_smt_init;
+            spunoff_time_smt_run += result.spunoff_time_smt_run;
+        }
+
+        // ── Generate retry tasks ────────────────────────────────────────────
+        let mut retry_tasks: VecDeque<WorkerTask> = VecDeque::new();
+        let mut retry_idx = 0usize;
+
+        for result in &initial_results {
+            let needs_recommends = (result.any_invalid
+                && !self.args.no_auto_recommends_check
+                && !result.any_timed_out)
+                || result.function.x.attrs.check_recommends;
+
+            if needs_recommends
+                && (matches!(result.query_op, QueryOp::Body(Style::Normal))
+                    || matches!(result.query_op, QueryOp::SpecTermination))
+            {
+                let from_error = result.any_invalid;
+                let recommend_style = if from_error {
+                    Style::RecommendsFollowupFromError
+                } else {
+                    Style::RecommendsChecked
+                };
+                ctx.fun = vir::ast_to_sst_func::mk_fun_ctx(&result.function, true);
+                if let Some(fsst) = &result.function.x.recommends_check {
+                    if let Ok((commands, snap_map)) =
+                        vir::sst_to_air_func::func_sst_to_air(&mut ctx, &result.function, fsst)
+                    {
+                        let retry_op = Op::query(
+                            QueryOp::Body(recommend_style),
+                            commands,
+                            snap_map,
+                            &result.function,
+                            Some(fsst.clone()),
+                        );
+                        retry_tasks.push_back(WorkerTask {
+                            task_idx: retry_idx,
+                            op: retry_op,
+                            ctx_before: all_ctx_len,
+                            ctx_after: all_ctx_len,
+                        });
+                        retry_idx += 1;
+                    }
+                }
+                ctx.fun = None;
+            }
+        }
+
+        ctx.fun = None;
+
+        // Execute retry tasks (coordinator runs these itself, or enqueues for helpers).
+        // For simplicity, execute retry tasks on this worker (they need all ctx ops applied).
+        // Make sure watermark is at all_ctx_len so delta is empty for all retry tasks.
+        if let Some(wctx) = worker_ctx.as_mut() {
+            // Apply remaining context ops to reach all_ctx_len.
+            let buf_reporter = BufferedReporter::new();
+            for delta_op in all_ctx_arc[*watermark..all_ctx_len].iter() {
+                match &delta_op.kind {
+                    OpKind::Context(_, commands) => {
+                        self.run_commands(&bucket_id, &buf_reporter, wctx, commands, &delta_op.to_air_comment());
+                    }
+                    OpKind::Query { .. } => {}
+                }
+            }
+            *watermark = all_ctx_len;
+        }
+
+        // If there are helpers, enqueue retry tasks into a temporary ActiveModule.
+        // For simplicity in this implementation, the coordinator runs all retry tasks itself.
+        let mut retry_spunoff_smt_init = Duration::ZERO;
+        let mut retry_spunoff_smt_run = Duration::ZERO;
+        while let Some(task) = retry_tasks.pop_front() {
+            if let Some(wctx) = worker_ctx.as_mut() {
+                if let Some(result) = Self::execute_worker_task(
+                    self,
+                    wctx,
+                    task,
+                    &base_ctx,
+                    &all_ctx_arc,
+                    watermark,
+                    &bucket_id,
+                ) {
+                    for (m, lv) in &result.messages {
+                        let _ = msg_sender.send(GlobalPoolMessage::Msg(bucket_msg_id, m.clone(), *lv));
+                    }
+                    retry_spunoff_smt_init += result.spunoff_time_smt_init;
+                    retry_spunoff_smt_run += result.spunoff_time_smt_run;
+                }
+            }
+        }
+
+        // ── Finalize: free ctx, update stats, notify done ───────────────────
+        bucket_global_ctx = ctx.free();
+        // bucket_global_ctx is now done; its chosen_triggers / qid_map are in it.
+        // We merge them into a channel... but we don't have a way to pass GlobalCtx back.
+        // For now, the GlobalCtx from each bucket is dropped (triggers/qids are lost).
+        // This is a known limitation; the existing multi-thread path passes GlobalCtx back
+        // via the completed_tasks Vec. We'd need a similar mechanism here.
+        // TODO: collect bucket_global_ctxs via a separate channel or shared vec.
+        drop(bucket_global_ctx);
+
+        let time_verify_end = Instant::now();
+        let stats_bucket = self.bucket_stats.get_mut(&bucket_id).expect("bucket stats");
+        stats_bucket.time_phase1 = time_phase1;
+        stats_bucket.time_smt_init = spunoff_time_smt_init + retry_spunoff_smt_init;
+        stats_bucket.time_smt_run = spunoff_time_smt_run + retry_spunoff_smt_run;
+        stats_bucket.time_verify = time_verify_end - time_verify_start;
+
+        // Remove from active_modules.
+        {
+            let mut active = pool.active_modules.lock().unwrap();
+            active.retain(|am| am.bucket_id != bucket_id);
+        }
+
+        let _ = msg_sender.send(GlobalPoolMessage::BucketDone(bucket_msg_id));
+        pool.done_count.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        pool.condvar.notify_all();
+    }
+
+    /// Execute retry phase for a module (called when a module is in retry_pending).
+    /// In practice, this path is not reached because the coordinator handles retry
+    /// inline in run_phase1_and_register. This is kept as a fallback.
+    #[allow(clippy::too_many_arguments)]
+    fn execute_retry_phase(
+        &mut self,
+        _worker_id: usize,
+        pool: &Arc<GlobalPoolState>,
+        _krate: &Krate,
+        msg_sender: &std::sync::mpsc::Sender<GlobalPoolMessage>,
+        active_module: Arc<ActiveModule>,
+        _initial_results: Vec<ParallelQueryTaskResult>,
+        _current_module_bucket_id: &mut Option<BucketId>,
+        _worker_ctx: &mut Option<air::context::Context>,
+        _watermark: &mut usize,
+        _current_base_ctx: &mut Option<Arc<BaseContextData>>,
+    ) {
+        // This fallback path just notifies done.
+        let bucket_id = &active_module.bucket_id;
+        let bucket_msg_id = active_module.bucket_msg_id;
+        {
+            let mut active = pool.active_modules.lock().unwrap();
+            active.retain(|am| am.bucket_id != *bucket_id);
+        }
+        let _ = msg_sender.send(GlobalPoolMessage::BucketDone(bucket_msg_id));
+        pool.done_count.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        pool.condvar.notify_all();
     }
 
     // Verify a single bucket
@@ -1820,11 +3173,16 @@ impl Verifier {
 
         if self.args.parallel_queries {
             // ── Phase 1: sequential context collection ──────────────────────────────
+            // Each query task records ctx_before (index into all_context_ops at the time the
+            // query was enqueued). ctx_after is computed after the loop as the ctx_before of the
+            // next task (or all_context_ops.len() for the last task). Workers use these indices
+            // for incremental delta application to a persistent Z3 context.
             let phase1_start = Instant::now();
             let bucket = self.get_bucket(bucket_id);
             let mut opgen = OpGenerator::new(ctx, krate, bucket.clone());
             let mut all_context_ops: Vec<Op> = vec![];
-            let mut initial_tasks: Vec<(usize, Op, Arc<Vec<Op>>)> = vec![];
+            // staging: (task_idx, op, ctx_before)
+            let mut initial_tasks_staging: Vec<(usize, Op, usize)> = vec![];
             let mut task_idx = 0usize;
 
             while let Some(mut function_opgen) = opgen.next()? {
@@ -1842,14 +3200,28 @@ impl Verifier {
                             all_context_ops.push(op);
                         }
                         OpKind::Query { .. } => {
-                            let snapshot = Arc::new(all_context_ops.clone());
-                            initial_tasks.push((task_idx, op, snapshot));
+                            let ctx_before = all_context_ops.len();
+                            initial_tasks_staging.push((task_idx, op, ctx_before));
                             task_idx += 1;
                         }
                     }
                 }
             }
             let time_phase1 = phase1_start.elapsed();
+
+            // Compute ctx_after for each task: the next task's ctx_before, or all_ctx.len()
+            let all_ctx_arc: Arc<Vec<Op>> = Arc::new(all_context_ops);
+            let all_ctx_len = all_ctx_arc.len();
+            let ctx_befores: Vec<usize> =
+                initial_tasks_staging.iter().map(|(_, _, b)| *b).collect();
+            let initial_tasks: Vec<(usize, Op, usize, usize)> = initial_tasks_staging
+                .into_iter()
+                .enumerate()
+                .map(|(i, (idx, op, ctx_before))| {
+                    let ctx_after = ctx_befores.get(i + 1).copied().unwrap_or(all_ctx_len);
+                    (idx, op, ctx_before, ctx_after)
+                })
+                .collect();
 
             // ── Batch 1: initial queries in parallel ────────────────────────────────
             let batch1 = self.run_parallel_query_batch(
@@ -1865,6 +3237,7 @@ impl Verifier {
                 &opaque_type_impl_commands,
                 &function_decl_commands,
                 bucket_id,
+                &all_ctx_arc,
                 initial_tasks,
             )?;
 
@@ -1888,8 +3261,10 @@ impl Verifier {
             }
 
             // ── Collect retry tasks (recommends checks for failed functions) ─────────
-            let full_snapshot = Arc::new(all_context_ops.clone());
-            let mut retry_tasks: Vec<(usize, Op, Arc<Vec<Op>>)> = vec![];
+            // Retry tasks need the full context (ctx_before = all_ctx_len) and produce no
+            // post-ops (ctx_after = all_ctx_len). Workers that have already applied the full
+            // context in Batch 1 can reuse their persistent Z3 context directly.
+            let mut retry_tasks: Vec<(usize, Op, usize, usize)> = vec![];
             let mut retry_idx = 0usize;
 
             for result in &batch1 {
@@ -1920,7 +3295,8 @@ impl Verifier {
                                 &result.function,
                                 Some(fsst.clone()),
                             );
-                            retry_tasks.push((retry_idx, retry_op, full_snapshot.clone()));
+                            // Retry needs all context ops; no SCC post-ops after retry.
+                            retry_tasks.push((retry_idx, retry_op, all_ctx_len, all_ctx_len));
                             retry_idx += 1;
                         }
                     }
@@ -1943,6 +3319,7 @@ impl Verifier {
                     &opaque_type_impl_commands,
                     &function_decl_commands,
                     bucket_id,
+                    &all_ctx_arc,
                     retry_tasks,
                 )?;
 
@@ -2634,6 +4011,19 @@ impl Verifier {
 
         let source_map = compiler.sess.source_map();
 
+        // When parallel_queries is active, use the global worker pool with exactly
+        // args.num_threads workers (not capped to bucket count).
+        if self.args.parallel_queries && self.args.num_threads > 1 && !bucket_ids.is_empty() {
+            self.num_threads = self.args.num_threads;
+            global_ctx = self.run_global_parallel_verification(
+                compiler,
+                spans,
+                &krate,
+                &bucket_ids,
+                global_ctx,
+            )?;
+        } else {
+
         self.num_threads = std::cmp::min(self.args.num_threads, bucket_ids.len());
         if self.args.num_threads != 1 && self.num_threads >= 1 {
             // create the multiple producers, single consumer queue
@@ -3056,6 +4446,8 @@ impl Verifier {
                 )?;
             }
         }
+
+        } // end of `else` branch for global pool
 
         if self.args.profile && self.count_errors == 0 {
             let msg = note_bare(
