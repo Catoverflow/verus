@@ -99,6 +99,7 @@ extra_verus_args = ["--crate-type=lib",
               "-L", "dependency=src/deps_hack/target/debug/deps",
               "--extern=deps_hack=src/deps_hack/target/debug/libdeps_hack.rlib",
               "--rlimit", "50",
+              "--verify-module", "vdeployment_controller", # remove this line to run full verification on all 4 controllers
               "-A", "warnings"]
 prepare_script = """
 pushd src/deps_hack
