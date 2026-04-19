@@ -104,14 +104,14 @@ extra_verus_args = ["--crate-type=lib",
 prepare_script = """
 pushd src/deps_hack
 cargo clean
-cargo +1.94.0 build
+cargo build
 popd
 """
 prepare_script_windows = """
 $ErrorActionPreference = 'Stop'
 Push-Location src/deps_hack
 cargo clean
-cargo +1.94.0 build
+cargo build
 Pop-Location
 """
 
