@@ -6,7 +6,7 @@ use crate::ast::{
     UnaryOpr, UnwindSpec, VarAt, VarBinder, VarBinderX, VarBinders, VarIdent, VarIdentDisambiguate,
     VariantCheck, VirErr,
 };
-use crate::ast::{BuiltinSpecFun, Exprs};
+use crate::ast::{BuiltinSpecFun, CrateId, Exprs};
 use crate::ast_util::{QUANT_FORALL, bool_typ, types_equal, undecorate_typ, unit_typ};
 use crate::context::Ctx;
 use crate::def::{Spanned, unique_local};
@@ -1380,7 +1380,7 @@ fn if_to_stm(
             // must also return a unit (either implicit or explicit).
             // If this sanity check fails, then it's likely we screwed up and
             // the alleged implicit unit branch was actually a never-return.
-            assert!(types_equal(&expr.typ, &unit_typ()));
+            assert!(types_equal(&undecorate_typ(&expr.typ), &unit_typ()));
 
             let stm1 = stms_to_one_stm(&expr.span, stms1);
             let stm2 = stms_to_one_stm_opt(&expr.span, stms2);
@@ -2884,7 +2884,7 @@ pub(crate) fn expr_to_stm_opt(
                 ExprX::Call(
                     CallTarget::Fun(
                         crate::ast::CallTargetKind::Static,
-                        fun!("vstd" => "future", "exec_await"),
+                        fun!(CrateId::Vstd => "future", "exec_await"),
                         Arc::new(vec![e.typ.clone()]),
                         Arc::new(vec![]),
                         AutospecUsage::Final,
@@ -3697,16 +3697,14 @@ fn get_inv_typ_args(typ: &Typ) -> Typs {
     }
 }
 
-fn call_inv(ctx: &Ctx, outer: &Exp, inner: &Exp, typ_args: &Typs, atomicity: InvAtomicity) -> Exp {
-    let call_fun =
-        CallFun::Fun(crate::def::fn_inv_name(&ctx.global.vstd_crate_name, atomicity), None);
+fn call_inv(_ctx: &Ctx, outer: &Exp, inner: &Exp, typ_args: &Typs, atomicity: InvAtomicity) -> Exp {
+    let call_fun = CallFun::Fun(crate::def::fn_inv_name(atomicity), None);
     let expx = ExpX::Call(call_fun, typ_args.clone(), Arc::new(vec![outer.clone(), inner.clone()]));
     SpannedTyped::new(&outer.span, &Arc::new(TypX::Bool), expx)
 }
 
-fn call_namespace(ctx: &Ctx, arg: &Exp, typ_args: &Typs, atomicity: InvAtomicity) -> Exp {
-    let call_fun =
-        CallFun::Fun(crate::def::fn_namespace_name(&ctx.global.vstd_crate_name, atomicity), None);
+fn call_namespace(_ctx: &Ctx, arg: &Exp, typ_args: &Typs, atomicity: InvAtomicity) -> Exp {
+    let call_fun = CallFun::Fun(crate::def::fn_namespace_name(atomicity), None);
     let expx = ExpX::Call(call_fun, typ_args.clone(), Arc::new(vec![arg.clone()]));
     SpannedTyped::new(&arg.span, &Arc::new(TypX::Int(IntRange::Int)), expx)
 }

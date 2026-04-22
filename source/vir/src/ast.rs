@@ -21,11 +21,27 @@ pub type VirErrAs = MessageAs;
 pub type Ident = Arc<String>;
 pub type Idents = Arc<Vec<Ident>>;
 
+/// Crate name, used at the beginning of a Path
+#[derive(Clone, Serialize, Deserialize, PartialEq, Eq, Hash, PartialOrd, Ord)]
+pub enum CrateId {
+    // Verus-generated internal paths with no crate
+    Internal,
+    // Verus treats the Rust core crate specially
+    Core,
+    // Verus treats the Rust alloc crate specially
+    Alloc,
+    // Verus treats the vstd crate specially
+    Vstd,
+    // All other crates have Rust's stable crate id and a user-friendly name
+    // Note: to make sorting via PartialOrd/Ord more stable, the u64 id goes after the Ident
+    Id(Ident, u64),
+}
+
 /// A fully-qualified name, such as a module name, function name, or datatype name
 pub type Path = Arc<PathX>;
 #[derive(Clone, Serialize, Deserialize, PartialEq, Eq, Hash, PartialOrd, Ord)]
 pub struct PathX {
-    pub krate: Option<Ident>, // None for local crate
+    pub krate: CrateId,
     pub segments: Idents,
 }
 
@@ -538,8 +554,6 @@ pub enum UnaryOpr {
     /// to hold the result.
     /// Mode is the minimum allowed mode (e.g., Spec for spec-only, Exec if allowed in exec).
     IntegerTypeBound(IntegerTypeBoundKind, Mode),
-    /// Custom diagnostic message
-    CustomErr(Arc<String>),
     /// Label from a `proof_note` attribute.
     ProofNote(ProofNoteLabel),
     /// Predicate over any type that indicates its mutable references has resolved.
@@ -1450,8 +1464,6 @@ pub struct FunctionAttrsX {
     pub no_auto_trigger: bool,
     /// Specify which places we auto-promote == to =~= when verifying this function
     pub auto_ext_equal: AutoExtEqual,
-    /// Custom error message to display when a pre-condition fails
-    pub custom_req_err: Option<String>,
     /// When used in a ghost context, redirect to a specified spec function
     pub autospec: Option<Fun>,
     /// Verify using bitvector theory
@@ -1664,7 +1676,7 @@ pub struct RevealGroupX {
     pub owning_module: Option<Path>,
     /// If Some(crate_name), this group is revealed by default for crates that import crate_name.
     /// No more than one such group is allowed in each crate.
-    pub broadcast_use_by_default_when_this_crate_is_imported: Option<Ident>,
+    pub broadcast_use_by_default_when_this_crate_is_imported: Option<CrateId>,
     /// All the subgroups or functions included in this group
     pub members: Arc<Vec<Fun>>,
 }

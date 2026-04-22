@@ -1025,7 +1025,6 @@ impl<'a> Builder<'a> {
             }
 
             ExprX::OpenInvariant(arg, binder, body, _) => {
-                // TODO(new_mut_ref): (blocking) test cases
                 bb = self.build(arg, bb)?;
 
                 let local = FlattenedPlaceTyped {
@@ -1198,7 +1197,12 @@ impl<'a> Builder<'a> {
             }
             ExprX::Await(e) => {
                 bb = self.build(e, bb)?;
-                Ok(bb)
+                let cancel_bb = self.new_bb(AstPosition::OnUnwind(expr.span.id), false);
+                let main_bb = self.new_bb(AstPosition::After(expr.span.id), false);
+                self.basic_blocks[bb].successors.push(cancel_bb);
+                self.basic_blocks[bb].successors.push(main_bb);
+                self.basic_blocks[cancel_bb].is_exit = true;
+                Ok(main_bb)
             }
         }
     }
@@ -2605,10 +2609,7 @@ fn do_dataflow<D: DataflowState + Clone + Eq>(
                 in_worklist[i] = true;
             }
 
-            loop {
-                let Some(bb) = worklist.pop_front() else {
-                    break;
-                };
+            while let Some(bb) = worklist.pop_front() {
                 in_worklist[bb] = false;
 
                 let new_value = join_predecessors(&output, &cfg, bb, &empty, &entry_or_exit);
