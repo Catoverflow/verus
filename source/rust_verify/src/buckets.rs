@@ -74,6 +74,29 @@ impl BucketId {
             BucketId::Fun(_, f) => Some(f),
         }
     }
+
+    /// "module" for module buckets,
+    /// "module#function" for spinoff_prover function buckets
+    pub fn display_name(&self) -> String {
+        let m = self.module();
+        let module_str = if m.segments.is_empty() {
+            "<root>".to_string()
+        } else {
+            m.segments.iter().map(|s| s.to_string()).collect::<Vec<_>>().join("::")
+        };
+        match self {
+            BucketId::Module(_) => module_str,
+            BucketId::Fun(_, f) => {
+                let fn_name = f
+                    .path
+                    .segments
+                    .last()
+                    .map(|s| s.to_string())
+                    .unwrap_or_else(|| fun_as_friendly_rust_name(f));
+                format!("{}#{}", module_str, fn_name)
+            }
+        }
+    }
 }
 
 impl Bucket {

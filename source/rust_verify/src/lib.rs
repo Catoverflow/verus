@@ -29,7 +29,7 @@ extern crate rustc_trait_selection;
 extern crate rustc_type_ir;
 
 mod attributes;
-mod buckets;
+pub mod buckets;
 pub mod commands;
 pub mod config;
 
