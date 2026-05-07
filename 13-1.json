@@ -1,0 +1,4074 @@
+{
+  "func-details": {
+    "esr_composition::kubernetes_api_objects::spec::service_account::ServiceAccountView::unmarshal_status": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::set::Set::contains": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::api_server::state_machine::handle_create_request": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::message::MessageContent::is_update_request": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role::RoleView::unmarshal": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::api_server_next": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::builtin_controllers::state_machine::builtin_controllers": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::vstd_ext::string_view::dash_free": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::reconciler::spec::io::VoidEReqView::marshal_preserves_integrity": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::vstatefulset_controller::trusted::spec_types::VStatefulSetSpecView::default": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::service_account::ServiceAccountView::kind": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role::RoleView::marshal_preserves_integrity": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::daemon_set::DaemonSetView::_state_validation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::temporal_logic::rules::or_leads_to_combine": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::config_map::ConfigMapView::unmarshal": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::proof::liveness::resource_match::lemma_from_key_not_exists_to_receives_not_found_resp_at_after_get_resource_step": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::controller::state_machine::continue_reconcile": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::seq::axiom_seq_add_len": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::erlang_cookie::make_erlang_secret": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::vstatefulset_controller::trusted::spec_types::VStatefulSetView::state_validation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::chosen_external_next": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::pod::PodView::default": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::map_lib::impl&%0::contains_key": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role_binding::RoleBindingView::marshal": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::message::MessageContent::get_create_request": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::container::ProbeView::with_tcp_socket": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::pod::PodView::object_ref": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::container::ContainerView::with_volume_mounts": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::resource::ResourceView::marshal_preserves_metadata": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::pod::PodView::transition_validation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::proof::liveness::resource_match::lemma_resource_state_matches_at_after_create_resource_step": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::api_server::state_machine::allow_unconditional_update": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::secret::SecretView::status": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::dynamic::DynamicObjectView::with_deletion_timestamp": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::pod_monkey_disabled": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::every_in_flight_msg_has_lower_id_than_allocator": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::temporal_logic::defs::TempPred::and": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::container::ProbeView::with_period_seconds": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::container::ContainerView::default": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::vstatefulset_controller::trusted::spec_types::VStatefulSetView::marshal_spec": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::resource::empty_status": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::erlang_cookie::update_erlang_secret": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::service::ServiceView::with_metadata": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::cr_states_are_unmarshallable": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::service::ServiceView::unmarshal_status": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::secret::SecretView::marshal_preserves_metadata": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::trusted::spec_types::RabbitmqClusterView::object_ref": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role::RoleView::marshal_preserves_metadata": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::proof::resource::get_request": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::view::impl&%46::view": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role_binding::RoleBindingView::_default": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role::RoleView::transition_validation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::std_specs::result::is_ok": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::seq_lib::impl&%0::add_empty_right": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::resource::ResourceView::marshal_status": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::trusted::spec_types::RabbitmqClusterView::default": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::map::impl&%0::len": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::view::impl&%14::view": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::set_lib::impl&%0::to_seq": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::persistent_volume_claim::PersistentVolumeClaimView::marshal_preserves_integrity": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::state_machine::action::ActionResult::arrow_Enabled_1": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::proof::predicate::cluster_invariants_since_reconciliation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::vstatefulset_controller::trusted::spec_types::StatefulSetPodNameLabel": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::reconciler::spec::io::VoidERespView::marshal": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::proof::liveness::resource_match::lemma_from_after_get_resource_step_to_after_update_resource_step": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::api_server::state_machine::handle_get_then_update_request_msg": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::temporal_logic::rules::always_to_always_later": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::default_user_secret::make_default_user_secret_data": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::object_meta::ObjectMetaView::owner_references_only_contains": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::role_binding::make_role_binding_key": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::proof::helper_invariants::predicate::rmq_self_rely_guarantee_get_then_update_req": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::multiset::impl&%0::remove": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::pending_req_of_key_is_unique_with_unique_id": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::array::ArrayAdditionalSpecFns::spec_index": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::api_server::state_machine::object_transition_validity_check": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::stateful_set::StatefulSetBuilder::update": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::trusted::rely_guarantee::rmq_rely_conditions": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::every_in_flight_req_msg_from_controller_has_valid_controller_id": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::secret::SecretView::state_validation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::volume::VolumeProjectionView::with_config_map": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::every_in_flight_req_msg_has_different_id_from_pending_req_msg_of_every_ongoing_reconcile": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::config_map::ConfigMapView::state_validation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::proof::liveness::resource_match::lemma_from_after_get_resource_step_to_after_update_resource_step_by_controller": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::trusted::spec_types::RabbitmqReconciler::reconcile_error": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::seq::axiom_seq_ext_equal_deep": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::headless_service::HeadlessServiceBuilder::update": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::role_binding::make_role_binding_name": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::seq_lib::impl&%0::to_set": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::service_account::ServiceAccountView::metadata": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::daemon_set::DaemonSetView::status": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::seq::axiom_seq_add_index1": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::state_machine::action::ActionResult::arrow_Enabled_0": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role_binding::RoleBindingView::state_validation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::service_account::ServiceAccountView::marshal_preserves_metadata": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::message::form_update_resp_msg": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::service::make_main_service_name": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::api_server": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::service_account::ServiceAccountView::_transition_validation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::config_map::ConfigMapView::marshal_spec": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::stateful_set::make_stateful_set_name": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::volume::ConfigMapVolumeSourceView::with_name": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::trusted::rely_guarantee::has_rmq_prefix": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::service::ServiceView::marshal_status": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::view::impl&%18::view": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::resource::ResourceView::spec": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::map::impl&%0::remove": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::volume::DownwardAPIVolumeFileView::with_field_ref": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::volume::VolumeView::with_empty_dir": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::container::ContainerPortView::default": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::installed_reconcile_model": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::proof::predicate::at_after_create_resource_step_and_exists_ok_resp_in_flight": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::next": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::trusted::rely_guarantee::rmq_rely_get_then_delete_req": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::erlang_cookie::ErlangCookieBuilder::make": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::container::ProbeView::with_failure_threshold": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::config_map::ConfigMapView::default": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::container::VolumeMountView::default": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role_binding::SubjectView::with_name": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::message::controller_req_msg": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::api_server::state_machine::unmarshallable_object": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::proof::helper_invariants::predicate::no_delete_resource_request_msg_from_gc_in_flight": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::persistent_volume_claim::PersistentVolumeClaimSpecView::with_resources": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::persistent_volume_claim::PersistentVolumeClaimView::marshal_status": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role::RoleView::metadata": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::api_server::state_machine::metadata_validity_check": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::proof::predicate::after_create_k_request_step": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::array::impl&%0::view": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::temporal_logic::defs::Execution::head": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::message::form_list_resp_msg": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::api_method::GetThenUpdateStatusRequest::well_formed": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::vstatefulset_controller::trusted::spec_types::VStatefulSetView::metadata": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::vstatefulset_controller::trusted::spec_types::VStatefulSetView::spec": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::api_method::APIResponse::get_CreateResponse_0": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::proof::resource::state_after_create": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::config_map::ConfigMapView::spec": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::secret::SecretView::with_data": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::persistent_volume_claim::PersistentVolumeClaimView::with_metadata": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::default_user_secret::DefaultUserSecretBuilder::update": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::temporal_logic::defs::lift_action": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role_binding::RoleRefView::default": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::object_meta::ObjectMetaView::with_owner_references": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::daemon_set::DaemonSetView::marshal_spec": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::disable_pod_monkey": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::api_method::CreateRequest::key": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::api_server::state_machine::handle_get_request": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::trusted::rely_guarantee::rmq_guarantee_create_req": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::trusted::spec_types::RabbitmqClusterView::transition_validation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::message::form_get_then_delete_resp_msg": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::common::make_labels": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::proof::predicate::resp_msg_is_the_in_flight_ok_resp_at_after_update_resource_step": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::proof::helper_lemmas::lemma_get_then_update_sub_resource_request_returns_ok": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::persistent_volume_claim::PersistentVolumeClaimView::marshal_spec": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role::RoleView::unmarshal_spec": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::service_account::make_service_account_name": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::seq_lib::impl&%0::filter_distributes_over_add": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::headless_service::HeadlessServiceBuilder::state_after_update": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::temporal_logic::rules::entails_trans": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::vstatefulset_controller::trusted::spec_types::VStatefulSetView::_kind": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::stateful_set::StatefulSetView::default": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::rabbitmq_plugins::PluginsConfigMapBuilder::state_after_update": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::common::make_owner_references": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::daemon_set::DaemonSetView::_transition_validation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::service::ServiceSpecView::without_cluster_ip": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::proof::helper_lemmas::lemma_get_sub_resource_request_returns_ok_or_not_found": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role_binding::SubjectView::default": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role_binding::RoleBindingView::transition_validation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::pod::PodView::kind": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::restart_controller": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::message::MessageContent::arrow_ExternalResponse_0": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::vstatefulset_controller::trusted::spec_types::VStatefulSetView::_transition_validation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::api_server::state_machine::unmarshallable_spec": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::vstd_ext::string_view::int_to_string_view": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::view::View::view": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::container::ContainerView::with_name": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::controller::types::ReconcileIdAllocator::allocate": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::disable_req_drop": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role::RoleView::status": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::array::axiom_array_ext_equal": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::pod_monkey_next": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::proof::predicate::after_update_k_request_step": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role_binding::RoleBindingView::marshal_status": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role::RoleView::kind": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::type_is_installed_in_cluster": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::set::axiom_set_intersect_finite": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::view::impl&%30::view": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::pod_template_spec::PodTemplateSpecView::default": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::seq::axiom_seq_push_len": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::reconciler::spec::reconciler::Reconciler::reconcile_error": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::role::update_role": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::proof::helper_invariants::predicate::rmq_self_rely_guarantee": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::persistent_volume_claim::PersistentVolumeClaimSpecView::with_storage_class_name": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::rabbitmq_plugins::PluginsConfigMapBuilder::get_request": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::api_server::state_machine::handle_create_request_msg": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::controller": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::trusted::spec_types::RabbitmqReconciler::reconcile_done": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::container::ContainerPortView::with_container_port": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::config_map::ConfigMapView::with_metadata": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::service::ServiceBuilder::state_after_create": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::message::form_delete_resp_msg": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::service::ServiceBuilder::get_request": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::default_user_secret::DefaultUserSecretBuilder::get_request": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::secret::SecretView::metadata": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::map::axiom_map_empty": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role::PolicyRuleView::with_verbs": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::set::axiom_set_empty_finite": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::service_account::ServiceAccountBuilder::state_after_update": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::service_account::ServiceAccountView::object_ref": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::temporal_logic::rules::leads_to_exists_intro": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::trusted::spec_types::RabbitmqClusterPersistenceSpecView::default": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::volume_resource_requirements::VolumeResourceRequirementsView::with_requests": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::common::make_secret": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::stateful_set::StatefulSetView::unmarshal_status": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::api_server::state_machine::handle_update_status_request_msg": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::api_method::GetThenDeleteRequest::well_formed": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::secret::SecretView::marshal_spec": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::volume::VolumeView::default": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::api_server::state_machine::api_server": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::volume::ConfigMapProjectionView::default": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::proof::predicate::sub_resource_needs_cm_rv": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::builtin_controllers_next": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::trusted::spec_types::RabbitmqClusterView::marshal_spec": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::role::make_role_key": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::resource::ResourceView::unmarshal_spec": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role_binding::RoleBindingView::unmarshal_status": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::config_map::default_rbmq_config": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::trusted::rely_guarantee::rmq_guarantee_get_then_update_req": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::map::axiom_map_insert_same": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::service::ServiceSpecView::with_ports": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::secret::SecretView::_status": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::service_account::ServiceAccountView::_unmarshal_helper": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::set::axiom_set_insert_same": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::message::resource_get_then_update_request_msg": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::config_map::ConfigMapView::metadata": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::message::pod_monkey_req_msg": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::set::axiom_set_empty_len": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::pod::PodView::spec": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::api_server::state_machine::handle_update_request": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::message::form_create_resp_msg": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::default_user_secret::DefaultUserSecretBuilder::state_after_create": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::has_pending_k8s_api_req_msg": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::container::ExecActionView::default": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::set::impl&%0::intersect": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::config_map::ServerConfigMapBuilder::state_after_create": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::persistent_volume_claim::PersistentVolumeClaimView::spec": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::reconciler::spec::reconciler::Reconciler::reconcile_core": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::persistent_volume_claim::PersistentVolumeClaimView::_state_validation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::headless_service::make_headless_service_name": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::secret::SecretView::spec": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::trusted::spec_types::RabbitmqReconcileState::marshal_preserves_integrity": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::container::ProbeView::with_initial_delay_seconds": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::temporal_logic::defs::eventually": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::trusted::spec_types::RabbitmqClusterSpecView::default": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::api_server::state_machine::updated_object": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::reconciler::spec::reconciler::Reconciler::reconcile_done": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::resource::Marshallable::marshal": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::etcd_objects_have_unique_uids": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::state_machine::state_machine::StateMachine::next_action_result": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::message::MessageContent::is_get_request": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::service::ServiceView::marshal_preserves_metadata": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::service::make_main_service": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::temporal_logic::defs::TempPred::leads_to": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::reconciler::reconcile_error": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::api_method::GetThenDeleteRequest::key": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::stateful_set::StatefulSetView::unmarshal_spec": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::map::axiom_map_index_decreases_finite": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::dynamic::DynamicObjectView::with_namespace": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::seq::axiom_seq_push_index_same": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::object_meta::ObjectMetaView::owner_references_contains": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::every_in_flight_msg_has_unique_id": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::each_object_in_etcd_is_well_formed": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::proof::predicate::pending_req_in_flight_at_after_create_resource_step": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::seq::axiom_seq_add_index2": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::container::ContainerView::with_command": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::there_is_no_request_msg_to_external_from_controller": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::pod::PodView::marshal_preserves_integrity": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::config_map::ConfigMapView::marshal_preserves_integrity": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::config_map::ServerConfigMapBuilder::get_request": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::api_method::DeleteRequest::key": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::reconciler::reconcile_helper": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::api_server::state_machine::create_request_admission_check": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::api_method::APIResponse::get_GetResponse_0": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::seq::axiom_seq_ext_equal": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::secret::SecretView::_transition_validation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::set::Set::subset_of": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::service_account::ServiceAccountBuilder::get_request": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::multiset::axiom_multiset_ext_equal_deep": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::no_pending_request_to_api_server_from_non_controllers": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::message::MessageContent::arrow_ExternalRequest_0": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::pod::PodView::unmarshal": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::proof::helper_invariants::predicate::resource_object_only_has_owner_reference_pointing_to_current_cr": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::message::MessageContent::arrow_APIRequest_0": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::api_method::APIResponse::arrow_GetResponse_0": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::service::ServiceSpecView::with_cluster_ip": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::trusted::spec_types::RabbitmqClusterView::status": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::volume::DownwardAPIVolumeSourceView::default": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::volume::VolumeView::with_downward_api": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::config_map::ConfigMapView::status": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::object_meta::ObjectMetaView::finalizers_as_set": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::container::ExecActionView::with_command": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::service_account::ServiceAccountView::_spec": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::trusted::spec_types::RabbitmqReconcileState::marshal": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::proof::resource::state_after_update": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::volume::SecretVolumeSourceView::default": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::set::axiom_set_new": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::pod_monkey": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::container::ProbeView::with_success_threshold": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::volume::VolumeView::with_projected": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role_binding::RoleBindingView::metadata": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::daemon_set::DaemonSetView::marshal_preserves_integrity": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::etcd_object_is_weakly_well_formed": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role::RoleView::state_validation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::set::axiom_set_ext_equal_deep": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::volume::KeyToPathView::with_path": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::message::form_get_resp_msg": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::multiset::impl&%0::contains": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::service_account::ServiceAccountView::spec": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::erlang_cookie::ErlangCookieBuilder::update": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::set::impl&%0::len": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::volume::SecretProjectionView::with_items": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::container::LifecycleView::with_pre_stop": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::message::MessageContent::get_get_response": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::temporal_logic::rules::entails_preserved_by_always": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::pod::PodView::status": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::proof::liveness::resource_match::lemma_from_after_update_resource_step_to_after_get_next_resource_step": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::stateful_set::StatefulSetBuilder::make": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::temporal_logic::rules::leads_to_weaken": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::daemon_set::DaemonSetView::marshal_preserves_metadata": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::array::array_len_matches_n": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::object_meta::ObjectMetaView::well_formed_for_namespaced": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::multiset::impl&%0::empty": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::resource::Marshallable::marshal_preserves_integrity": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::config_map::ConfigMapView::kind": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::api_server::state_machine::update_request_admission_check": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::trusted::liveness_theorem::resource_state_matches": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::reconciler::reconcile_done": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::trusted::spec_types::RabbitmqClusterView::controller_owner_ref": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::std_specs::option::spec_unwrap": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::trusted::spec_types::RabbitmqClusterView::unmarshal": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::config_map::ConfigMapView::_default": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::service::ServiceSpecView::with_publish_not_ready_addresses": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::volume::DownwardAPIVolumeFileView::with_path": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::pod::PodView::_state_validation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::map::axiom_map_ext_equal": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::all_requests_from_builtin_controllers_are_api_delete_requests": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::headless_service::HeadlessServiceBuilder::state_after_create": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::volume::VolumeView::with_name": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::temporal_logic::defs::true_pred": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::message::form_msg": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role::RoleView::_spec": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::trusted::spec_types::RabbitmqClusterView::marshal_preserves_metadata": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::pod::PodView::marshal_status": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::secret::SecretView::default": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::volume::VolumeProjectionView::with_secret": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::map_lib::impl&%0::contains_pair": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::object_meta::ObjectMetaView::with_name": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::service_account::ServiceAccountView::marshal_spec": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::set_lib::lemma_set_subset_finite": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::daemon_set::DaemonSetView::unmarshal_status": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::trusted::spec_types::RabbitmqClusterView::unmarshal_status": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::proof::predicate::resp_msg_is_the_in_flight_ok_resp_at_after_create_resource_step": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::dynamic::DynamicObjectView::object_ref": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::service::ServiceView::status": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::stateful_set::StatefulSetView::metadata": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role_binding::RoleBindingView::with_subjects": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::stateful_set::StatefulSetView::spec": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::array::impl&%2::spec_index": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::trusted::rely_guarantee::rmq_rely_delete_req": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::chosen_controller_next": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::persistent_volume_claim::PersistentVolumeClaimView::metadata": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::service::ServiceView::object_ref": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::role::RoleBuilder::state_after_create": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::message::MessageContent::get_get_request": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::set::axiom_set_remove_insert": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::erlang_cookie::ErlangCookieBuilder::state_after_update": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::resource::ResourceView::state_validation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::api_server::state_machine::transition_by_etcd": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::persistent_volume_claim::PersistentVolumeClaimSpecView::with_access_modes": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::proof::predicate::at_after_update_resource_step_and_exists_ok_resp_in_flight": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::trusted::spec_types::RabbitmqReconcileState::unmarshal": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::builtin_controllers::garbage_collector::run_garbage_collector": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::temporal_logic::defs::TempPred::new": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role::RoleView::_status": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::proof::helper_invariants::predicate::resource_object_has_no_finalizers_or_timestamp_and_only_has_controller_owner_ref": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::each_custom_object_in_etcd_is_well_formed": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::each_object_in_etcd_has_at_most_one_controller_owner": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::persistent_volume_claim::PersistentVolumeClaimView::default": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::message::MessageContent::is_get_then_update_status_request": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::reconciler::spec::io::ResponseView::arrow_KResponse_0": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::secret::SecretView::marshal_status": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::service::ServicePortView::with_name": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::proof::predicate::req_msg_is_the_in_flight_pending_req_at_after_get_resource_step": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::stateful_set::StatefulSetBuilder::state_after_create": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::service::make_main_service_key": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::label_selector::LabelSelectorView::with_match_labels": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::role_binding::update_role_binding": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::container::ContainerView::with_image": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role_binding::SubjectView::with_namespace": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::stateful_set::StatefulSetView::marshal_spec": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::config_map::ConfigMapView::with_data": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::api_server::state_machine::unmarshallable_status": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::service_account::ServiceAccountView::marshal": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::service_account::ServiceAccountBuilder::state_after_create": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::multiset::impl&%0::singleton": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::seq::axiom_seq_new_index": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::service_account::ServiceAccountBuilder::make": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::service::ServiceSpecView::with_selector": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::external::state_machine::external": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::persistent_volume_claim::PersistentVolumeClaimView::kind": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::api_server::state_machine::handle_request": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::temporal_logic::rules::always_and_equality": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role_binding::RoleBindingView::marshal_spec": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::service::ServiceView::unmarshal": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::volume::ConfigMapVolumeSourceView::default": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::set::axiom_set_intersect": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::each_object_in_reconcile_has_consistent_key_and_valid_metadata": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::stateful_set::StatefulSetView::state_validation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::api_server::state_machine::generated_name": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::resource::ResourceView::unmarshal_status": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::api_server::state_machine::created_object_validity_check": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::reconciler::spec::resource_builder::ResourceBuilder::update": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::proof::predicate::next_resource_step_after": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role::RoleView::_default": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::network::state_machine::network": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::daemon_set::DaemonSetView::marshal_status": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::stateful_set::make_env_vars": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::seq::axiom_seq_empty": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::stateful_set::StatefulSetView::unmarshal": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::each_object_in_etcd_is_weakly_well_formed": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::container::EnvVarView::default": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::volume::SecretProjectionView::with_name": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::trusted::spec_types::RabbitmqClusterView::marshal_preserves_integrity": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::stateful_set::update_stateful_set": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::stateful_set::StatefulSetView::object_ref": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::headless_service::make_headless_service_key": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::vstatefulset_controller::trusted::spec_types::VStatefulSetView::default": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::set::axiom_set_remove_same": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::trusted::rely_guarantee::rmq_rely_update_req": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::service::ServiceView::spec": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::api_method::APIRequest::get_DeleteRequest_0": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::api_server::state_machine::valid_object": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::std_specs::result::spec_unwrap": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::trusted::spec_types::RabbitmqClusterView::_transition_validation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::multiset::impl&%0::count": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::service::ServiceView::unmarshal_spec": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::api_method::APIRequest::get_GetThenUpdateStatusRequest_0": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::api_method::APIResponse::get_GetThenUpdateResponse_0": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::temporal_logic::rules::entails_and_temp": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::daemon_set::DaemonSetView::unmarshal": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::every_ongoing_reconcile_has_lower_id_than_allocator": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::erlang_cookie::ErlangCookieBuilder::state_after_create": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::config_map::ConfigMapView::object_ref": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role::RoleView::marshal_spec": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::drop_req": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::api_server::state_machine::handle_delete_request": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::stateful_set::sts_restart_annotation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::container::VolumeMountView::with_sub_path": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::persistent_volume_claim::PersistentVolumeClaimView::unmarshal_spec": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::stateful_set::StatefulSetView::status": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::role::RoleBuilder::state_after_update": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::api_server::state_machine::updated_object_validity_check": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::vstatefulset_controller::trusted::spec_types::VStatefulSetView::unmarshal_status": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::there_is_the_controller_state": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::common::make_service": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::external::state_machine::transition_by_external": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::pod::PodView::marshal": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::set::axiom_set_ext_equal": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::default_user_secret::make_default_user_secret_key": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::temporal_logic::defs::lift_state": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::service::ServiceView::default": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::api_method::APIRequest::get_ListRequest_0": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::pod::PodView::metadata": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::vstatefulset_controller::trusted::spec_types::StatefulSetOrdinalLabel": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::multiset::impl&%0::sub": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::state_machine::state_machine::StateMachine::next_result": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::api_server::state_machine::deletion_timestamp": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::message::resp_msg_matches_req_msg": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::pod_monkey::state_machine::update_pod": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::controller::state_machine::run_scheduled_reconcile": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::container::LifecycleHandlerView::default": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::pod_template_spec::PodTemplateSpecView::with_metadata": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::controller_action_pre": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::external::state_machine::handle_external_request": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::trusted::spec_types::RabbitmqReconciler::reconcile_core": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::pod::PodView::marshal_spec": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::message::HostId::arrow_Controller_0": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::role_binding::RoleBindingBuilder::make": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::proof::liveness::resource_match::lemma_resource_state_matches_at_after_update_resource_step": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::api_server::state_machine::valid_transition": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::trusted::spec_types::RabbitmqClusterView::kind": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::service_account::make_service_account": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::message::MessageContent::is_create_request": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::api_method::APIRequest::get_GetThenDeleteRequest_0": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role_binding::RoleRefView::with_kind": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::temporal_logic::rules::temp_pred_equality": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::object_meta::ObjectMetaView::default": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::reconciler::spec::resource_builder::ResourceBuilder::get_request": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::proof::predicate::req_msg_is_the_in_flight_pending_req_at_after_update_resource_step": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::resource::ResourceView::kind": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::message::built_in_controller_req_msg": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::controller_next": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role_binding::RoleBindingView::spec": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::proof::helper_invariants::predicate::sts_in_etcd_with_rmq_key_match_rmq_selector": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::state_machine::action::Action::pre": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::container::VolumeMountView::with_mount_path": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::config_map::ConfigMapView::_status": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::role::RoleBuilder::get_request": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::vstatefulset_controller::trusted::spec_types::VStatefulSetView::kind": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::service_account::make_service_account_key": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::message::form_matched_err_resp_msg": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::map::axiom_map_ext_equal_deep": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::multiset::axiom_multiset_empty": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::message::MessageContent::is_list_request": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::api_method::GetThenUpdateStatusRequest::key": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::ClusterState::in_flight": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::secret::SecretView::marshal": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::reconciler::spec::io::VoidERespView::unmarshal": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::set::axiom_set_insert_different": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::map::axiom_map_insert_domain": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::cr_objects_in_reconcile_have_correct_kind": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::reconciler::spec::io::VoidEReqView::unmarshal": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::api_method::GetRequest::key": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::stateful_set::make_rabbitmq_pod_spec": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::persistent_volume_claim::PersistentVolumeClaimView::unmarshal": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::default_user_secret::make_default_user_secret": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::common::Kind::arrow_CustomResourceKind_0": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::api_server::state_machine::metadata_transition_validity_check": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::api_server::state_machine::handle_list_request_msg": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::view::impl&%2::view": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::seq::axiom_seq_push_index_different": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::reconciler::spec::resource_builder::ResourceBuilder::state_after_update": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::std_specs::option::spec_unwrap_or": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::trusted::spec_types::RabbitmqClusterView::marshal": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::pod::PodView::state_validation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::resource::ResourceView::default": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::stateful_set::StatefulSetView::marshal_preserves_integrity": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::config_map::ConfigMapView::marshal": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::trusted::spec_types::RabbitmqClusterView::_state_validation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::trusted::rely_guarantee::rmq_rely_create_req": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::default_user_secret::DefaultUserSecretBuilder::make": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::temporal_logic::defs::TempPred::or": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::seq_lib::impl&%0::lemma_filter_contains": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::volume::ObjectFieldSelectorView::with_field_path": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::service::ServiceView::state_validation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::service_account::ServiceAccountView::default": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::resource::ResourceView::metadata": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::proof::predicate::update_req_obj_matches_etcd_immutable_fields": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::pod_monkey::state_machine::update_pod_status": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::api_server::state_machine::handle_get_request_msg": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role::RoleView::with_metadata": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::temporal_logic::defs::Execution::head_next": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::service_account::ServiceAccountBuilder::update": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::desired_state_is": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::role_binding::make_role_binding": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::set::axiom_set_remove_different": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::volume::ProjectedVolumeSourceView::default": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::rabbitmq_plugins::PluginsConfigMapBuilder::state_after_create": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::stateful_set::StatefulSetView::_transition_validation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::service_account::ServiceAccountView::_state_validation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::api_server_action_pre": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role::RoleView::_transition_validation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::default_user_secret::make_default_user_secret_name": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role::PolicyRuleView::with_api_groups": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::trusted::spec_types::RabbitmqClusterView::marshal_status": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::temporal_logic::defs::TempPred::implies": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role_binding::RoleBindingView::object_ref": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::trusted::rely_guarantee::rmq_rely_get_then_update_req": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::controller::state_machine::end_reconcile": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::pod_template_spec::PodTemplateSpecView::with_spec": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::stateful_set::StatefulSetView::marshal_status": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::trusted::rely_guarantee::rmq_guarantee": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::api_method::APIResponse::arrow_CreateResponse_0": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::temporal_logic::defs::always": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::set::impl&%0::filter": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::multiset::axiom_multiset_add": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::resource::ResourceView::status": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::install::rabbitmq_controller_model": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::network::state_machine::deliver": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::map::impl&%0::index": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role_binding::RoleBindingView::_transition_validation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::message::MessageContent::get_get_then_update_request": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::reconciler::spec::io::VoidEReqView::marshal": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::config_map::ServerConfigMapBuilder::update": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::trusted::spec_types::RabbitmqClusterView::unmarshal_spec": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::proof::predicate::req_msg_is_the_in_flight_pending_req_at_after_create_resource_step": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::proof::liveness::resource_match::lemma_from_after_get_resource_step_to_after_create_resource_step": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::map_lib::impl&%0::contains_value": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::service::ServiceView::marshal_preserves_integrity": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::std_specs::option::impl&%0::arrow_0": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::message::MessageContent::get_get_then_delete_request": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::proof::predicate::make_resource_key": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::message::controller_external_req_msg": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role_binding::RoleBindingView::with_role_ref": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::daemon_set::DaemonSetView::default": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::message::MessageContent::is_delete_request": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::volume::VolumeProjectionView::default": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::service_account::ServiceAccountView::transition_validation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::seq::Seq::new": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::multiset::axiom_multiset_sub": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::container::TCPSocketActionView::default": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role_binding::RoleBindingView::marshal_preserves_integrity": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::reconciler::reconcile_init_state": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::role::RoleBuilder::make": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::api_server::state_machine::handle_update_status_request": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::daemon_set::DaemonSetView::metadata": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::service_account::ServiceAccountView::unmarshal_spec": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::persistent_volume_claim::PersistentVolumeClaimView::unmarshal_status": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::set::axiom_set_remove_len": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::proof::liveness::resource_match::lemma_inductive_current_state_matches_preserves_from_s_to_s_prime_during_controller_step": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::rabbitmq_plugins::update_plugins_config_map": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::config_map::ConfigMapView::transition_validation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::set::axiom_set_contains_len": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::persistent_volume_claim::PersistentVolumeClaimView::state_validation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::secret::SecretView::_unmarshal_helper": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::map::impl&%0::insert": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::seq::impl&%0::spec_index": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::volume_resource_requirements::VolumeResourceRequirementsView::default": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role_binding::RoleBindingView::default": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::string::axiom_str_literal_len": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::resource::ResourceView::marshal_preserves_integrity": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::pod::PodView::unmarshal_status": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::role::RoleBuilder::update": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::seq_lib::impl&%0::filter": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::service_account::ServiceAccountView::_status": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::service::update_main_service": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::resource::ResourceView::marshal": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::rabbitmq_plugins::PluginsConfigMapBuilder::update": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::default_user_secret::update_default_user_secret": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::config_map::ConfigMapView::_unmarshal_helper": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::config_map::ConfigMapView::marshal_status": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::trusted::spec_types::RabbitmqClusterView::_kind": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::proof::helper_lemmas::update_sts_pass_state_validation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::secret::SecretView::with_metadata": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::seq_lib::impl&%0::add_empty_left": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::daemon_set::DaemonSetView::spec": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::each_scheduled_object_has_consistent_key_and_valid_metadata": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::temporal_logic::defs::later": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::external_next": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::array::array_view": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::proof::helper_invariants::predicate::rmq_self_rely_guarantee_create_req": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role_binding::RoleBindingView::_state_validation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::volume::ProjectedVolumeSourceView::with_sources": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::secret::SecretView::unmarshal": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::service_account::ServiceAccountView::status": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::secret::SecretView::_default": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::set::impl&%0::finite": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::headless_service::update_headless_service": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::map::axiom_map_remove_different": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::volume::ConfigMapProjectionView::with_items": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::stateful_set::StatefulSetView::_state_validation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::set::Set::empty": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::std_specs::result::ResultAdditionalSpecFns::arrow_Err_0": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::stateful_set::StatefulSetView::marshal": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::every_in_flight_msg_from_controller_has_kind_as": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::lemma_pre_leads_to_post_by_api_server": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::pod::PodView::marshal_preserves_metadata": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role_binding::RoleBindingView::_status": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role::RoleView::marshal_status": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::message::form_update_status_resp_msg": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::volume::VolumeView::with_config_map": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::message::MessageContent::is_get_then_delete_request": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::role_binding::RoleBindingBuilder::get_request": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::set::Set::remove": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::std_specs::result::ResultAdditionalSpecFns::arrow_Ok_0": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::service::ServiceBuilder::update": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::api_method::APIResponse::arrow_GetThenUpdateResponse_0": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::proof::liveness::resource_match::lemma_from_after_get_resource_step_to_after_create_resource_step_by_controller": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::reconciler::reconcile_core": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::api_server::state_machine::handle_get_then_delete_request_msg": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::config_map::ConfigMapView::unmarshal_spec": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::service_account::ServiceAccountView::state_validation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::trusted::rely_guarantee::rmq_rely_update_status_req": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::proof::helper_lemmas::lemma_create_sub_resource_request_returns_ok": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::pod::PodSpecView::default": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role_binding::RoleRefView::with_api_group": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::pod::PodView::_transition_validation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::pod_monkey::state_machine::delete_pod": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::secret::SecretView::object_ref": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::config_map::ConfigMapView::marshal_preserves_metadata": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role_binding::RoleBindingView::_unmarshal_helper": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::headless_service::make_headless_service": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::config_map::ServerConfigMapBuilder::make": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::persistent_volume_claim::PersistentVolumeClaimView::status": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::reconciler::spec::resource_builder::ResourceBuilder::make": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::persistent_volume_claim::PersistentVolumeClaimView::marshal": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::service::ServiceView::transition_validation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::resource::Marshallable::unmarshal": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::temporal_logic::rules::leads_to_trans": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::api_server::state_machine::handle_get_then_update_status_request_msg": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::etcd_is_finite": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::trusted::spec_types::random_encoded_string": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::api_server::state_machine::handle_delete_request_msg": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::object_meta::ObjectMetaView::with_annotations": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::std_specs::result::impl&%0::arrow_Err_0": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::container::TCPSocketActionView::with_port": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::set::axiom_set_empty": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::service::ServiceView::metadata": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::api_method::GetThenUpdateRequest::well_formed": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role_binding::SubjectView::with_kind": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::array::axiom_array_has_resolved": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::service::ServicePortView::with_app_protocol": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::crash_disabled": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::disable_crash": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::stateful_set::StatefulSetBuilder::get_request": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::config_map::make_server_config_map_key": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::reconciler::spec::io::VoidERespView::marshal_preserves_integrity": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::proof::helper_lemmas::make_sts_pass_state_validation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::service_account::ServiceAccountView::unmarshal": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::message::MessageContent::get_update_request": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::stutter": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::api_method::UpdateStatusRequest::key": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role::RoleView::default": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::container::ContainerPortView::with_name": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::trusted::spec_types::RabbitmqClusterView::metadata": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::seq::Seq::add": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::seq::impl&%0::spec_add": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role::RoleView::object_ref": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::role_binding::RoleBindingBuilder::state_after_create": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::seq::Seq::push": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::multiset::impl&%0::add": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::config_map::ConfigMapView::_transition_validation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::message::RPCIdAllocator::allocate": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::container::LifecycleHandlerView::with_exec": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::service::ServicePortView::with_port": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::ClusterState::resources": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::schedule_controller_reconcile": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::resource::ResourceView::unmarshal": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role::RoleView::_unmarshal_helper": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::owner_reference::owner_reference_to_object_reference": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::api_method::APIRequest::get_UpdateRequest_0": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::persistent_volume_claim::PersistentVolumeClaimView::with_spec": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::trusted::spec_types::RabbitmqClusterView::spec": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::service_account::ServiceAccountView::marshal_preserves_integrity": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::vstatefulset_controller::trusted::spec_types::VStatefulSetView::object_ref": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::seq_lib::impl&%0::lemma_filter_len": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::proof::predicate::pending_req_in_flight_at_after_update_resource_step": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::api_server::state_machine::marshalled_default_status": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::cr_objects_in_schedule_satisfy_state_validation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::service::ServiceView::marshal": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::message::MessageContent::arrow_APIResponse_0": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::view::impl&%16::view": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::builtin_controllers": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::view::impl&%44::view": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::vstatefulset_controller::trusted::spec_types::VStatefulSetView::with_spec": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::set::axiom_set_insert_finite": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::secret::SecretView::unmarshal_spec": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::ClusterState::reconcile_id_allocator": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::resource::ResourceView::object_ref": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::seq_lib::impl&%0::contains": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role::PolicyRuleView::default": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::message::MessageContent::is_get_then_update_request": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::set::axiom_set_choose_len": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::pod_monkey::state_machine::pod_monkey": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role::RoleView::_state_validation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::temporal_logic::defs::Execution::suffix": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::proof::predicate::at_rabbitmq_step_with_rabbitmq": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::rabbitmq_plugins::make_plugins_config_map_key": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::vstatefulset_controller::trusted::spec_types::VStatefulSetView::marshal": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::message::MessageContent::get_get_then_update_response": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::next_step": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::ClusterState::ongoing_reconciles": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::secret::SecretView::_spec": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::std_specs::result::impl&%0::arrow_Ok_0": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::reconciler::spec::resource_builder::ResourceBuilder::state_after_create": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role_binding::RoleBindingView::unmarshal": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::message::create_req_msg_content": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::config_map::ConfigMapView::unmarshal_status": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::volume::VolumeView::with_secret": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::stateful_set::StatefulSetView::transition_validation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::default_user_secret::DefaultUserSecretBuilder::state_after_update": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::temporal_logic::defs::TempPred::entails": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::reconciler::spec::reconciler::Reconciler::reconcile_init_state": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::temporal_logic::defs::TempPred::satisfied_by": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::trusted::rely_guarantee::is_rmq_managed_kind": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::message::HostId::is_controller_id": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::set::axiom_set_choose_infinite": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::proof::predicate::resp_msg_is_the_in_flight_not_found_resp_at_after_get_resource_step": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::vstatefulset_controller::trusted::spec_types::VStatefulSetView::marshal_preserves_metadata": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::config_map::ServerConfigMapBuilder::state_after_update": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::proof::predicate::at_after_get_resource_step_and_exists_ok_resp_in_flight": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::volume::KeyToPathView::with_key": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::ongoing_reconciles_is_finite": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::proof::predicate::at_after_get_resource_step_and_exists_not_found_resp_in_flight": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::proof::liveness::resource_match::lemma_from_key_exists_to_receives_ok_resp_at_after_get_resource_step": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::trusted::spec_types::RabbitmqClusterView::state_validation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::service::ServiceView::marshal_spec": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::message::form_get_then_update_resp_msg": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::service::ServiceBuilder::make": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::seq_lib::impl&%0::push_distributes_over_add": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::volume::ConfigMapProjectionView::with_name": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::controller::state_machine::controller": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::service::ServiceView::with_spec": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::object_meta::ObjectMetaView::with_namespace": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::seq::axiom_seq_index_decreases": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::every_msg_from_key_is_pending_req_msg_of": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::label_selector::LabelSelectorView::matches": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::volume::DownwardAPIVolumeFileView::default": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::headless_service::HeadlessServiceBuilder::make": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::api_method::APIRequest::get_GetThenUpdateRequest_0": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::proof::liveness::resource_match::lemma_from_after_get_resource_step_to_resource_matches": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::seq::Seq::len": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::api_server::state_machine::delete_request_admission_check": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::map::axiom_map_remove_domain": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::service::ServiceBuilder::state_after_update": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::installed_type": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::pod_monkey::state_machine::create_pod": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::persistent_volume_claim::PersistentVolumeClaimSpecView::default": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::trusted::rely_guarantee::rmq_rely_get_then_update_status_req": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::container::ContainerView::with_resources": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::role_binding::RoleBindingBuilder::update": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::config_map::update_server_config_map": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::map::impl&%0::spec_index": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::api_method::APIRequest::get_UpdateStatusRequest_0": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::proof::predicate::after_get_k_request_step": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::service::ServicePortView::default": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::container::LifecycleView::default": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::resource::ResourceView::marshal_spec": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::proof::liveness::resource_match::lemma_from_after_create_resource_step_to_after_get_next_resource_step": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::daemon_set::DaemonSetView::state_validation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role::PolicyRuleView::state_validation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::multiset::axiom_multiset_singleton_different": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::state_machine::action::Action::weak_fairness": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::pod::PodView::unmarshal_spec": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::view::impl&%4::view": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::vstatefulset_controller::trusted::spec_types::VStatefulSetView::unmarshal": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::secret::SecretView::_state_validation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::message::resource_get_request_msg": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::volume::SecretVolumeSourceView::with_secret_name": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role_binding::RoleBindingView::with_metadata": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::daemon_set::DaemonSetView::transition_validation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::state_machine::action::Action::forward": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::view::impl&%48::view": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::service::ServiceSpecView::default": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::message::MessageContent::get_get_then_update_status_request": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role::RoleView::spec": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::view::impl&%6::view": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::vstatefulset_controller::trusted::spec_types::VStatefulSetView::marshal_status": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::message::update_req_msg_content": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::service_account::ServiceAccountView::marshal_status": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::map_lib::impl&%0::values": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::message::MessageContent::get_update_status_request": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::message::MessageContent::get_list_request": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::message::MessageContent::get_create_response": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::stateful_set::StatefulSetBuilder::state_after_update": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::proof::predicate::inductive_current_state_matches": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role_binding::RoleBindingView::unmarshal_spec": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role_binding::RoleBindingView::_spec": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::map::axiom_map_insert_different": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::rabbitmq_plugins::PluginsConfigMapBuilder::make": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::vstatefulset_controller::trusted::exec_types::StatefulSetOrdinalLabel": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::persistent_volume_claim::PersistentVolumeClaimView::transition_validation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::dynamic::DynamicObjectView::with_resource_version": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::seq::Seq::index": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::vstatefulset_controller::trusted::spec_types::VStatefulSetView::marshal_preserves_integrity": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::proof::predicate::req_obj_matches_sub_resource_requirements": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::erlang_cookie::make_erlang_secret_name": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::api_method::APIRequest::get_GetRequest_0": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::multiset::axiom_multiset_singleton": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::api_server::state_machine::handle_list_request": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::volume::ObjectFieldSelectorView::default": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::seq::axiom_seq_new_len": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::object_meta::ObjectMetaView::without_resource_version": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::set::Set::insert": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::message::update_status_req_msg_content": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::map::impl&%0::empty": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::daemon_set::DaemonSetView::marshal": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::secret::SecretView::kind": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::vstatefulset_controller::trusted::spec_types::VStatefulSetView::with_metadata": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::map::impl&%0::dom": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::service::ServiceView::kind": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role::RoleView::unmarshal_status": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::api_method::APIRequest::get_CreateRequest_0": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::api_method::UpdateRequest::key": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::container::ProbeView::default": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::cr_objects_in_reconcile_satisfy_state_validation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::stateful_set::StatefulSetView::kind": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::vstatefulset_controller::trusted::spec_types::VStatefulSetView::unmarshal_spec": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role::RoleView::with_rules": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::req_drop_disabled": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::role::make_role_name": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::api_server::state_machine::object_validity_check": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::message::MessageContent::is_update_status_request": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::service_account::update_service_account": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::vstatefulset_controller::trusted::spec_types::VStatefulSetView::status": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::service::ServiceView::_state_validation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::volume::EmptyDirVolumeSourceView::default": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::role::make_role": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::external": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::proof::predicate::pending_req_in_flight_at_after_get_resource_step": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::stateful_set::make_stateful_set_key": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::container::ProbeView::with_timeout_seconds": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::persistent_volume_claim::PersistentVolumeClaimView::object_ref": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::message::resource_delete_request_msg": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::proof::helper_lemmas::lemma_api_request_other_than_pending_req_msg_maintains_resource_object": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::message::resource_create_request_msg": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::api_server::state_machine::handle_update_request_msg": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::seq_lib::impl&%0::lemma_filter_pred": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::string::impl&%0::view": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::message::received_msg_destined_for": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::the_object_in_reconcile_has_spec_and_uid_as": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::message::form_external_resp_msg": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::config_map::make_server_config_map_name": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::stateful_set::make_stateful_set": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::array::lemma_array_index": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::config_map::make_server_config_map": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role_binding::RoleBindingView::status": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::set::impl&%0::new": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::etcd_object_is_well_formed": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::erlang_cookie::ErlangCookieBuilder::get_request": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::state_machine::state_machine::NetworkStateMachine::next_result": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::service::ServiceView::_transition_validation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::temporal_logic::defs::tla_forall": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::api_server::state_machine::status_updated_object": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::object_meta::ObjectMetaView::with_labels": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::secret::SecretView::marshal_preserves_integrity": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::secret::SecretView::unmarshal_status": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::set::axiom_set_remove_finite": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role_binding::RoleRefView::with_name": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::proof::helper_lemmas::lemma_sub_resource_neq_implies_resource_key_neq": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::api_method::GetThenUpdateRequest::key": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::container::VolumeMountView::with_name": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role_binding::RoleBindingView::kind": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::headless_service::HeadlessServiceBuilder::get_request": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::config_map::ConfigMapView::_state_validation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::vstatefulset_controller::trusted::spec_types::VStatefulSetView::_state_validation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::set::impl&%0::choose": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::rabbitmq_plugins::make_plugins_config_map": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::daemon_set::DaemonSetView::unmarshal_spec": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role::PolicyRuleView::with_resources": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::message::MessageContent::get_delete_request": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::persistent_volume_claim::PersistentVolumeClaimView::_transition_validation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::trusted::rely_guarantee::rmq_rely": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::rabbitmq_plugins::make_plugins_config_map_name": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::each_builtin_object_in_etcd_is_well_formed": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::proof::predicate::resp_msg_is_the_in_flight_ok_resp_at_after_get_resource_step": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::container::EnvVarSourceView::default": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::view::impl&%50::view": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::message::delete_req_msg_content": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::volume::SecretProjectionView::default": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::daemon_set::DaemonSetView::object_ref": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::volume::KeyToPathView::default": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::vstatefulset_controller::trusted::exec_types::StatefulSetPodNameLabel": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::volume::DownwardAPIVolumeSourceView::with_items": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::stateful_set::StatefulSetView::marshal_preserves_metadata": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::erlang_cookie::make_erlang_secret_key": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::label_selector::LabelSelectorView::default": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::persistent_volume_claim::PersistentVolumeClaimView::marshal_preserves_metadata": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::string::axiom_str_literal_get_char": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::api_method::APIRequest::arrow_GetRequest_0": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::pending_req_msg_is": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::model::resource::role_binding::RoleBindingBuilder::state_after_update": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::owner_reference::owner_reference_eq_without_uid": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::std_specs::option::OptionAdditionalFns::arrow_0": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::service_account::ServiceAccountView::_default": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::view::impl&%0::view": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role::RoleView::marshal": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::map::axiom_map_index_decreases_infinite": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::temporal_logic::defs::valid": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::proof::liveness::resource_match::lemma_inductive_current_state_matches_preserves_from_s_to_s_prime": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::Cluster::lemma_pre_leads_to_post_by_controller": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::rabbitmq_controller::trusted::spec_types::RabbitmqReconciler::reconcile_init_state": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::resource::ResourceView::transition_validation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::set::axiom_set_insert_len": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::daemon_set::DaemonSetView::kind": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::seq::Seq::empty": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::cluster::ClusterState::scheduled_reconciles": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::role_binding::RoleBindingView::marshal_preserves_metadata": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::vstatefulset_controller::trusted::spec_types::VStatefulSetView::transition_validation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::seq_lib::seq_to_set_is_finite": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::api_server::state_machine::update_request_admission_check_helper": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::secret::SecretView::transition_validation": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_api_objects::spec::config_map::ConfigMapView::_spec": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::message::form_get_then_update_status_resp_msg": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::temporal_logic::defs::tla_exists": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "esr_composition::kubernetes_cluster::spec::api_server::state_machine::update_status_request_admission_check": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    },
+    "vstd::multiset::axiom_multiset_ext_equal": {
+      "obligation_proof_notes": [],
+      "failed_proof_notes": []
+    }
+  },
+  "verification-results": {
+    "encountered-error": false,
+    "encountered-vir-error": false,
+    "success": true,
+    "verified": 13,
+    "errors": 0,
+    "is-verifying-entire-crate": true
+  },
+  "times-ms": {
+    "verus-build": {
+      "profile": "release",
+      "version": "0.2026.04.27.da55287.dirty"
+    },
+    "num-threads": 1,
+    "total": 113741,
+    "estimated-cpu-time": 113741,
+    "rust": {
+      "total": 7781,
+      "init-and-types": 4158,
+      "trait-conflicts": 92,
+      "compile": 3529
+    },
+    "verification": {
+      "total": 104205,
+      "vir": {
+        "total": 7374,
+        "hir": 1523,
+        "import": 103,
+        "rust-to-vir": 2093
+      }
+    },
+    "verify-totals": {
+      "total-verify": 95360,
+      "air": 526,
+      "smt-init": 0,
+      "smt-init-rlimit": 19352,
+      "smt-run": 94342,
+      "smt-run-rlimit": 166767048
+    },
+    "module-times": [
+      {
+        "module": "rabbitmq_controller::proof::liveness::resource_match",
+        "bucket-kind": "module",
+        "total": 95360,
+        "air": 526,
+        "smt-init": 0,
+        "smt-init-micros": 333,
+        "smt-init-rlimit": 19352,
+        "smt-run": 94342,
+        "smt-run-micros": 94342170,
+        "smt-run-rlimit": 166767048,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::rabbitmq_controller::proof::liveness::resource_match::lemma_inductive_current_state_matches_preserves_from_s_to_s_prime",
+            "mode": "proof",
+            "smt-time": 25409,
+            "smt-time-micros": 25409190,
+            "rlimit": 19787894,
+            "success": true
+          },
+          {
+            "function": "esr_composition::rabbitmq_controller::proof::liveness::resource_match::lemma_inductive_current_state_matches_preserves_from_s_to_s_prime_during_controller_step",
+            "mode": "proof",
+            "smt-time": 20349,
+            "smt-time-micros": 20349797,
+            "rlimit": 37669522,
+            "success": true
+          },
+          {
+            "function": "esr_composition::rabbitmq_controller::proof::liveness::resource_match::lemma_resource_state_matches_at_after_update_resource_step",
+            "mode": "proof",
+            "smt-time": 9648,
+            "smt-time-micros": 9648594,
+            "rlimit": 18153855,
+            "success": true
+          },
+          {
+            "function": "esr_composition::rabbitmq_controller::proof::liveness::resource_match::lemma_resource_state_matches_at_after_create_resource_step",
+            "mode": "proof",
+            "smt-time": 7580,
+            "smt-time-micros": 7580956,
+            "rlimit": 11784178,
+            "success": true
+          },
+          {
+            "function": "esr_composition::rabbitmq_controller::proof::liveness::resource_match::lemma_from_key_exists_to_receives_ok_resp_at_after_get_resource_step",
+            "mode": "proof",
+            "smt-time": 7235,
+            "smt-time-micros": 7235599,
+            "rlimit": 21673303,
+            "success": true
+          },
+          {
+            "function": "esr_composition::rabbitmq_controller::proof::liveness::resource_match::lemma_from_after_get_resource_step_to_after_update_resource_step",
+            "mode": "proof",
+            "smt-time": 4636,
+            "smt-time-micros": 4636845,
+            "rlimit": 13540148,
+            "success": true
+          },
+          {
+            "function": "esr_composition::rabbitmq_controller::proof::liveness::resource_match::lemma_from_after_get_resource_step_to_after_create_resource_step_by_controller",
+            "mode": "proof",
+            "smt-time": 4378,
+            "smt-time-micros": 4378118,
+            "rlimit": 5802457,
+            "success": true
+          },
+          {
+            "function": "esr_composition::rabbitmq_controller::proof::liveness::resource_match::lemma_from_after_create_resource_step_to_after_get_next_resource_step",
+            "mode": "proof",
+            "smt-time": 3643,
+            "smt-time-micros": 3643016,
+            "rlimit": 9346980,
+            "success": true
+          },
+          {
+            "function": "esr_composition::rabbitmq_controller::proof::liveness::resource_match::lemma_from_after_update_resource_step_to_after_get_next_resource_step",
+            "mode": "proof",
+            "smt-time": 3302,
+            "smt-time-micros": 3302797,
+            "rlimit": 8209037,
+            "success": true
+          },
+          {
+            "function": "esr_composition::rabbitmq_controller::proof::liveness::resource_match::lemma_from_after_get_resource_step_to_after_update_resource_step_by_controller",
+            "mode": "proof",
+            "smt-time": 3061,
+            "smt-time-micros": 3061266,
+            "rlimit": 5179668,
+            "success": true
+          },
+          {
+            "function": "esr_composition::rabbitmq_controller::proof::liveness::resource_match::lemma_from_key_not_exists_to_receives_not_found_resp_at_after_get_resource_step",
+            "mode": "proof",
+            "smt-time": 2251,
+            "smt-time-micros": 2251029,
+            "rlimit": 6902033,
+            "success": true
+          },
+          {
+            "function": "esr_composition::rabbitmq_controller::proof::liveness::resource_match::lemma_from_after_get_resource_step_to_after_create_resource_step",
+            "mode": "proof",
+            "smt-time": 2225,
+            "smt-time-micros": 2225316,
+            "rlimit": 6775551,
+            "success": true
+          },
+          {
+            "function": "esr_composition::rabbitmq_controller::proof::liveness::resource_match::lemma_from_after_get_resource_step_to_resource_matches",
+            "mode": "proof",
+            "smt-time": 619,
+            "smt-time-micros": 619642,
+            "rlimit": 1942422,
+            "success": true
+          }
+        ]
+      }
+    ]
+  },
+  "verus": {
+    "profile": "release",
+    "version": "0.2026.04.27.da55287.dirty",
+    "platform": {
+      "os": "linux",
+      "arch": "x86_64"
+    },
+    "toolchain": "1.95.0-x86_64-unknown-linux-gnu",
+    "commit": "da55287f2a7b49b15fb3d431a615b947256afd65"
+  }
+}

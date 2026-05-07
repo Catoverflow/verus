@@ -1,0 +1,298 @@
+{
+  "verification-results": {
+    "encountered-error": false,
+    "encountered-vir-error": false,
+    "success": true,
+    "verified": 13,
+    "errors": 0,
+    "is-verifying-entire-crate": true
+  },
+  "times-ms": {
+    "verus-build": {
+      "profile": "release",
+      "version": "0.2026.04.27.da55287.dirty"
+    },
+    "num-threads": 10,
+    "total": 50956,
+    "estimated-cpu-time": 141944,
+    "rust": {
+      "total": 7803,
+      "init-and-types": 4134,
+      "trait-conflicts": 91,
+      "compile": 3577
+    },
+    "verification": {
+      "total": 41408,
+      "vir": {
+        "total": 7441,
+        "hir": 1573,
+        "import": 103,
+        "rust-to-vir": 2159
+      }
+    },
+    "verify-totals": {
+      "total-verify": 123781,
+      "air": 3019,
+      "smt-init": 0,
+      "smt-init-rlimit": 19740,
+      "smt-run": 117198,
+      "smt-run-rlimit": 166851177
+    },
+    "module-times": [
+      {
+        "module": "rabbitmq_controller::proof::liveness::resource_match#lemma_inductive_current_state_matches_preserves_from_s_to_s_prime",
+        "bucket-kind": "spinoff",
+        "total": 32235,
+        "air": 400,
+        "smt-init": 0,
+        "smt-init-micros": 36,
+        "smt-init-rlimit": 3307,
+        "smt-run": 31461,
+        "smt-run-micros": 31461142,
+        "smt-run-rlimit": 26658616,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::rabbitmq_controller::proof::liveness::resource_match::lemma_inductive_current_state_matches_preserves_from_s_to_s_prime",
+            "mode": "proof",
+            "smt-time": 31461,
+            "smt-time-micros": 31461142,
+            "rlimit": 26658616,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "rabbitmq_controller::proof::liveness::resource_match#lemma_inductive_current_state_matches_preserves_from_s_to_s_prime_during_controller_step",
+        "bucket-kind": "spinoff",
+        "total": 25072,
+        "air": 262,
+        "smt-init": 0,
+        "smt-init-micros": 29,
+        "smt-init-rlimit": 3112,
+        "smt-run": 24411,
+        "smt-run-micros": 24411201,
+        "smt-run-rlimit": 39312133,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::rabbitmq_controller::proof::liveness::resource_match::lemma_inductive_current_state_matches_preserves_from_s_to_s_prime_during_controller_step",
+            "mode": "proof",
+            "smt-time": 24411,
+            "smt-time-micros": 24411201,
+            "rlimit": 39312133,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "rabbitmq_controller::proof::liveness::resource_match",
+        "bucket-kind": "module",
+        "total": 13935,
+        "air": 405,
+        "smt-init": 0,
+        "smt-init-micros": 100,
+        "smt-init-rlimit": 6626,
+        "smt-run": 13079,
+        "smt-run-micros": 13079645,
+        "smt-run-rlimit": 26940122,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::rabbitmq_controller::proof::liveness::resource_match::lemma_from_after_get_resource_step_to_after_create_resource_step_by_controller",
+            "mode": "proof",
+            "smt-time": 4707,
+            "smt-time-micros": 4707325,
+            "rlimit": 5652802,
+            "success": true
+          },
+          {
+            "function": "esr_composition::rabbitmq_controller::proof::liveness::resource_match::lemma_from_key_exists_to_receives_ok_resp_at_after_get_resource_step",
+            "mode": "proof",
+            "smt-time": 4049,
+            "smt-time-micros": 4049047,
+            "rlimit": 10784152,
+            "success": true
+          },
+          {
+            "function": "esr_composition::rabbitmq_controller::proof::liveness::resource_match::lemma_from_after_update_resource_step_to_after_get_next_resource_step",
+            "mode": "proof",
+            "smt-time": 3689,
+            "smt-time-micros": 3689191,
+            "rlimit": 8540725,
+            "success": true
+          },
+          {
+            "function": "esr_composition::rabbitmq_controller::proof::liveness::resource_match::lemma_from_after_get_resource_step_to_resource_matches",
+            "mode": "proof",
+            "smt-time": 634,
+            "smt-time-micros": 634081,
+            "rlimit": 1962443,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "rabbitmq_controller::proof::liveness::resource_match#lemma_from_after_get_resource_step_to_after_update_resource_step_by_controller",
+        "bucket-kind": "spinoff",
+        "total": 11973,
+        "air": 279,
+        "smt-init": 0,
+        "smt-init-micros": 22,
+        "smt-init-rlimit": 686,
+        "smt-run": 11394,
+        "smt-run-micros": 11394464,
+        "smt-run-rlimit": 9492275,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::rabbitmq_controller::proof::liveness::resource_match::lemma_from_after_get_resource_step_to_after_update_resource_step_by_controller",
+            "mode": "proof",
+            "smt-time": 11394,
+            "smt-time-micros": 11394464,
+            "rlimit": 9492275,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "rabbitmq_controller::proof::liveness::resource_match#lemma_resource_state_matches_at_after_create_resource_step",
+        "bucket-kind": "spinoff",
+        "total": 11045,
+        "air": 263,
+        "smt-init": 0,
+        "smt-init-micros": 26,
+        "smt-init-rlimit": 1072,
+        "smt-run": 10419,
+        "smt-run-micros": 10419758,
+        "smt-run-rlimit": 16114723,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::rabbitmq_controller::proof::liveness::resource_match::lemma_resource_state_matches_at_after_create_resource_step",
+            "mode": "proof",
+            "smt-time": 10419,
+            "smt-time-micros": 10419758,
+            "rlimit": 16114723,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "rabbitmq_controller::proof::liveness::resource_match#lemma_resource_state_matches_at_after_update_resource_step",
+        "bucket-kind": "spinoff",
+        "total": 10300,
+        "air": 255,
+        "smt-init": 0,
+        "smt-init-micros": 23,
+        "smt-init-rlimit": 1098,
+        "smt-run": 9629,
+        "smt-run-micros": 9629933,
+        "smt-run-rlimit": 15134899,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::rabbitmq_controller::proof::liveness::resource_match::lemma_resource_state_matches_at_after_update_resource_step",
+            "mode": "proof",
+            "smt-time": 9629,
+            "smt-time-micros": 9629933,
+            "rlimit": 15134899,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "rabbitmq_controller::proof::liveness::resource_match#lemma_from_after_create_resource_step_to_after_get_next_resource_step",
+        "bucket-kind": "spinoff",
+        "total": 6667,
+        "air": 259,
+        "smt-init": 0,
+        "smt-init-micros": 29,
+        "smt-init-rlimit": 1068,
+        "smt-run": 6091,
+        "smt-run-micros": 6091663,
+        "smt-run-rlimit": 9672545,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::rabbitmq_controller::proof::liveness::resource_match::lemma_from_after_create_resource_step_to_after_get_next_resource_step",
+            "mode": "proof",
+            "smt-time": 6091,
+            "smt-time-micros": 6091663,
+            "rlimit": 9672545,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "rabbitmq_controller::proof::liveness::resource_match#lemma_from_after_get_resource_step_to_after_update_resource_step",
+        "bucket-kind": "spinoff",
+        "total": 5516,
+        "air": 258,
+        "smt-init": 0,
+        "smt-init-micros": 26,
+        "smt-init-rlimit": 949,
+        "smt-run": 4938,
+        "smt-run-micros": 4938786,
+        "smt-run-rlimit": 9755328,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::rabbitmq_controller::proof::liveness::resource_match::lemma_from_after_get_resource_step_to_after_update_resource_step",
+            "mode": "proof",
+            "smt-time": 4938,
+            "smt-time-micros": 4938786,
+            "rlimit": 9755328,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "rabbitmq_controller::proof::liveness::resource_match#lemma_from_after_get_resource_step_to_after_create_resource_step",
+        "bucket-kind": "spinoff",
+        "total": 4205,
+        "air": 317,
+        "smt-init": 0,
+        "smt-init-micros": 33,
+        "smt-init-rlimit": 855,
+        "smt-run": 3588,
+        "smt-run-micros": 3588991,
+        "smt-run-rlimit": 8191410,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::rabbitmq_controller::proof::liveness::resource_match::lemma_from_after_get_resource_step_to_after_create_resource_step",
+            "mode": "proof",
+            "smt-time": 3588,
+            "smt-time-micros": 3588991,
+            "rlimit": 8191410,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "rabbitmq_controller::proof::liveness::resource_match#lemma_from_key_not_exists_to_receives_not_found_resp_at_after_get_resource_step",
+        "bucket-kind": "spinoff",
+        "total": 2827,
+        "air": 316,
+        "smt-init": 0,
+        "smt-init-micros": 22,
+        "smt-init-rlimit": 967,
+        "smt-run": 2182,
+        "smt-run-micros": 2182986,
+        "smt-run-rlimit": 5579126,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::rabbitmq_controller::proof::liveness::resource_match::lemma_from_key_not_exists_to_receives_not_found_resp_at_after_get_resource_step",
+            "mode": "proof",
+            "smt-time": 2182,
+            "smt-time-micros": 2182986,
+            "rlimit": 5579126,
+            "success": true
+          }
+        ]
+      }
+    ]
+  },
+  "verus": {
+    "profile": "release",
+    "version": "0.2026.04.27.da55287.dirty",
+    "platform": {
+      "os": "linux",
+      "arch": "x86_64"
+    },
+    "toolchain": "1.95.0-x86_64-unknown-linux-gnu",
+    "commit": "da55287f2a7b49b15fb3d431a615b947256afd65"
+  }
+}
