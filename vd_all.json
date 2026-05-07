@@ -1,0 +1,5896 @@
+{
+  "verification-results": {
+    "encountered-error": true,
+    "encountered-vir-error": false,
+    "verified": 139,
+    "errors": 1,
+    "is-verifying-entire-crate": false
+  },
+  "times-ms": {
+    "verus-build": {
+      "profile": "release",
+      "version": "0.2026.05.07.d011664"
+    },
+    "num-threads": 8,
+    "total": 175171,
+    "estimated-cpu-time": 1021382,
+    "rust": {
+      "total": 4472,
+      "init-and-types": 4363,
+      "trait-conflicts": 109,
+      "compile": 0
+    },
+    "verification": {
+      "total": 168624,
+      "vir": {
+        "total": 8382,
+        "hir": 1831,
+        "import": 119,
+        "rust-to-vir": 2170
+      }
+    },
+    "verify-totals": {
+      "total-verify": 1004971,
+      "air": 25757,
+      "smt-init": 4,
+      "smt-init-rlimit": 123057,
+      "smt-run": 916126,
+      "smt-run-rlimit": 835115367
+    },
+    "module-times": [
+      {
+        "module": "vdeployment_controller::proof::helper_invariants::proof#lemma_eventually_always_vd_in_reconciles_has_the_same_spec_uid_name_namespace_and_labels_as_vd",
+        "bucket-kind": "spinoff",
+        "total": 118839,
+        "air": 208,
+        "smt-init": 0,
+        "smt-init-micros": 35,
+        "smt-init-rlimit": 1142,
+        "smt-run": 118291,
+        "smt-run-micros": 118291276,
+        "smt-run-rlimit": 116378737,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::helper_invariants::proof::lemma_eventually_always_vd_in_reconciles_has_the_same_spec_uid_name_namespace_and_labels_as_vd",
+            "mode": "proof",
+            "smt-time": 118291,
+            "smt-time-micros": 118291276,
+            "rlimit": 116378737,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::resource_match#lemma_from_after_send_get_then_update_req_to_receive_ok_resp_of_new_replicas",
+        "bucket-kind": "spinoff",
+        "total": 112827,
+        "air": 248,
+        "smt-init": 0,
+        "smt-init-micros": 32,
+        "smt-init-rlimit": 1031,
+        "smt-run": 112164,
+        "smt-run-micros": 112164216,
+        "smt-run-rlimit": 115976049,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::resource_match::lemma_from_after_send_get_then_update_req_to_receive_ok_resp_of_new_replicas",
+            "mode": "proof",
+            "smt-time": 112164,
+            "smt-time-micros": 112164216,
+            "rlimit": 115976049,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::helper_invariants::proof#lemma_eventually_always_no_other_pending_request_interferes_with_vd_reconcile",
+        "bucket-kind": "spinoff",
+        "total": 56875,
+        "air": 267,
+        "smt-init": 0,
+        "smt-init-micros": 37,
+        "smt-init-rlimit": 2822,
+        "smt-run": 56207,
+        "smt-run-micros": 56207500,
+        "smt-run-rlimit": 12076591,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::helper_invariants::proof::lemma_eventually_always_no_other_pending_request_interferes_with_vd_reconcile",
+            "mode": "proof",
+            "smt-time": 56207,
+            "smt-time-micros": 56207500,
+            "rlimit": 12076591,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::resource_match#lemma_from_after_send_list_vrs_req_to_receive_list_vrs_resp",
+        "bucket-kind": "spinoff",
+        "total": 49889,
+        "air": 227,
+        "smt-init": 0,
+        "smt-init-micros": 34,
+        "smt-init-rlimit": 693,
+        "smt-run": 49288,
+        "smt-run-micros": 49288375,
+        "smt-run-rlimit": 45115296,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::resource_match::lemma_from_after_send_list_vrs_req_to_receive_list_vrs_resp",
+            "mode": "proof",
+            "smt-time": 49288,
+            "smt-time-micros": 49288375,
+            "rlimit": 45115296,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::resource_match#lemma_from_receive_ok_resp_after_scale_new_vrs_to_after_ensure_new_vrs",
+        "bucket-kind": "spinoff",
+        "total": 40713,
+        "air": 268,
+        "smt-init": 0,
+        "smt-init-micros": 36,
+        "smt-init-rlimit": 869,
+        "smt-run": 40006,
+        "smt-run-micros": 40006190,
+        "smt-run-rlimit": 25597177,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::resource_match::lemma_from_receive_ok_resp_after_scale_new_vrs_to_after_ensure_new_vrs",
+            "mode": "proof",
+            "smt-time": 40006,
+            "smt-time-micros": 40006190,
+            "rlimit": 25597177,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::rolling_update::resource_match#lemma_from_after_scale_new_vrs_to_not_desired_state_with_nv",
+        "bucket-kind": "spinoff",
+        "total": 38823,
+        "air": 294,
+        "smt-init": 0,
+        "smt-init-micros": 29,
+        "smt-init-rlimit": 1056,
+        "smt-run": 38084,
+        "smt-run-micros": 38084595,
+        "smt-run-rlimit": 39162966,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::rolling_update::resource_match::lemma_from_after_scale_new_vrs_to_not_desired_state_with_nv",
+            "mode": "proof",
+            "smt-time": 38084,
+            "smt-time-micros": 38084595,
+            "rlimit": 39162966,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::resource_match#lemma_from_old_vrs_len_zero_at_scale_down_old_vrs_to_current_state_matches",
+        "bucket-kind": "spinoff",
+        "total": 36367,
+        "air": 269,
+        "smt-init": 0,
+        "smt-init-micros": 50,
+        "smt-init-rlimit": 988,
+        "smt-run": 35642,
+        "smt-run-micros": 35642383,
+        "smt-run-rlimit": 28135196,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::resource_match::lemma_from_old_vrs_len_zero_at_scale_down_old_vrs_to_current_state_matches",
+            "mode": "proof",
+            "smt-time": 35642,
+            "smt-time-micros": 35642383,
+            "rlimit": 28135196,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::resource_match#lemma_from_after_ensure_new_vrs_with_old_vrs_of_n_to_pending_scale_down_req_in_flight",
+        "bucket-kind": "spinoff",
+        "total": 36115,
+        "air": 262,
+        "smt-init": 0,
+        "smt-init-micros": 32,
+        "smt-init-rlimit": 1145,
+        "smt-run": 35444,
+        "smt-run-micros": 35444101,
+        "smt-run-rlimit": 30653468,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::resource_match::lemma_from_after_ensure_new_vrs_with_old_vrs_of_n_to_pending_scale_down_req_in_flight",
+            "mode": "proof",
+            "smt-time": 35444,
+            "smt-time-micros": 35444101,
+            "rlimit": 30653468,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::resource_match#lemma_from_after_scale_down_old_vrs_with_old_vrs_of_n_to_pending_scale_down_req_in_flight",
+        "bucket-kind": "spinoff",
+        "total": 33946,
+        "air": 268,
+        "smt-init": 0,
+        "smt-init-micros": 33,
+        "smt-init-rlimit": 1156,
+        "smt-run": 33217,
+        "smt-run-micros": 33217590,
+        "smt-run-rlimit": 27675553,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::resource_match::lemma_from_after_scale_down_old_vrs_with_old_vrs_of_n_to_pending_scale_down_req_in_flight",
+            "mode": "proof",
+            "smt-time": 33217,
+            "smt-time-micros": 33217590,
+            "rlimit": 27675553,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::helper_invariants::proof#lemma_eventually_always_no_pending_interfering_update_request",
+        "bucket-kind": "spinoff",
+        "total": 32248,
+        "air": 266,
+        "smt-init": 0,
+        "smt-init-micros": 41,
+        "smt-init-rlimit": 3069,
+        "smt-run": 31575,
+        "smt-run-micros": 31575065,
+        "smt-run-rlimit": 9519695,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::helper_invariants::proof::lemma_eventually_always_no_pending_interfering_update_request",
+            "mode": "proof",
+            "smt-time": 31575,
+            "smt-time-micros": 31575065,
+            "rlimit": 9519695,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::resource_match#lemma_from_after_send_get_then_update_req_to_receive_get_then_update_resp_on_old_vrs_of_n",
+        "bucket-kind": "spinoff",
+        "total": 28209,
+        "air": 262,
+        "smt-init": 0,
+        "smt-init-micros": 37,
+        "smt-init-rlimit": 1048,
+        "smt-run": 27505,
+        "smt-run-micros": 27505998,
+        "smt-run-rlimit": 24757169,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::resource_match::lemma_from_after_send_get_then_update_req_to_receive_get_then_update_resp_on_old_vrs_of_n",
+            "mode": "proof",
+            "smt-time": 27505,
+            "smt-time-micros": 27505998,
+            "rlimit": 24757169,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::resource_match#lemma_from_old_vrs_len_zero_after_ensure_new_vrs_to_current_state_matches",
+        "bucket-kind": "spinoff",
+        "total": 26246,
+        "air": 246,
+        "smt-init": 0,
+        "smt-init-micros": 38,
+        "smt-init-rlimit": 989,
+        "smt-run": 25588,
+        "smt-run-micros": 25588986,
+        "smt-run-rlimit": 21899260,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::resource_match::lemma_from_old_vrs_len_zero_after_ensure_new_vrs_to_current_state_matches",
+            "mode": "proof",
+            "smt-time": 25588,
+            "smt-time-micros": 25588986,
+            "rlimit": 21899260,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::helper_invariants::proof#lemma_eventually_always_vd_in_ongoing_reconciles_does_not_have_deletion_timestamp",
+        "bucket-kind": "spinoff",
+        "total": 22765,
+        "air": 185,
+        "smt-init": 0,
+        "smt-init-micros": 42,
+        "smt-init-rlimit": 390,
+        "smt-run": 22270,
+        "smt-run-micros": 22270398,
+        "smt-run-rlimit": 30000000,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::helper_invariants::proof::lemma_eventually_always_vd_in_ongoing_reconciles_does_not_have_deletion_timestamp",
+            "mode": "proof",
+            "smt-time": 22270,
+            "smt-time-micros": 22270398,
+            "rlimit": 30000000,
+            "success": false
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::rolling_update::resource_match#lemma_from_after_receive_list_resp_to_after_scale_new_vrs_with_nv",
+        "bucket-kind": "spinoff",
+        "total": 21369,
+        "air": 313,
+        "smt-init": 0,
+        "smt-init-micros": 48,
+        "smt-init-rlimit": 1469,
+        "smt-run": 20559,
+        "smt-run-micros": 20559529,
+        "smt-run-rlimit": 23952075,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::rolling_update::resource_match::lemma_from_after_receive_list_resp_to_after_scale_new_vrs_with_nv",
+            "mode": "proof",
+            "smt-time": 20559,
+            "smt-time-micros": 20559529,
+            "rlimit": 23952075,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::resource_match#lemma_from_after_send_create_new_vrs_req_to_receive_ok_resp",
+        "bucket-kind": "spinoff",
+        "total": 19783,
+        "air": 247,
+        "smt-init": 0,
+        "smt-init-micros": 41,
+        "smt-init-rlimit": 910,
+        "smt-run": 19124,
+        "smt-run-micros": 19124109,
+        "smt-run-rlimit": 16935235,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::resource_match::lemma_from_after_send_create_new_vrs_req_to_receive_ok_resp",
+            "mode": "proof",
+            "smt-time": 19124,
+            "smt-time-micros": 19124109,
+            "rlimit": 16935235,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::helper_invariants::proof#lemma_eventually_always_garbage_collector_does_not_delete_vd_vrs_objects",
+        "bucket-kind": "spinoff",
+        "total": 19578,
+        "air": 258,
+        "smt-init": 0,
+        "smt-init-micros": 34,
+        "smt-init-rlimit": 3128,
+        "smt-run": 18962,
+        "smt-run-micros": 18962842,
+        "smt-run-rlimit": 16879980,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::helper_invariants::proof::lemma_eventually_always_garbage_collector_does_not_delete_vd_vrs_objects",
+            "mode": "proof",
+            "smt-time": 18962,
+            "smt-time-micros": 18962842,
+            "rlimit": 16879980,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::rolling_update::composition#lemma_inductive_current_state_matches_preserves_from_s_to_s_prime_during_api_server_step",
+        "bucket-kind": "spinoff",
+        "total": 19556,
+        "air": 252,
+        "smt-init": 0,
+        "smt-init-micros": 37,
+        "smt-init-rlimit": 1403,
+        "smt-run": 18892,
+        "smt-run-micros": 18892213,
+        "smt-run-rlimit": 10296643,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::rolling_update::composition::lemma_inductive_current_state_matches_preserves_from_s_to_s_prime_during_api_server_step",
+            "mode": "proof",
+            "smt-time": 18892,
+            "smt-time-micros": 18892213,
+            "rlimit": 10296643,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::resource_match#lemma_from_receive_ok_resp_after_create_new_vrs_to_after_ensure_new_vrs",
+        "bucket-kind": "spinoff",
+        "total": 17755,
+        "air": 261,
+        "smt-init": 0,
+        "smt-init-micros": 40,
+        "smt-init-rlimit": 909,
+        "smt-run": 17071,
+        "smt-run-micros": 17071657,
+        "smt-run-rlimit": 13881145,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::resource_match::lemma_from_receive_ok_resp_after_create_new_vrs_to_after_ensure_new_vrs",
+            "mode": "proof",
+            "smt-time": 17071,
+            "smt-time-micros": 17071657,
+            "rlimit": 13881145,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::resource_match#lemma_from_after_receive_list_vrs_resp_to_send_create_new_vrs_req",
+        "bucket-kind": "spinoff",
+        "total": 17007,
+        "air": 260,
+        "smt-init": 0,
+        "smt-init-micros": 39,
+        "smt-init-rlimit": 1026,
+        "smt-run": 16335,
+        "smt-run-micros": 16335879,
+        "smt-run-rlimit": 17793720,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::resource_match::lemma_from_after_receive_list_vrs_resp_to_send_create_new_vrs_req",
+            "mode": "proof",
+            "smt-time": 16335,
+            "smt-time-micros": 16335879,
+            "rlimit": 17793720,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::api_actions#lemma_api_request_other_than_pending_req_msg_maintains_object_owned_by_vd",
+        "bucket-kind": "spinoff",
+        "total": 12938,
+        "air": 232,
+        "smt-init": 0,
+        "smt-init-micros": 36,
+        "smt-init-rlimit": 3451,
+        "smt-run": 12338,
+        "smt-run-micros": 12338999,
+        "smt-run-rlimit": 11126885,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::api_actions::lemma_api_request_other_than_pending_req_msg_maintains_object_owned_by_vd",
+            "mode": "proof",
+            "smt-time": 12338,
+            "smt-time-micros": 12338999,
+            "rlimit": 11126885,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::resource_match#lemma_from_after_receive_list_vrs_resp_to_pending_scale_new_vrs_req_in_flight",
+        "bucket-kind": "spinoff",
+        "total": 11838,
+        "air": 257,
+        "smt-init": 0,
+        "smt-init-micros": 35,
+        "smt-init-rlimit": 1273,
+        "smt-run": 11158,
+        "smt-run-micros": 11158389,
+        "smt-run-rlimit": 12937682,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::resource_match::lemma_from_after_receive_list_vrs_resp_to_pending_scale_new_vrs_req_in_flight",
+            "mode": "proof",
+            "smt-time": 11158,
+            "smt-time-micros": 11158389,
+            "rlimit": 12937682,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::helper_invariants::proof#lemma_always_vd_reconcile_request_only_interferes_with_itself",
+        "bucket-kind": "spinoff",
+        "total": 10567,
+        "air": 211,
+        "smt-init": 0,
+        "smt-init-micros": 39,
+        "smt-init-rlimit": 1969,
+        "smt-run": 10053,
+        "smt-run-micros": 10053960,
+        "smt-run-rlimit": 11649720,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::helper_invariants::proof::lemma_always_vd_reconcile_request_only_interferes_with_itself",
+            "mode": "proof",
+            "smt-time": 10053,
+            "smt-time-micros": 10053960,
+            "rlimit": 11649720,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::rolling_update::composition#lemma_inductive_current_state_matches_preserves_from_s_to_s_prime_with_nv_key",
+        "bucket-kind": "spinoff",
+        "total": 10555,
+        "air": 237,
+        "smt-init": 0,
+        "smt-init-micros": 28,
+        "smt-init-rlimit": 447,
+        "smt-run": 9963,
+        "smt-run-micros": 9963569,
+        "smt-run-rlimit": 10985393,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::rolling_update::composition::lemma_inductive_current_state_matches_preserves_from_s_to_s_prime_with_nv_key",
+            "mode": "proof",
+            "smt-time": 9963,
+            "smt-time-micros": 9963569,
+            "rlimit": 10985393,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::rolling_update::resource_match#lemma_from_after_send_list_vrs_req_to_receive_list_vrs_resp_with_nv",
+        "bucket-kind": "spinoff",
+        "total": 10554,
+        "air": 296,
+        "smt-init": 0,
+        "smt-init-micros": 40,
+        "smt-init-rlimit": 840,
+        "smt-run": 9841,
+        "smt-run-micros": 9841680,
+        "smt-run-rlimit": 10511929,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::rolling_update::resource_match::lemma_from_after_send_list_vrs_req_to_receive_list_vrs_resp_with_nv",
+            "mode": "proof",
+            "smt-time": 9841,
+            "smt-time-micros": 9841680,
+            "rlimit": 10511929,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::api_actions#lemma_api_request_other_than_pending_req_msg_maintains_etcd_state",
+        "bucket-kind": "spinoff",
+        "total": 10127,
+        "air": 238,
+        "smt-init": 0,
+        "smt-init-micros": 33,
+        "smt-init-rlimit": 598,
+        "smt-run": 9557,
+        "smt-run-micros": 9557740,
+        "smt-run-rlimit": 3946054,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::api_actions::lemma_api_request_other_than_pending_req_msg_maintains_etcd_state",
+            "mode": "proof",
+            "smt-time": 9557,
+            "smt-time-micros": 9557740,
+            "rlimit": 3946054,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::helper_invariants::proof#lemma_vrs_objects_in_local_reconcile_state_are_controllerly_owned_by_vd_with_key_preserves_from_s_to_s_prime",
+        "bucket-kind": "spinoff",
+        "total": 10042,
+        "air": 192,
+        "smt-init": 0,
+        "smt-init-micros": 34,
+        "smt-init-rlimit": 481,
+        "smt-run": 9554,
+        "smt-run-micros": 9554240,
+        "smt-run-rlimit": 15131947,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::helper_invariants::proof::lemma_vrs_objects_in_local_reconcile_state_are_controllerly_owned_by_vd_with_key_preserves_from_s_to_s_prime",
+            "mode": "proof",
+            "smt-time": 9554,
+            "smt-time-micros": 9554240,
+            "rlimit": 15131947,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::helper_invariants::proof#lemma_vrs_objects_in_local_reconcile_state_are_controllerly_owned_by_vd_with_key_preserves_from_s_to_s_prime_during_controller_step",
+        "bucket-kind": "spinoff",
+        "total": 8618,
+        "air": 197,
+        "smt-init": 0,
+        "smt-init-micros": 45,
+        "smt-init-rlimit": 2055,
+        "smt-run": 8084,
+        "smt-run-micros": 8084975,
+        "smt-run-rlimit": 8153891,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::helper_invariants::proof::lemma_vrs_objects_in_local_reconcile_state_are_controllerly_owned_by_vd_with_key_preserves_from_s_to_s_prime_during_controller_step",
+            "mode": "proof",
+            "smt-time": 8084,
+            "smt-time-micros": 8084975,
+            "rlimit": 8153891,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::api_actions#lemma_list_vrs_request_returns_ok_with_objs_matching_vd_with_nv_status_matching_replicas",
+        "bucket-kind": "spinoff",
+        "total": 7849,
+        "air": 305,
+        "smt-init": 0,
+        "smt-init-micros": 40,
+        "smt-init-rlimit": 1879,
+        "smt-run": 7137,
+        "smt-run-micros": 7137050,
+        "smt-run-rlimit": 3095704,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::api_actions::lemma_list_vrs_request_returns_ok_with_objs_matching_vd_with_nv_status_matching_replicas",
+            "mode": "proof",
+            "smt-time": 7137,
+            "smt-time-micros": 7137050,
+            "rlimit": 3095704,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::helper_invariants::proof#lemma_eventually_always_vd_in_schedule_has_the_same_spec_uid_name_namespace_and_labels_as_vd",
+        "bucket-kind": "spinoff",
+        "total": 7733,
+        "air": 193,
+        "smt-init": 0,
+        "smt-init-micros": 31,
+        "smt-init-rlimit": 555,
+        "smt-run": 7234,
+        "smt-run-micros": 7234322,
+        "smt-run-rlimit": 8255011,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::helper_invariants::proof::lemma_eventually_always_vd_in_schedule_has_the_same_spec_uid_name_namespace_and_labels_as_vd",
+            "mode": "proof",
+            "smt-time": 7234,
+            "smt-time-micros": 7234322,
+            "rlimit": 8255011,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::rolling_update::composition#ranking_never_increases",
+        "bucket-kind": "spinoff",
+        "total": 6770,
+        "air": 259,
+        "smt-init": 0,
+        "smt-init-micros": 34,
+        "smt-init-rlimit": 1503,
+        "smt-run": 6097,
+        "smt-run-micros": 6097366,
+        "smt-run-rlimit": 5048930,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::rolling_update::composition::ranking_never_increases",
+            "mode": "proof",
+            "smt-time": 6097,
+            "smt-time-micros": 6097366,
+            "rlimit": 5048930,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::resource_match#lemma_from_after_receive_list_vrs_resp_to_after_ensure_new_vrs",
+        "bucket-kind": "spinoff",
+        "total": 6658,
+        "air": 262,
+        "smt-init": 0,
+        "smt-init-micros": 37,
+        "smt-init-rlimit": 1211,
+        "smt-run": 5990,
+        "smt-run-micros": 5990277,
+        "smt-run-rlimit": 6856124,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::resource_match::lemma_from_after_receive_list_vrs_resp_to_after_ensure_new_vrs",
+            "mode": "proof",
+            "smt-time": 5990,
+            "smt-time-micros": 5990277,
+            "rlimit": 6856124,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::rolling_update::composition#ranking_decreases_after_vrs_esr",
+        "bucket-kind": "spinoff",
+        "total": 6464,
+        "air": 304,
+        "smt-init": 0,
+        "smt-init-micros": 39,
+        "smt-init-rlimit": 2003,
+        "smt-run": 5687,
+        "smt-run-micros": 5687317,
+        "smt-run-rlimit": 8985752,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::rolling_update::composition::ranking_decreases_after_vrs_esr",
+            "mode": "proof",
+            "smt-time": 5687,
+            "smt-time-micros": 5687317,
+            "rlimit": 8985752,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::resource_match#lemma_from_init_step_to_send_list_vrs_req",
+        "bucket-kind": "spinoff",
+        "total": 6176,
+        "air": 256,
+        "smt-init": 0,
+        "smt-init-micros": 33,
+        "smt-init-rlimit": 378,
+        "smt-run": 5537,
+        "smt-run-micros": 5537959,
+        "smt-run-rlimit": 6548318,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::resource_match::lemma_from_init_step_to_send_list_vrs_req",
+            "mode": "proof",
+            "smt-time": 5537,
+            "smt-time-micros": 5537959,
+            "rlimit": 6548318,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::proof#lemma_true_leads_to_always_current_state_matches",
+        "bucket-kind": "spinoff",
+        "total": 6157,
+        "air": 283,
+        "smt-init": 0,
+        "smt-init-micros": 36,
+        "smt-init-rlimit": 1956,
+        "smt-run": 5445,
+        "smt-run-micros": 5445120,
+        "smt-run-rlimit": 8760706,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::proof::lemma_true_leads_to_always_current_state_matches",
+            "mode": "proof",
+            "smt-time": 5445,
+            "smt-time-micros": 5445120,
+            "rlimit": 8760706,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::guarantee#guarantee_condition_holds",
+        "bucket-kind": "spinoff",
+        "total": 5980,
+        "air": 208,
+        "smt-init": 0,
+        "smt-init-micros": 31,
+        "smt-init-rlimit": 1846,
+        "smt-run": 5458,
+        "smt-run-micros": 5458090,
+        "smt-run-rlimit": 6540185,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::guarantee::guarantee_condition_holds",
+            "mode": "proof",
+            "smt-time": 5458,
+            "smt-time-micros": 5458090,
+            "rlimit": 6540185,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::rolling_update::composition#lemma_inductive_current_state_matches_preserves_from_s_to_s_prime_during_controller_step",
+        "bucket-kind": "spinoff",
+        "total": 5289,
+        "air": 262,
+        "smt-init": 0,
+        "smt-init-micros": 36,
+        "smt-init-rlimit": 1165,
+        "smt-run": 4610,
+        "smt-run-micros": 4610848,
+        "smt-run-rlimit": 4665812,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::rolling_update::composition::lemma_inductive_current_state_matches_preserves_from_s_to_s_prime_during_controller_step",
+            "mode": "proof",
+            "smt-time": 4610,
+            "smt-time-micros": 4610848,
+            "rlimit": 4665812,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::rolling_update::composition#ranking_never_increases_from_s_to_s_prime",
+        "bucket-kind": "spinoff",
+        "total": 4711,
+        "air": 247,
+        "smt-init": 0,
+        "smt-init-micros": 29,
+        "smt-init-rlimit": 397,
+        "smt-run": 4065,
+        "smt-run-micros": 4065184,
+        "smt-run-rlimit": 1607348,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::rolling_update::composition::ranking_never_increases_from_s_to_s_prime",
+            "mode": "proof",
+            "smt-time": 4065,
+            "smt-time-micros": 4065184,
+            "rlimit": 1607348,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::api_actions#lemma_list_vrs_request_returns_ok_with_objs_matching_vd",
+        "bucket-kind": "spinoff",
+        "total": 4493,
+        "air": 216,
+        "smt-init": 0,
+        "smt-init-micros": 34,
+        "smt-init-rlimit": 1657,
+        "smt-run": 3937,
+        "smt-run-micros": 3937098,
+        "smt-run-rlimit": 2154535,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::api_actions::lemma_list_vrs_request_returns_ok_with_objs_matching_vd",
+            "mode": "proof",
+            "smt-time": 3937,
+            "smt-time-micros": 3937098,
+            "rlimit": 2154535,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::helper_invariants::proof#lemma_always_there_is_no_request_msg_to_external_from_controller",
+        "bucket-kind": "spinoff",
+        "total": 4226,
+        "air": 199,
+        "smt-init": 0,
+        "smt-init-micros": 27,
+        "smt-init-rlimit": 470,
+        "smt-run": 3726,
+        "smt-run-micros": 3726230,
+        "smt-run-rlimit": 4883321,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::helper_invariants::proof::lemma_always_there_is_no_request_msg_to_external_from_controller",
+            "mode": "proof",
+            "smt-time": 3726,
+            "smt-time-micros": 3726230,
+            "rlimit": 4883321,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::spec#spec_entails_all_invariants",
+        "bucket-kind": "spinoff",
+        "total": 3255,
+        "air": 354,
+        "smt-init": 0,
+        "smt-init-micros": 47,
+        "smt-init-rlimit": 2639,
+        "smt-run": 2403,
+        "smt-run-micros": 2403899,
+        "smt-run-rlimit": 4152622,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::spec::spec_entails_all_invariants",
+            "mode": "proof",
+            "smt-time": 2403,
+            "smt-time-micros": 2403899,
+            "rlimit": 4152622,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::rolling_update::resource_match#lemma_from_list_resp_with_nv_status_matching_spec_to_next_state",
+        "bucket-kind": "spinoff",
+        "total": 2936,
+        "air": 252,
+        "smt-init": 0,
+        "smt-init-micros": 38,
+        "smt-init-rlimit": 2190,
+        "smt-run": 2293,
+        "smt-run-micros": 2293162,
+        "smt-run-rlimit": 2161129,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::rolling_update::resource_match::lemma_from_list_resp_with_nv_status_matching_spec_to_next_state",
+            "mode": "proof",
+            "smt-time": 2293,
+            "smt-time-micros": 2293162,
+            "rlimit": 2161129,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::spec#spec_entails_always_cluster_invariants_since_reconciliation_holds_pre_cr",
+        "bucket-kind": "spinoff",
+        "total": 2766,
+        "air": 339,
+        "smt-init": 0,
+        "smt-init-micros": 38,
+        "smt-init-rlimit": 1714,
+        "smt-run": 1948,
+        "smt-run-micros": 1948041,
+        "smt-run-rlimit": 5603814,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::spec::spec_entails_always_cluster_invariants_since_reconciliation_holds_pre_cr",
+            "mode": "proof",
+            "smt-time": 1948,
+            "smt-time-micros": 1948041,
+            "rlimit": 5603814,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::resource_match#lemma_from_init_to_current_state_matches_with_nv_key",
+        "bucket-kind": "spinoff",
+        "total": 2669,
+        "air": 298,
+        "smt-init": 0,
+        "smt-init-micros": 39,
+        "smt-init-rlimit": 4970,
+        "smt-run": 1897,
+        "smt-run-micros": 1897570,
+        "smt-run-rlimit": 2734892,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::resource_match::lemma_from_init_to_current_state_matches_with_nv_key",
+            "mode": "proof",
+            "smt-time": 1897,
+            "smt-time-micros": 1897570,
+            "rlimit": 2734892,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::api_actions#lemma_api_request_other_than_pending_req_msg_maintains_objects_owned_by_vd",
+        "bucket-kind": "spinoff",
+        "total": 2601,
+        "air": 227,
+        "smt-init": 0,
+        "smt-init-micros": 31,
+        "smt-init-rlimit": 437,
+        "smt-run": 2045,
+        "smt-run-micros": 2045812,
+        "smt-run-rlimit": 2195568,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::api_actions::lemma_api_request_other_than_pending_req_msg_maintains_objects_owned_by_vd",
+            "mode": "proof",
+            "smt-time": 2045,
+            "smt-time-micros": 2045812,
+            "rlimit": 2195568,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::rolling_update::composition#composed_old_vrs_set_pre_preserves_from_s_to_s_prime",
+        "bucket-kind": "spinoff",
+        "total": 2561,
+        "air": 274,
+        "smt-init": 0,
+        "smt-init-micros": 37,
+        "smt-init-rlimit": 1071,
+        "smt-run": 1894,
+        "smt-run-micros": 1894341,
+        "smt-run-rlimit": 2158078,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::rolling_update::composition::composed_old_vrs_set_pre_preserves_from_s_to_s_prime",
+            "mode": "proof",
+            "smt-time": 1894,
+            "smt-time-micros": 1894341,
+            "rlimit": 2158078,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::resource_match#lemma_from_list_resp_to_next_state",
+        "bucket-kind": "spinoff",
+        "total": 2407,
+        "air": 255,
+        "smt-init": 0,
+        "smt-init-micros": 42,
+        "smt-init-rlimit": 1601,
+        "smt-run": 1773,
+        "smt-run-micros": 1773748,
+        "smt-run-rlimit": 2224891,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::resource_match::lemma_from_list_resp_to_next_state",
+            "mode": "proof",
+            "smt-time": 1773,
+            "smt-time-micros": 1773748,
+            "rlimit": 2224891,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::rolling_update::resource_match#lemma_from_list_resp_with_nv_to_next_state",
+        "bucket-kind": "spinoff",
+        "total": 2403,
+        "air": 252,
+        "smt-init": 0,
+        "smt-init-micros": 37,
+        "smt-init-rlimit": 1587,
+        "smt-run": 1745,
+        "smt-run-micros": 1745803,
+        "smt-run-rlimit": 2016315,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::rolling_update::resource_match::lemma_from_list_resp_with_nv_to_next_state",
+            "mode": "proof",
+            "smt-time": 1745,
+            "smt-time-micros": 1745803,
+            "rlimit": 2016315,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::terminate#reconcile_eventually_terminates_on_vd_object",
+        "bucket-kind": "spinoff",
+        "total": 2300,
+        "air": 228,
+        "smt-init": 0,
+        "smt-init-micros": 40,
+        "smt-init-rlimit": 2759,
+        "smt-run": 1681,
+        "smt-run-micros": 1681864,
+        "smt-run-rlimit": 2871927,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::terminate::reconcile_eventually_terminates_on_vd_object",
+            "mode": "proof",
+            "smt-time": 1681,
+            "smt-time-micros": 1681864,
+            "rlimit": 2871927,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::rolling_update::composition#rolling_update_leads_to_composed_current_state_matches_vd",
+        "bucket-kind": "spinoff",
+        "total": 2061,
+        "air": 299,
+        "smt-init": 0,
+        "smt-init-micros": 43,
+        "smt-init-rlimit": 5336,
+        "smt-run": 1254,
+        "smt-run-micros": 1254562,
+        "smt-run-rlimit": 2297210,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::rolling_update::composition::rolling_update_leads_to_composed_current_state_matches_vd",
+            "mode": "proof",
+            "smt-time": 1254,
+            "smt-time-micros": 1254562,
+            "rlimit": 2297210,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::helper_invariants::proof#lemma_eventually_always_vd_in_schedule_does_not_have_deletion_timestamp",
+        "bucket-kind": "spinoff",
+        "total": 2016,
+        "air": 164,
+        "smt-init": 0,
+        "smt-init-micros": 33,
+        "smt-init-rlimit": 560,
+        "smt-run": 1598,
+        "smt-run-micros": 1598060,
+        "smt-run-rlimit": 2745928,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::helper_invariants::proof::lemma_eventually_always_vd_in_schedule_does_not_have_deletion_timestamp",
+            "mode": "proof",
+            "smt-time": 1598,
+            "smt-time-micros": 1598060,
+            "rlimit": 2745928,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::spec#spec_of_previous_phases_entails_eventually_new_invariants",
+        "bucket-kind": "spinoff",
+        "total": 1881,
+        "air": 260,
+        "smt-init": 0,
+        "smt-init-micros": 37,
+        "smt-init-rlimit": 1027,
+        "smt-run": 1199,
+        "smt-run-micros": 1199181,
+        "smt-run-rlimit": 3078187,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::spec::spec_of_previous_phases_entails_eventually_new_invariants",
+            "mode": "proof",
+            "smt-time": 1199,
+            "smt-time-micros": 1199181,
+            "rlimit": 3078187,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::helper_invariants::proof#lemma_vrs_objects_in_local_reconcile_state_are_controllerly_owned_by_vd_with_key_preserves_from_s_to_s_prime_during_api_server_step",
+        "bucket-kind": "spinoff",
+        "total": 1859,
+        "air": 203,
+        "smt-init": 0,
+        "smt-init-micros": 35,
+        "smt-init-rlimit": 2351,
+        "smt-run": 1331,
+        "smt-run-micros": 1331543,
+        "smt-run-rlimit": 1756478,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::helper_invariants::proof::lemma_vrs_objects_in_local_reconcile_state_are_controllerly_owned_by_vd_with_key_preserves_from_s_to_s_prime_during_api_server_step",
+            "mode": "proof",
+            "smt-time": 1331,
+            "smt-time-micros": 1331543,
+            "rlimit": 1756478,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::helper_invariants::proof#lemma_always_every_msg_from_vd_controller_carries_vd_key",
+        "bucket-kind": "spinoff",
+        "total": 1768,
+        "air": 192,
+        "smt-init": 0,
+        "smt-init-micros": 31,
+        "smt-init-rlimit": 496,
+        "smt-run": 1314,
+        "smt-run-micros": 1314458,
+        "smt-run-rlimit": 2052001,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::helper_invariants::proof::lemma_always_every_msg_from_vd_controller_carries_vd_key",
+            "mode": "proof",
+            "smt-time": 1314,
+            "smt-time-micros": 1314458,
+            "rlimit": 2052001,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::spec#spec_entails_always_desired_state_is_leads_to_assumption_and_invariants_of_all_phases",
+        "bucket-kind": "spinoff",
+        "total": 1739,
+        "air": 254,
+        "smt-init": 0,
+        "smt-init-micros": 36,
+        "smt-init-rlimit": 834,
+        "smt-run": 1094,
+        "smt-run-micros": 1094809,
+        "smt-run-rlimit": 2528207,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::spec::spec_entails_always_desired_state_is_leads_to_assumption_and_invariants_of_all_phases",
+            "mode": "proof",
+            "smt-time": 1094,
+            "smt-time-micros": 1094809,
+            "rlimit": 2528207,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::api_actions#lemma_api_request_other_than_pending_req_msg_maintains_vrs_set_owned_by_vd",
+        "bucket-kind": "spinoff",
+        "total": 1724,
+        "air": 216,
+        "smt-init": 0,
+        "smt-init-micros": 33,
+        "smt-init-rlimit": 696,
+        "smt-run": 1182,
+        "smt-run-micros": 1182437,
+        "smt-run-rlimit": 900565,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::api_actions::lemma_api_request_other_than_pending_req_msg_maintains_vrs_set_owned_by_vd",
+            "mode": "proof",
+            "smt-time": 1182,
+            "smt-time-micros": 1182437,
+            "rlimit": 900565,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::helper_invariants::proof#lemma_always_vrs_objects_in_local_reconcile_state_are_controllerly_owned_by_vd",
+        "bucket-kind": "spinoff",
+        "total": 1626,
+        "air": 263,
+        "smt-init": 0,
+        "smt-init-micros": 42,
+        "smt-init-rlimit": 1295,
+        "smt-run": 1057,
+        "smt-run-micros": 1057290,
+        "smt-run-rlimit": 1534705,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::helper_invariants::proof::lemma_always_vrs_objects_in_local_reconcile_state_are_controllerly_owned_by_vd",
+            "mode": "proof",
+            "smt-time": 1057,
+            "smt-time-micros": 1057290,
+            "rlimit": 1534705,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::api_actions#lemma_create_new_vrs_request_returns_ok",
+        "bucket-kind": "spinoff",
+        "total": 1146,
+        "air": 255,
+        "smt-init": 0,
+        "smt-init-micros": 33,
+        "smt-init-rlimit": 1563,
+        "smt-run": 510,
+        "smt-run-micros": 510922,
+        "smt-run-rlimit": 619451,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::api_actions::lemma_create_new_vrs_request_returns_ok",
+            "mode": "proof",
+            "smt-time": 510,
+            "smt-time-micros": 510922,
+            "rlimit": 619451,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::api_actions#lemma_scale_new_vrs_req_returns_ok",
+        "bucket-kind": "spinoff",
+        "total": 1099,
+        "air": 204,
+        "smt-init": 0,
+        "smt-init-micros": 40,
+        "smt-init-rlimit": 441,
+        "smt-run": 593,
+        "smt-run-micros": 593100,
+        "smt-run-rlimit": 754938,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::api_actions::lemma_scale_new_vrs_req_returns_ok",
+            "mode": "proof",
+            "smt-time": 593,
+            "smt-time-micros": 593100,
+            "rlimit": 754938,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::rolling_update::helper_lemmas#inductive_current_state_matches_implies_filter_old_and_new_vrs_from_resp_objs",
+        "bucket-kind": "spinoff",
+        "total": 1096,
+        "air": 166,
+        "smt-init": 0,
+        "smt-init-micros": 31,
+        "smt-init-rlimit": 2046,
+        "smt-run": 646,
+        "smt-run-micros": 646143,
+        "smt-run-rlimit": 941235,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::rolling_update::helper_lemmas::inductive_current_state_matches_implies_filter_old_and_new_vrs_from_resp_objs",
+            "mode": "proof",
+            "smt-time": 646,
+            "smt-time-micros": 646143,
+            "rlimit": 941235,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::proof#spec_entails_assumptions_and_invariants_of_all_phases_implies_cluster_invariants_since_reconciliation",
+        "bucket-kind": "spinoff",
+        "total": 1025,
+        "air": 343,
+        "smt-init": 0,
+        "smt-init-micros": 49,
+        "smt-init-rlimit": 2027,
+        "smt-run": 262,
+        "smt-run-micros": 262045,
+        "smt-run-rlimit": 766659,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::proof::spec_entails_assumptions_and_invariants_of_all_phases_implies_cluster_invariants_since_reconciliation",
+            "mode": "proof",
+            "smt-time": 262,
+            "smt-time-micros": 262045,
+            "rlimit": 766659,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::api_actions#lemma_scale_old_vrs_req_returns_ok",
+        "bucket-kind": "spinoff",
+        "total": 1009,
+        "air": 206,
+        "smt-init": 0,
+        "smt-init-micros": 28,
+        "smt-init-rlimit": 443,
+        "smt-run": 504,
+        "smt-run-micros": 504118,
+        "smt-run-rlimit": 690976,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::api_actions::lemma_scale_old_vrs_req_returns_ok",
+            "mode": "proof",
+            "smt-time": 504,
+            "smt-time-micros": 504118,
+            "rlimit": 690976,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::resource_match#lemma_from_n_to_n_minus_one_on_old_vrs_len",
+        "bucket-kind": "spinoff",
+        "total": 942,
+        "air": 250,
+        "smt-init": 0,
+        "smt-init-micros": 35,
+        "smt-init-rlimit": 1008,
+        "smt-run": 330,
+        "smt-run-micros": 330186,
+        "smt-run-rlimit": 555971,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::resource_match::lemma_from_n_to_n_minus_one_on_old_vrs_len",
+            "mode": "proof",
+            "smt-time": 330,
+            "smt-time-micros": 330186,
+            "rlimit": 555971,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::api_actions#lemma_api_request_other_than_pending_req_msg_maintains_local_state_validity_and_coherence",
+        "bucket-kind": "spinoff",
+        "total": 932,
+        "air": 239,
+        "smt-init": 0,
+        "smt-init-micros": 30,
+        "smt-init-rlimit": 687,
+        "smt-run": 365,
+        "smt-run-micros": 365575,
+        "smt-run-rlimit": 501529,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::api_actions::lemma_api_request_other_than_pending_req_msg_maintains_local_state_validity_and_coherence",
+            "mode": "proof",
+            "smt-time": 365,
+            "smt-time-micros": 365575,
+            "rlimit": 501529,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::rolling_update::resource_match#lemma_from_init_to_not_desired_state_is",
+        "bucket-kind": "spinoff",
+        "total": 881,
+        "air": 301,
+        "smt-init": 0,
+        "smt-init-micros": 31,
+        "smt-init-rlimit": 1269,
+        "smt-run": 166,
+        "smt-run-micros": 166069,
+        "smt-run-rlimit": 319669,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::rolling_update::resource_match::lemma_from_init_to_not_desired_state_is",
+            "mode": "proof",
+            "smt-time": 166,
+            "smt-time-micros": 166069,
+            "rlimit": 319669,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::exec::reconciler#reconcile_core",
+        "bucket-kind": "spinoff",
+        "total": 867,
+        "air": 110,
+        "smt-init": 0,
+        "smt-init-micros": 33,
+        "smt-init-rlimit": 1985,
+        "smt-run": 569,
+        "smt-run-micros": 569781,
+        "smt-run-rlimit": 1268757,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::exec::reconciler::reconcile_core",
+            "mode": "exec",
+            "smt-time": 569,
+            "smt-time-micros": 569781,
+            "rlimit": 1268757,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::proof#eventually_stable_reconciliation_holds_per_cr",
+        "bucket-kind": "spinoff",
+        "total": 737,
+        "air": 246,
+        "smt-init": 0,
+        "smt-init-micros": 30,
+        "smt-init-rlimit": 438,
+        "smt-run": 135,
+        "smt-run-micros": 135393,
+        "smt-run-rlimit": 411636,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::proof::eventually_stable_reconciliation_holds_per_cr",
+            "mode": "proof",
+            "smt-time": 135,
+            "smt-time-micros": 135393,
+            "rlimit": 411636,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::helper_lemmas#lemma_filter_old_and_new_vrs_from_resp_objs_implies_etcd_state_is",
+        "bucket-kind": "spinoff",
+        "total": 685,
+        "air": 186,
+        "smt-init": 0,
+        "smt-init-micros": 45,
+        "smt-init-rlimit": 936,
+        "smt-run": 253,
+        "smt-run-micros": 253790,
+        "smt-run-rlimit": 438153,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::helper_lemmas::lemma_filter_old_and_new_vrs_from_resp_objs_implies_etcd_state_is",
+            "mode": "proof",
+            "smt-time": 253,
+            "smt-time-micros": 253790,
+            "rlimit": 438153,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::rolling_update::composition#current_state_match_vd_implies_exists_old_vrs_set",
+        "bucket-kind": "spinoff",
+        "total": 657,
+        "air": 151,
+        "smt-init": 0,
+        "smt-init-micros": 30,
+        "smt-init-rlimit": 964,
+        "smt-run": 262,
+        "smt-run-micros": 262272,
+        "smt-run-rlimit": 439389,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::rolling_update::composition::current_state_match_vd_implies_exists_old_vrs_set",
+            "mode": "proof",
+            "smt-time": 262,
+            "smt-time-micros": 262272,
+            "rlimit": 439389,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::spec#spec_before_phase_n_entails_true_leads_to_assumption_and_invariants_of_all_phases",
+        "bucket-kind": "spinoff",
+        "total": 650,
+        "air": 236,
+        "smt-init": 0,
+        "smt-init-micros": 33,
+        "smt-init-rlimit": 326,
+        "smt-run": 58,
+        "smt-run-micros": 58242,
+        "smt-run-rlimit": 178022,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::spec::spec_before_phase_n_entails_true_leads_to_assumption_and_invariants_of_all_phases",
+            "mode": "proof",
+            "smt-time": 58,
+            "smt-time-micros": 58242,
+            "rlimit": 178022,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::proof#lemma_vd_composed_eventually_stable_reconciliation",
+        "bucket-kind": "spinoff",
+        "total": 650,
+        "air": 273,
+        "smt-init": 0,
+        "smt-init-micros": 31,
+        "smt-init-rlimit": 466,
+        "smt-run": 39,
+        "smt-run-micros": 39731,
+        "smt-run-rlimit": 125026,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::proof::lemma_vd_composed_eventually_stable_reconciliation",
+            "mode": "proof",
+            "smt-time": 39,
+            "smt-time-micros": 39731,
+            "rlimit": 125026,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::rolling_update::composition#conjuncted_current_state_matches_old_vrs_0_implies_composed",
+        "bucket-kind": "spinoff",
+        "total": 647,
+        "air": 164,
+        "smt-init": 0,
+        "smt-init-micros": 38,
+        "smt-init-rlimit": 848,
+        "smt-run": 223,
+        "smt-run-micros": 223826,
+        "smt-run-rlimit": 411196,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::rolling_update::composition::conjuncted_current_state_matches_old_vrs_0_implies_composed",
+            "mode": "proof",
+            "smt-time": 223,
+            "smt-time-micros": 223826,
+            "rlimit": 411196,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::spec#assumption_and_invariants_of_all_phases_is_stable",
+        "bucket-kind": "spinoff",
+        "total": 628,
+        "air": 233,
+        "smt-init": 0,
+        "smt-init-micros": 34,
+        "smt-init-rlimit": 319,
+        "smt-run": 71,
+        "smt-run-micros": 71383,
+        "smt-run-rlimit": 225947,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::spec::assumption_and_invariants_of_all_phases_is_stable",
+            "mode": "proof",
+            "smt-time": 71,
+            "smt-time-micros": 71383,
+            "rlimit": 225947,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::proof#spec_before_phase_n_entails_true_leads_to_current_state_matches",
+        "bucket-kind": "spinoff",
+        "total": 612,
+        "air": 262,
+        "smt-init": 0,
+        "smt-init-micros": 47,
+        "smt-init-rlimit": 321,
+        "smt-run": 18,
+        "smt-run-micros": 18572,
+        "smt-run-rlimit": 68698,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::proof::spec_before_phase_n_entails_true_leads_to_current_state_matches",
+            "mode": "proof",
+            "smt-time": 18,
+            "smt-time-micros": 18572,
+            "rlimit": 68698,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::spec#stable_spec_and_assumption_and_invariants_of_all_phases_is_stable",
+        "bucket-kind": "spinoff",
+        "total": 609,
+        "air": 227,
+        "smt-init": 0,
+        "smt-init-micros": 36,
+        "smt-init-rlimit": 390,
+        "smt-run": 38,
+        "smt-run-micros": 38210,
+        "smt-run-rlimit": 107887,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::spec::stable_spec_and_assumption_and_invariants_of_all_phases_is_stable",
+            "mode": "proof",
+            "smt-time": 38,
+            "smt-time-micros": 38210,
+            "rlimit": 107887,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::api_actions#lemma_api_request_other_than_pending_req_msg_maintains_current_state_matches_with_nv_key",
+        "bucket-kind": "spinoff",
+        "total": 605,
+        "air": 237,
+        "smt-init": 0,
+        "smt-init-micros": 33,
+        "smt-init-rlimit": 357,
+        "smt-run": 57,
+        "smt-run-micros": 57945,
+        "smt-run-rlimit": 130525,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::api_actions::lemma_api_request_other_than_pending_req_msg_maintains_current_state_matches_with_nv_key",
+            "mode": "proof",
+            "smt-time": 57,
+            "smt-time-micros": 57945,
+            "rlimit": 130525,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::helper_lemmas#lemma_esr_equiv_to_instantiated_etcd_state_is_with_nv_key",
+        "bucket-kind": "spinoff",
+        "total": 601,
+        "air": 155,
+        "smt-init": 0,
+        "smt-init-micros": 39,
+        "smt-init-rlimit": 940,
+        "smt-run": 215,
+        "smt-run-micros": 215721,
+        "smt-run-rlimit": 404835,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::helper_lemmas::lemma_esr_equiv_to_instantiated_etcd_state_is_with_nv_key",
+            "mode": "proof",
+            "smt-time": 215,
+            "smt-time-micros": 215721,
+            "rlimit": 404835,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::terminate#reconcile_eventually_terminates",
+        "bucket-kind": "spinoff",
+        "total": 578,
+        "air": 212,
+        "smt-init": 0,
+        "smt-init-micros": 37,
+        "smt-init-rlimit": 1603,
+        "smt-run": 53,
+        "smt-run-micros": 53616,
+        "smt-run-rlimit": 179497,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::terminate::reconcile_eventually_terminates",
+            "mode": "proof",
+            "smt-time": 53,
+            "smt-time-micros": 53616,
+            "rlimit": 179497,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::spec#spec_and_invariants_entails_stable_spec_and_invariants",
+        "bucket-kind": "spinoff",
+        "total": 571,
+        "air": 210,
+        "smt-init": 0,
+        "smt-init-micros": 38,
+        "smt-init-rlimit": 257,
+        "smt-run": 48,
+        "smt-run-micros": 48561,
+        "smt-run-rlimit": 168951,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::spec::spec_and_invariants_entails_stable_spec_and_invariants",
+            "mode": "proof",
+            "smt-time": 48,
+            "smt-time-micros": 48561,
+            "rlimit": 168951,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::helper_lemmas#lemma_instantiate_exists_create_resp_msg_containing_new_vrs_uid_key",
+        "bucket-kind": "spinoff",
+        "total": 554,
+        "air": 153,
+        "smt-init": 0,
+        "smt-init-micros": 35,
+        "smt-init-rlimit": 543,
+        "smt-run": 162,
+        "smt-run-micros": 162142,
+        "smt-run-rlimit": 268804,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::helper_lemmas::lemma_instantiate_exists_create_resp_msg_containing_new_vrs_uid_key",
+            "mode": "proof",
+            "smt-time": 162,
+            "smt-time-micros": 162142,
+            "rlimit": 268804,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::spec#spec_before_phase_n",
+        "bucket-kind": "spinoff",
+        "total": 534,
+        "air": 224,
+        "smt-init": 0,
+        "smt-init-micros": 25,
+        "smt-init-rlimit": 136,
+        "smt-run": 0,
+        "smt-run-micros": 843,
+        "smt-run-rlimit": 1807,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::spec::spec_before_phase_n",
+            "mode": "spec",
+            "smt-time": 0,
+            "smt-time-micros": 843,
+            "rlimit": 1807,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::spec#derived_invariants_since_beginning_is_stable",
+        "bucket-kind": "spinoff",
+        "total": 527,
+        "air": 192,
+        "smt-init": 0,
+        "smt-init-micros": 37,
+        "smt-init-rlimit": 1521,
+        "smt-run": 29,
+        "smt-run-micros": 29036,
+        "smt-run-rlimit": 124253,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::spec::derived_invariants_since_beginning_is_stable",
+            "mode": "proof",
+            "smt-time": 29,
+            "smt-time-micros": 29036,
+            "rlimit": 124253,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::spec#invariants_is_stable",
+        "bucket-kind": "spinoff",
+        "total": 521,
+        "air": 200,
+        "smt-init": 0,
+        "smt-init-micros": 25,
+        "smt-init-rlimit": 59,
+        "smt-run": 19,
+        "smt-run-micros": 19422,
+        "smt-run-rlimit": 77236,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::spec::invariants_is_stable",
+            "mode": "proof",
+            "smt-time": 19,
+            "smt-time-micros": 19422,
+            "rlimit": 77236,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::exec::reconciler#filter_old_and_new_vrs",
+        "bucket-kind": "spinoff",
+        "total": 468,
+        "air": 99,
+        "smt-init": 0,
+        "smt-init-micros": 116,
+        "smt-init-rlimit": 3914,
+        "smt-run": 219,
+        "smt-run-micros": 219972,
+        "smt-run-rlimit": 870835,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::exec::reconciler::filter_old_and_new_vrs",
+            "mode": "exec",
+            "smt-time": 219,
+            "smt-time-micros": 219972,
+            "rlimit": 870835,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::spec#stable_spec_is_stable",
+        "bucket-kind": "spinoff",
+        "total": 465,
+        "air": 171,
+        "smt-init": 0,
+        "smt-init-micros": 23,
+        "smt-init-rlimit": 60,
+        "smt-run": 9,
+        "smt-run-micros": 9502,
+        "smt-run-rlimit": 38475,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::spec::stable_spec_is_stable",
+            "mode": "proof",
+            "smt-time": 9,
+            "smt-time-micros": 9502,
+            "rlimit": 38475,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::helper_lemmas#lemma_no_old_vrs_in_etcd_state_implies_weakened_csm",
+        "bucket-kind": "spinoff",
+        "total": 450,
+        "air": 153,
+        "smt-init": 0,
+        "smt-init-micros": 36,
+        "smt-init-rlimit": 444,
+        "smt-run": 66,
+        "smt-run-micros": 66613,
+        "smt-run-rlimit": 133267,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::helper_lemmas::lemma_no_old_vrs_in_etcd_state_implies_weakened_csm",
+            "mode": "proof",
+            "smt-time": 66,
+            "smt-time-micros": 66613,
+            "rlimit": 133267,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::spec#next_with_wf_is_stable",
+        "bucket-kind": "spinoff",
+        "total": 417,
+        "air": 155,
+        "smt-init": 0,
+        "smt-init-micros": 29,
+        "smt-init-rlimit": 412,
+        "smt-run": 11,
+        "smt-run-micros": 11982,
+        "smt-run-rlimit": 51030,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::spec::next_with_wf_is_stable",
+            "mode": "proof",
+            "smt-time": 11,
+            "smt-time-micros": 11982,
+            "rlimit": 51030,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::helper_invariants::proof#lemma_spec_entails_lifted_cluster_invariants_since_reconciliation",
+        "bucket-kind": "spinoff",
+        "total": 415,
+        "air": 143,
+        "smt-init": 0,
+        "smt-init-micros": 34,
+        "smt-init-rlimit": 1113,
+        "smt-run": 43,
+        "smt-run-micros": 43405,
+        "smt-run-rlimit": 148185,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::helper_invariants::proof::lemma_spec_entails_lifted_cluster_invariants_since_reconciliation",
+            "mode": "proof",
+            "smt-time": 43,
+            "smt-time-micros": 43405,
+            "rlimit": 148185,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::spec#assumption_and_invariants_of_all_phases",
+        "bucket-kind": "spinoff",
+        "total": 374,
+        "air": 56,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::spec#invariants_since_phase_n",
+        "bucket-kind": "spinoff",
+        "total": 355,
+        "air": 57,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::spec#invariants",
+        "bucket-kind": "spinoff",
+        "total": 351,
+        "air": 54,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::spec#stable_spec",
+        "bucket-kind": "spinoff",
+        "total": 325,
+        "air": 45,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::exec::reconciler#make_replica_set",
+        "bucket-kind": "spinoff",
+        "total": 283,
+        "air": 76,
+        "smt-init": 0,
+        "smt-init-micros": 36,
+        "smt-init-rlimit": 883,
+        "smt-run": 43,
+        "smt-run-micros": 43250,
+        "smt-run-rlimit": 106450,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::exec::reconciler::make_replica_set",
+            "mode": "exec",
+            "smt-time": 43,
+            "smt-time-micros": 43250,
+            "rlimit": 106450,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::exec::reconciler#scale_new_vrs",
+        "bucket-kind": "spinoff",
+        "total": 282,
+        "air": 80,
+        "smt-init": 0,
+        "smt-init-micros": 26,
+        "smt-init-rlimit": 452,
+        "smt-run": 72,
+        "smt-run-micros": 72456,
+        "smt-run-rlimit": 202664,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::exec::reconciler::scale_new_vrs",
+            "mode": "exec",
+            "smt-time": 72,
+            "smt-time-micros": 72456,
+            "rlimit": 202664,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::exec::reconciler#objects_to_vrs_list",
+        "bucket-kind": "spinoff",
+        "total": 275,
+        "air": 67,
+        "smt-init": 0,
+        "smt-init-micros": 56,
+        "smt-init-rlimit": 1468,
+        "smt-run": 64,
+        "smt-run-micros": 64785,
+        "smt-run-rlimit": 298333,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::exec::reconciler::objects_to_vrs_list",
+            "mode": "exec",
+            "smt-time": 64,
+            "smt-time-micros": 64785,
+            "rlimit": 298333,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::helper_lemmas#lemma_old_vrs_filter_on_objs_eq_filter_on_keys",
+        "bucket-kind": "spinoff",
+        "total": 270,
+        "air": 85,
+        "smt-init": 0,
+        "smt-init-micros": 48,
+        "smt-init-rlimit": 337,
+        "smt-run": 33,
+        "smt-run-micros": 33807,
+        "smt-run-rlimit": 58704,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::helper_lemmas::lemma_old_vrs_filter_on_objs_eq_filter_on_keys",
+            "mode": "proof",
+            "smt-time": 33,
+            "smt-time-micros": 33807,
+            "rlimit": 58704,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::exec::reconciler#scale_down_old_vrs",
+        "bucket-kind": "spinoff",
+        "total": 270,
+        "air": 75,
+        "smt-init": 0,
+        "smt-init-micros": 33,
+        "smt-init-rlimit": 382,
+        "smt-run": 63,
+        "smt-run-micros": 63110,
+        "smt-run-rlimit": 150354,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::exec::reconciler::scale_down_old_vrs",
+            "mode": "exec",
+            "smt-time": 63,
+            "smt-time-micros": 63110,
+            "rlimit": 150354,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::rolling_update::composition#esr_for_each_ranking",
+        "bucket-kind": "spinoff",
+        "total": 270,
+        "air": 78,
+        "smt-init": 0,
+        "smt-init-micros": 31,
+        "smt-init-rlimit": 446,
+        "smt-run": 37,
+        "smt-run-micros": 37027,
+        "smt-run-rlimit": 101288,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::rolling_update::composition::esr_for_each_ranking",
+            "mode": "proof",
+            "smt-time": 37,
+            "smt-time-micros": 37027,
+            "rlimit": 101288,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::exec::reconciler#filter_vrs_list",
+        "bucket-kind": "spinoff",
+        "total": 264,
+        "air": 68,
+        "smt-init": 0,
+        "smt-init-micros": 53,
+        "smt-init-rlimit": 1038,
+        "smt-run": 73,
+        "smt-run-micros": 73310,
+        "smt-run-rlimit": 293791,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::exec::reconciler::filter_vrs_list",
+            "mode": "exec",
+            "smt-time": 73,
+            "smt-time-micros": 73310,
+            "rlimit": 293791,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::helper_lemmas#lemma_cr_fields_eq_to_cr_predicates_eq",
+        "bucket-kind": "spinoff",
+        "total": 263,
+        "air": 71,
+        "smt-init": 0,
+        "smt-init-micros": 29,
+        "smt-init-rlimit": 190,
+        "smt-run": 55,
+        "smt-run-micros": 55069,
+        "smt-run-rlimit": 134319,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::helper_lemmas::lemma_cr_fields_eq_to_cr_predicates_eq",
+            "mode": "proof",
+            "smt-time": 55,
+            "smt-time-micros": 55069,
+            "rlimit": 134319,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::exec::reconciler#reconcile_core",
+        "bucket-kind": "spinoff",
+        "total": 263,
+        "air": 103,
+        "smt-init": 0,
+        "smt-init-micros": 25,
+        "smt-init-rlimit": 108,
+        "smt-run": 9,
+        "smt-run-micros": 9203,
+        "smt-run-rlimit": 26978,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::exec::reconciler::VDeploymentReconciler::reconcile_core",
+            "mode": "exec",
+            "smt-time": 9,
+            "smt-time-micros": 9203,
+            "rlimit": 26978,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::spec#next_with_wf",
+        "bucket-kind": "spinoff",
+        "total": 261,
+        "air": 38,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::predicate#cluster_invariants_since_reconciliation",
+        "bucket-kind": "spinoff",
+        "total": 260,
+        "air": 41,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::terminate#lemma_from_pending_req_in_flight_or_resp_in_flight_at_step_to_at_step_and_pred",
+        "bucket-kind": "spinoff",
+        "total": 248,
+        "air": 79,
+        "smt-init": 0,
+        "smt-init-micros": 25,
+        "smt-init-rlimit": 292,
+        "smt-run": 4,
+        "smt-run-micros": 4679,
+        "smt-run-rlimit": 16248,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::terminate::lemma_from_pending_req_in_flight_or_resp_in_flight_at_step_to_at_step_and_pred",
+            "mode": "proof",
+            "smt-time": 4,
+            "smt-time-micros": 4679,
+            "rlimit": 16248,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::spec#derived_invariants_since_beginning",
+        "bucket-kind": "spinoff",
+        "total": 240,
+        "air": 32,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::exec::reconciler#create_new_vrs",
+        "bucket-kind": "spinoff",
+        "total": 239,
+        "air": 79,
+        "smt-init": 0,
+        "smt-init-micros": 35,
+        "smt-init-rlimit": 265,
+        "smt-run": 36,
+        "smt-run-micros": 36901,
+        "smt-run-rlimit": 98041,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::exec::reconciler::create_new_vrs",
+            "mode": "exec",
+            "smt-time": 36,
+            "smt-time-micros": 36901,
+            "rlimit": 98041,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::helper_lemmas#vd_rely_condition_equivalent_to_lifted_vd_rely_condition_action",
+        "bucket-kind": "spinoff",
+        "total": 226,
+        "air": 74,
+        "smt-init": 0,
+        "smt-init-micros": 32,
+        "smt-init-rlimit": 535,
+        "smt-run": 14,
+        "smt-run-micros": 14878,
+        "smt-run-rlimit": 42858,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::helper_lemmas::vd_rely_condition_equivalent_to_lifted_vd_rely_condition_action",
+            "mode": "proof",
+            "smt-time": 14,
+            "smt-time-micros": 14878,
+            "rlimit": 42858,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::helper_lemmas#lemma_no_duplication_in_resp_objs_implies_no_duplication_in_down_stream",
+        "bucket-kind": "spinoff",
+        "total": 226,
+        "air": 59,
+        "smt-init": 0,
+        "smt-init-micros": 37,
+        "smt-init-rlimit": 829,
+        "smt-run": 27,
+        "smt-run-micros": 27868,
+        "smt-run-rlimit": 78191,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::helper_lemmas::lemma_no_duplication_in_resp_objs_implies_no_duplication_in_down_stream",
+            "mode": "proof",
+            "smt-time": 27,
+            "smt-time-micros": 27868,
+            "rlimit": 78191,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::helper_lemmas#only_interferes_with_itself_equivalent_to_lifted_only_interferes_with_itself_action",
+        "bucket-kind": "spinoff",
+        "total": 218,
+        "air": 70,
+        "smt-init": 0,
+        "smt-init-micros": 33,
+        "smt-init-rlimit": 445,
+        "smt-run": 14,
+        "smt-run-micros": 14827,
+        "smt-run-rlimit": 42458,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::helper_lemmas::only_interferes_with_itself_equivalent_to_lifted_only_interferes_with_itself_action",
+            "mode": "proof",
+            "smt-time": 14,
+            "smt-time-micros": 14827,
+            "rlimit": 42458,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::helper_lemmas#vd_rely_condition_equivalent_to_lifted_vd_rely_condition",
+        "bucket-kind": "spinoff",
+        "total": 213,
+        "air": 73,
+        "smt-init": 0,
+        "smt-init-micros": 30,
+        "smt-init-rlimit": 455,
+        "smt-run": 7,
+        "smt-run-micros": 7945,
+        "smt-run-rlimit": 24980,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::helper_lemmas::vd_rely_condition_equivalent_to_lifted_vd_rely_condition",
+            "mode": "proof",
+            "smt-time": 7,
+            "smt-time-micros": 7945,
+            "rlimit": 24980,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::spec#invariants_since_phase_iii_is_stable",
+        "bucket-kind": "spinoff",
+        "total": 212,
+        "air": 77,
+        "smt-init": 0,
+        "smt-init-micros": 27,
+        "smt-init-rlimit": 127,
+        "smt-run": 3,
+        "smt-run-micros": 3780,
+        "smt-run-rlimit": 12550,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::spec::invariants_since_phase_iii_is_stable",
+            "mode": "proof",
+            "smt-time": 3,
+            "smt-time-micros": 3780,
+            "rlimit": 12550,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::helper_lemmas#lemma_make_replica_set_passes_match_template_without_hash",
+        "bucket-kind": "spinoff",
+        "total": 209,
+        "air": 55,
+        "smt-init": 0,
+        "smt-init-micros": 36,
+        "smt-init-rlimit": 178,
+        "smt-run": 16,
+        "smt-run-micros": 16623,
+        "smt-run-rlimit": 50985,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::helper_lemmas::lemma_make_replica_set_passes_match_template_without_hash",
+            "mode": "proof",
+            "smt-time": 16,
+            "smt-time-micros": 16623,
+            "rlimit": 50985,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::helper_lemmas#only_interferes_with_itself_equivalent_to_lifted_only_interferes_with_itself",
+        "bucket-kind": "spinoff",
+        "total": 206,
+        "air": 69,
+        "smt-init": 0,
+        "smt-init-micros": 36,
+        "smt-init-rlimit": 353,
+        "smt-run": 8,
+        "smt-run-micros": 8743,
+        "smt-run-rlimit": 25341,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::helper_lemmas::only_interferes_with_itself_equivalent_to_lifted_only_interferes_with_itself",
+            "mode": "proof",
+            "smt-time": 8,
+            "smt-time-micros": 8743,
+            "rlimit": 25341,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::spec#invariants_since_phase_ii_is_stable",
+        "bucket-kind": "spinoff",
+        "total": 203,
+        "air": 64,
+        "smt-init": 0,
+        "smt-init-micros": 29,
+        "smt-init-rlimit": 169,
+        "smt-run": 4,
+        "smt-run-micros": 4138,
+        "smt-run-rlimit": 14785,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::spec::invariants_since_phase_ii_is_stable",
+            "mode": "proof",
+            "smt-time": 4,
+            "smt-time-micros": 4138,
+            "rlimit": 14785,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::trusted::exec_types#state_validation",
+        "bucket-kind": "spinoff",
+        "total": 200,
+        "air": 51,
+        "smt-init": 0,
+        "smt-init-micros": 39,
+        "smt-init-rlimit": 940,
+        "smt-run": 30,
+        "smt-run-micros": 30033,
+        "smt-run-rlimit": 106143,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::trusted::exec_types::VDeployment::state_validation",
+            "mode": "exec",
+            "smt-time": 30,
+            "smt-time-micros": 30033,
+            "rlimit": 106143,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::predicate#exists_resp_msg_is_ok_scale_new_vrs_resp_in_flight",
+        "bucket-kind": "spinoff",
+        "total": 199,
+        "air": 19,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::spec#invariants_since_phase_iv_is_stable",
+        "bucket-kind": "spinoff",
+        "total": 197,
+        "air": 66,
+        "smt-init": 0,
+        "smt-init-micros": 24,
+        "smt-init-rlimit": 43,
+        "smt-run": 2,
+        "smt-run-micros": 2178,
+        "smt-run-rlimit": 6429,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::spec::invariants_since_phase_iv_is_stable",
+            "mode": "proof",
+            "smt-time": 2,
+            "smt-time-micros": 2178,
+            "rlimit": 6429,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::spec#invariants_since_phase_vi_is_stable",
+        "bucket-kind": "spinoff",
+        "total": 196,
+        "air": 69,
+        "smt-init": 0,
+        "smt-init-micros": 31,
+        "smt-init-rlimit": 43,
+        "smt-run": 2,
+        "smt-run-micros": 2014,
+        "smt-run-rlimit": 6073,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::spec::invariants_since_phase_vi_is_stable",
+            "mode": "proof",
+            "smt-time": 2,
+            "smt-time-micros": 2014,
+            "rlimit": 6073,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::spec#invariants_since_phase_v_is_stable",
+        "bucket-kind": "spinoff",
+        "total": 196,
+        "air": 65,
+        "smt-init": 0,
+        "smt-init-micros": 23,
+        "smt-init-rlimit": 43,
+        "smt-run": 2,
+        "smt-run-micros": 2022,
+        "smt-run-rlimit": 5734,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::spec::invariants_since_phase_v_is_stable",
+            "mode": "proof",
+            "smt-time": 2,
+            "smt-time-micros": 2022,
+            "rlimit": 5734,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::spec#invariants_since_phase_i_is_stable",
+        "bucket-kind": "spinoff",
+        "total": 191,
+        "air": 56,
+        "smt-init": 0,
+        "smt-init-micros": 31,
+        "smt-init-rlimit": 125,
+        "smt-run": 2,
+        "smt-run-micros": 2294,
+        "smt-run-rlimit": 8042,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::liveness::spec::invariants_since_phase_i_is_stable",
+            "mode": "proof",
+            "smt-time": 2,
+            "smt-time-micros": 2294,
+            "rlimit": 8042,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::exec::reconciler#template_with_hash",
+        "bucket-kind": "spinoff",
+        "total": 189,
+        "air": 52,
+        "smt-init": 0,
+        "smt-init-micros": 25,
+        "smt-init-rlimit": 189,
+        "smt-run": 7,
+        "smt-run-micros": 7488,
+        "smt-run-rlimit": 26684,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::exec::reconciler::template_with_hash",
+            "mode": "exec",
+            "smt-time": 7,
+            "smt-time-micros": 7488,
+            "rlimit": 26684,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::trusted::liveness_theorem#vd_eventually_stable_reconciliation_per_cr",
+        "bucket-kind": "spinoff",
+        "total": 184,
+        "air": 24,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::predicate#etcd_state_is",
+        "bucket-kind": "spinoff",
+        "total": 180,
+        "air": 19,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::rolling_update::predicate#ru_new_vrs_and_no_old_vrs_from_resp_objs",
+        "bucket-kind": "spinoff",
+        "total": 175,
+        "air": 19,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::predicate#exists_create_resp_msg_containing_new_vrs_uid_key",
+        "bucket-kind": "spinoff",
+        "total": 175,
+        "air": 20,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::rolling_update::predicate#ru_exists_pending_list_resp_in_flight_and_match_req",
+        "bucket-kind": "spinoff",
+        "total": 175,
+        "air": 19,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::spec_types#unmarshal_result_determined_by_unmarshal_spec_and_status",
+        "bucket-kind": "spinoff",
+        "total": 174,
+        "air": 44,
+        "smt-init": 0,
+        "smt-init-micros": 32,
+        "smt-init-rlimit": 122,
+        "smt-run": 3,
+        "smt-run-micros": 3209,
+        "smt-run-rlimit": 7642,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::trusted::spec_types::VDeploymentView::unmarshal_result_determined_by_unmarshal_spec_and_status",
+            "mode": "proof",
+            "smt-time": 3,
+            "smt-time-micros": 3209,
+            "rlimit": 7642,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::trusted::spec_types#marshal_preserves_integrity",
+        "bucket-kind": "spinoff",
+        "total": 173,
+        "air": 43,
+        "smt-init": 0,
+        "smt-init-micros": 26,
+        "smt-init-rlimit": 40,
+        "smt-run": 3,
+        "smt-run-micros": 3783,
+        "smt-run-rlimit": 6475,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::trusted::spec_types::VDeploymentView::marshal_preserves_integrity",
+            "mode": "proof",
+            "smt-time": 3,
+            "smt-time-micros": 3783,
+            "rlimit": 6475,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::trusted::rely_guarantee#vd_rely_get_then_update_req",
+        "bucket-kind": "spinoff",
+        "total": 169,
+        "air": 20,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::predicate#inductive_current_state_matches",
+        "bucket-kind": "spinoff",
+        "total": 169,
+        "air": 21,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::exec::reconciler#valid_owned_vrs",
+        "bucket-kind": "spinoff",
+        "total": 168,
+        "air": 46,
+        "smt-init": 0,
+        "smt-init-micros": 28,
+        "smt-init-rlimit": 181,
+        "smt-run": 9,
+        "smt-run-micros": 9065,
+        "smt-run-rlimit": 27952,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::exec::reconciler::valid_owned_vrs",
+            "mode": "exec",
+            "smt-time": 9,
+            "smt-time-micros": 9065,
+            "rlimit": 27952,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::rolling_update::predicate#ru_req_msg_is_scale_new_vrs_by_one_req",
+        "bucket-kind": "spinoff",
+        "total": 168,
+        "air": 19,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::exec::reconciler#mismatch_replicas",
+        "bucket-kind": "spinoff",
+        "total": 167,
+        "air": 46,
+        "smt-init": 0,
+        "smt-init-micros": 28,
+        "smt-init-rlimit": 206,
+        "smt-run": 9,
+        "smt-run-micros": 9045,
+        "smt-run-rlimit": 27847,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::exec::reconciler::mismatch_replicas",
+            "mode": "exec",
+            "smt-time": 9,
+            "smt-time-micros": 9045,
+            "rlimit": 27847,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::rolling_update::composition#current_state_matches_vrs_with_replicas_diff_and_key",
+        "bucket-kind": "spinoff",
+        "total": 166,
+        "air": 16,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::exec::reconciler#match_template_without_hash",
+        "bucket-kind": "spinoff",
+        "total": 166,
+        "air": 48,
+        "smt-init": 0,
+        "smt-init-micros": 25,
+        "smt-init-rlimit": 317,
+        "smt-run": 9,
+        "smt-run-micros": 9147,
+        "smt-run-rlimit": 33464,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::exec::reconciler::match_template_without_hash",
+            "mode": "exec",
+            "smt-time": 9,
+            "smt-time-micros": 9147,
+            "rlimit": 33464,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::predicate#resp_msg_is_pending_list_resp_in_flight_and_match_req",
+        "bucket-kind": "spinoff",
+        "total": 165,
+        "air": 18,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::rolling_update::predicate#ru_resp_msg_is_pending_list_resp_in_flight_and_match_req",
+        "bucket-kind": "spinoff",
+        "total": 165,
+        "air": 23,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::rolling_update::predicate#local_state_at_after_scale_vrs",
+        "bucket-kind": "spinoff",
+        "total": 163,
+        "air": 18,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::predicate#exists_resp_msg_is_ok_scale_old_vrs_resp_in_flight",
+        "bucket-kind": "spinoff",
+        "total": 162,
+        "air": 18,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::spec_types#validation_result_determined_by_spec_and_status",
+        "bucket-kind": "spinoff",
+        "total": 160,
+        "air": 45,
+        "smt-init": 0,
+        "smt-init-micros": 36,
+        "smt-init-rlimit": 26,
+        "smt-run": 6,
+        "smt-run-micros": 6313,
+        "smt-run-rlimit": 15759,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::trusted::spec_types::VDeploymentView::validation_result_determined_by_spec_and_status",
+            "mode": "proof",
+            "smt-time": 6,
+            "smt-time-micros": 6313,
+            "rlimit": 15759,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::rolling_update::predicate#ru_resp_msg_is_ok_list_resp_containing_matched_vrs",
+        "bucket-kind": "spinoff",
+        "total": 159,
+        "air": 22,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::spec#invariants_since_phase_iii",
+        "bucket-kind": "spinoff",
+        "total": 159,
+        "air": 19,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::spec#invariants_since_phase_ii",
+        "bucket-kind": "spinoff",
+        "total": 158,
+        "air": 17,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::predicate#resp_msg_is_ok_create_new_vrs_resp",
+        "bucket-kind": "spinoff",
+        "total": 158,
+        "air": 18,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::spec_types#marshal_preserves_metadata",
+        "bucket-kind": "spinoff",
+        "total": 158,
+        "air": 41,
+        "smt-init": 0,
+        "smt-init-micros": 27,
+        "smt-init-rlimit": 38,
+        "smt-run": 1,
+        "smt-run-micros": 1897,
+        "smt-run-rlimit": 3361,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::trusted::spec_types::VDeploymentView::marshal_preserves_metadata",
+            "mode": "proof",
+            "smt-time": 1,
+            "smt-time-micros": 1897,
+            "rlimit": 3361,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::rolling_update::predicate#ru_pending_scale_new_vrs_by_one_req_in_flight",
+        "bucket-kind": "spinoff",
+        "total": 158,
+        "air": 17,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::rolling_update::predicate#ru_req_msg_is_pending_scale_new_vrs_by_one_req_in_flight",
+        "bucket-kind": "spinoff",
+        "total": 157,
+        "air": 18,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::predicate#local_state_is_valid_and_coherent_with_etcd",
+        "bucket-kind": "spinoff",
+        "total": 156,
+        "air": 18,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::liveness_theorem#current_state_matches",
+        "bucket-kind": "spinoff",
+        "total": 156,
+        "air": 16,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::exec::reconciler#reconcile_error",
+        "bucket-kind": "spinoff",
+        "total": 156,
+        "air": 43,
+        "smt-init": 0,
+        "smt-init-micros": 24,
+        "smt-init-rlimit": 45,
+        "smt-run": 1,
+        "smt-run-micros": 1105,
+        "smt-run-rlimit": 3643,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::exec::reconciler::VDeploymentReconciler::reconcile_error",
+            "mode": "exec",
+            "smt-time": 1,
+            "smt-time-micros": 1105,
+            "rlimit": 3643,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::exec::reconciler#reconcile_init_state",
+        "bucket-kind": "spinoff",
+        "total": 156,
+        "air": 39,
+        "smt-init": 0,
+        "smt-init-micros": 27,
+        "smt-init-rlimit": 76,
+        "smt-run": 2,
+        "smt-run-micros": 2947,
+        "smt-run-rlimit": 7481,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::exec::reconciler::reconcile_init_state",
+            "mode": "exec",
+            "smt-time": 2,
+            "smt-time-micros": 2947,
+            "rlimit": 7481,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::trusted::spec_types#marshal_preserves_kind",
+        "bucket-kind": "spinoff",
+        "total": 155,
+        "air": 40,
+        "smt-init": 0,
+        "smt-init-micros": 27,
+        "smt-init-rlimit": 36,
+        "smt-run": 0,
+        "smt-run-micros": 947,
+        "smt-run-rlimit": 1964,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::trusted::spec_types::VDeploymentView::marshal_preserves_kind",
+            "mode": "proof",
+            "smt-time": 0,
+            "smt-time-micros": 947,
+            "rlimit": 1964,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::predicate#pending_scale_new_vrs_req_in_flight",
+        "bucket-kind": "spinoff",
+        "total": 155,
+        "air": 18,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::predicate#req_msg_is_scale_new_vrs_req",
+        "bucket-kind": "spinoff",
+        "total": 154,
+        "air": 18,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::predicate#exists_pending_list_resp_in_flight_and_match_req",
+        "bucket-kind": "spinoff",
+        "total": 154,
+        "air": 17,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::predicate#new_vrs_and_old_vrs_of_n_can_be_extracted_from_resp_objs",
+        "bucket-kind": "spinoff",
+        "total": 153,
+        "air": 18,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::liveness_theorem#current_state_matches_with_new_vrs_key",
+        "bucket-kind": "spinoff",
+        "total": 152,
+        "air": 16,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::predicate#resp_msg_is_ok_scale_old_vrs_resp_in_flight",
+        "bucket-kind": "spinoff",
+        "total": 151,
+        "air": 17,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::predicate#resp_msg_is_ok_create_resp_containing_new_vrs",
+        "bucket-kind": "spinoff",
+        "total": 151,
+        "air": 17,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::spec_types#object_ref_is_well_formed",
+        "bucket-kind": "spinoff",
+        "total": 151,
+        "air": 49,
+        "smt-init": 0,
+        "smt-init-micros": 41,
+        "smt-init-rlimit": 52,
+        "smt-run": 1,
+        "smt-run-micros": 1465,
+        "smt-run-rlimit": 2811,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::trusted::spec_types::VDeploymentView::object_ref_is_well_formed",
+            "mode": "proof",
+            "smt-time": 1,
+            "smt-time-micros": 1465,
+            "rlimit": 2811,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::predicate#at_vd_step_with_vd",
+        "bucket-kind": "spinoff",
+        "total": 151,
+        "air": 18,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::exec::reconciler#new_vrs_ensured_state",
+        "bucket-kind": "spinoff",
+        "total": 150,
+        "air": 43,
+        "smt-init": 0,
+        "smt-init-micros": 32,
+        "smt-init-rlimit": 57,
+        "smt-run": 1,
+        "smt-run-micros": 1828,
+        "smt-run-rlimit": 6411,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::exec::reconciler::new_vrs_ensured_state",
+            "mode": "exec",
+            "smt-time": 1,
+            "smt-time-micros": 1828,
+            "rlimit": 6411,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::predicate#req_msg_is_scale_old_vrs_req",
+        "bucket-kind": "spinoff",
+        "total": 150,
+        "air": 16,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::predicate#pending_scale_old_vrs_req_in_flight",
+        "bucket-kind": "spinoff",
+        "total": 150,
+        "air": 17,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::rolling_update::composition#old_vrs_set_is_owned_by_vd",
+        "bucket-kind": "spinoff",
+        "total": 149,
+        "air": 16,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::liveness_theorem#valid_owned_obj_key",
+        "bucket-kind": "spinoff",
+        "total": 149,
+        "air": 17,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::exec::reconciler#reconcile_done",
+        "bucket-kind": "spinoff",
+        "total": 148,
+        "air": 38,
+        "smt-init": 0,
+        "smt-init-micros": 20,
+        "smt-init-rlimit": 33,
+        "smt-run": 1,
+        "smt-run-micros": 1477,
+        "smt-run-rlimit": 4948,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::exec::reconciler::reconcile_done",
+            "mode": "exec",
+            "smt-time": 1,
+            "smt-time-micros": 1477,
+            "rlimit": 4948,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::model::install#vd_controller_model",
+        "bucket-kind": "spinoff",
+        "total": 148,
+        "air": 18,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::liveness_theorem#valid_owned_pods",
+        "bucket-kind": "spinoff",
+        "total": 148,
+        "air": 17,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::spec#invariants_since_phase_iv",
+        "bucket-kind": "spinoff",
+        "total": 148,
+        "air": 16,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::predicate#resp_msg_is_ok_scale_new_vrs_resp_in_flight",
+        "bucket-kind": "spinoff",
+        "total": 148,
+        "air": 17,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::rolling_update::composition#desired_state_is_vrs_with_replicas_diff_and_key",
+        "bucket-kind": "spinoff",
+        "total": 147,
+        "air": 14,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::exec::reconciler#make_owner_references",
+        "bucket-kind": "spinoff",
+        "total": 147,
+        "air": 44,
+        "smt-init": 0,
+        "smt-init-micros": 36,
+        "smt-init-rlimit": 75,
+        "smt-run": 4,
+        "smt-run-micros": 4142,
+        "smt-run-rlimit": 14341,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::exec::reconciler::make_owner_references",
+            "mode": "exec",
+            "smt-time": 4,
+            "smt-time-micros": 4142,
+            "rlimit": 14341,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::model::reconciler#reconcile_core",
+        "bucket-kind": "spinoff",
+        "total": 146,
+        "air": 15,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::liveness_theorem#composed_vd_eventually_stable_reconciliation",
+        "bucket-kind": "spinoff",
+        "total": 146,
+        "air": 17,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::predicate#pending_create_new_vrs_req_in_flight",
+        "bucket-kind": "spinoff",
+        "total": 146,
+        "air": 16,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::spec_types#_state_validation",
+        "bucket-kind": "spinoff",
+        "total": 146,
+        "air": 8,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::predicate#local_state_is_coherent_with_etcd",
+        "bucket-kind": "spinoff",
+        "total": 146,
+        "air": 17,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::spec_types#kind_is_custom_resource",
+        "bucket-kind": "spinoff",
+        "total": 145,
+        "air": 37,
+        "smt-init": 0,
+        "smt-init-micros": 44,
+        "smt-init-rlimit": 16,
+        "smt-run": 0,
+        "smt-run-micros": 359,
+        "smt-run-rlimit": 898,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::trusted::spec_types::VDeploymentView::kind_is_custom_resource",
+            "mode": "proof",
+            "smt-time": 0,
+            "smt-time-micros": 359,
+            "rlimit": 898,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::predicate#instantiated_etcd_state_is_with_zero_old_vrs_and_nv_key",
+        "bucket-kind": "spinoff",
+        "total": 145,
+        "air": 17,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::liveness_theorem#composed_vd_eventually_stable_reconciliation_per_cr",
+        "bucket-kind": "spinoff",
+        "total": 145,
+        "air": 19,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::predicate#req_msg_is_pending_scale_new_vrs_req_in_flight",
+        "bucket-kind": "spinoff",
+        "total": 145,
+        "air": 17,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::predicate#resp_msg_is_ok_list_resp_containing_matched_vrs",
+        "bucket-kind": "spinoff",
+        "total": 144,
+        "air": 16,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::helper_invariants::predicate#vrs_objects_in_local_reconcile_state_are_controllerly_owned_by_vd_with_key",
+        "bucket-kind": "spinoff",
+        "total": 144,
+        "air": 19,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::predicate#req_msg_is_pending_scale_old_vrs_req_in_flight",
+        "bucket-kind": "spinoff",
+        "total": 144,
+        "air": 17,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::spec#invariants_since_phase_vi",
+        "bucket-kind": "spinoff",
+        "total": 144,
+        "air": 16,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::rely_guarantee#vd_rely_update_req",
+        "bucket-kind": "spinoff",
+        "total": 144,
+        "air": 17,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::predicate#req_msg_is_create_vrs_req",
+        "bucket-kind": "spinoff",
+        "total": 144,
+        "air": 16,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::rolling_update::composition#desired_state_is_vrs_with_key",
+        "bucket-kind": "spinoff",
+        "total": 144,
+        "air": 14,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::predicate#lift_local",
+        "bucket-kind": "spinoff",
+        "total": 143,
+        "air": 13,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::exec::reconciler#reconcile_done",
+        "bucket-kind": "spinoff",
+        "total": 143,
+        "air": 44,
+        "smt-init": 0,
+        "smt-init-micros": 28,
+        "smt-init-rlimit": 45,
+        "smt-run": 1,
+        "smt-run-micros": 1139,
+        "smt-run-rlimit": 3643,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::exec::reconciler::VDeploymentReconciler::reconcile_done",
+            "mode": "exec",
+            "smt-time": 1,
+            "smt-time-micros": 1139,
+            "rlimit": 3643,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::trusted::liveness_theorem#valid_owned_vrs",
+        "bucket-kind": "spinoff",
+        "total": 143,
+        "air": 10,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::predicate#vd_rely_condition",
+        "bucket-kind": "spinoff",
+        "total": 143,
+        "air": 16,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::predicate#local_state_is",
+        "bucket-kind": "spinoff",
+        "total": 142,
+        "air": 14,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::exec_types#marshal",
+        "bucket-kind": "spinoff",
+        "total": 142,
+        "air": 11,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::exec::reconciler#reconcile_error",
+        "bucket-kind": "spinoff",
+        "total": 142,
+        "air": 39,
+        "smt-init": 0,
+        "smt-init-micros": 26,
+        "smt-init-rlimit": 33,
+        "smt-run": 1,
+        "smt-run-micros": 1452,
+        "smt-run-rlimit": 5188,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::exec::reconciler::reconcile_error",
+            "mode": "exec",
+            "smt-time": 1,
+            "smt-time-micros": 1452,
+            "rlimit": 5188,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::predicate#local_state_is_valid",
+        "bucket-kind": "spinoff",
+        "total": 141,
+        "air": 17,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::rolling_update::composition#conjuncted_current_state_matches_vrs",
+        "bucket-kind": "spinoff",
+        "total": 141,
+        "air": 13,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::predicate#lifted_vd_reconcile_request_only_interferes_with_itself_action",
+        "bucket-kind": "spinoff",
+        "total": 140,
+        "air": 15,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::predicate#and_eq",
+        "bucket-kind": "spinoff",
+        "total": 140,
+        "air": 35,
+        "smt-init": 0,
+        "smt-init-micros": 23,
+        "smt-init-rlimit": 64,
+        "smt-run": 2,
+        "smt-run-micros": 2404,
+        "smt-run-rlimit": 9398,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::predicate::and_eq",
+            "mode": "proof",
+            "smt-time": 2,
+            "smt-time-micros": 2404,
+            "rlimit": 9398,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::predicate#req_msg_is_pending_create_new_vrs_req_in_flight",
+        "bucket-kind": "spinoff",
+        "total": 139,
+        "air": 15,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::predicate#lifted_vd_rely_condition_action",
+        "bucket-kind": "spinoff",
+        "total": 138,
+        "air": 17,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::predicate#lifted_vd_reconcile_request_only_interferes_with_itself",
+        "bucket-kind": "spinoff",
+        "total": 138,
+        "air": 15,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::liveness_theorem#filter_obj_keys_managed_by_vd",
+        "bucket-kind": "spinoff",
+        "total": 138,
+        "air": 16,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::spec#invariants_since_phase_v",
+        "bucket-kind": "spinoff",
+        "total": 137,
+        "air": 15,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::predicate#lifted_vd_rely_condition",
+        "bucket-kind": "spinoff",
+        "total": 137,
+        "air": 16,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::exec_types#clone",
+        "bucket-kind": "spinoff",
+        "total": 137,
+        "air": 11,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::liveness_theorem#composed_current_state_matches",
+        "bucket-kind": "spinoff",
+        "total": 136,
+        "air": 16,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::exec::reconciler#reconcile_init_state",
+        "bucket-kind": "spinoff",
+        "total": 136,
+        "air": 42,
+        "smt-init": 0,
+        "smt-init-micros": 21,
+        "smt-init-rlimit": 40,
+        "smt-run": 0,
+        "smt-run-micros": 262,
+        "smt-run-rlimit": 550,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::exec::reconciler::VDeploymentReconciler::reconcile_init_state",
+            "mode": "exec",
+            "smt-time": 0,
+            "smt-time-micros": 262,
+            "rlimit": 550,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::trusted::rely_guarantee#vd_guarantee",
+        "bucket-kind": "spinoff",
+        "total": 135,
+        "air": 14,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::predicate#pending_list_req_in_flight",
+        "bucket-kind": "spinoff",
+        "total": 134,
+        "air": 13,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::liveness_theorem#desired_state_is",
+        "bucket-kind": "spinoff",
+        "total": 134,
+        "air": 12,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::spec_types#well_formed",
+        "bucket-kind": "spinoff",
+        "total": 133,
+        "air": 9,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::rely_guarantee#vd_rely_update_status_req",
+        "bucket-kind": "spinoff",
+        "total": 133,
+        "air": 13,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::predicate#no_pending_req_in_cluster",
+        "bucket-kind": "spinoff",
+        "total": 133,
+        "air": 12,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::model::reconciler#reconcile_core",
+        "bucket-kind": "spinoff",
+        "total": 133,
+        "air": 15,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::rolling_update::composition#conjuncted_desired_state_is_vrs",
+        "bucket-kind": "spinoff",
+        "total": 131,
+        "air": 11,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::rely_guarantee#vd_rely_create_req",
+        "bucket-kind": "spinoff",
+        "total": 131,
+        "air": 13,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::predicate#req_msg_is_pending_list_req_in_flight",
+        "bucket-kind": "spinoff",
+        "total": 131,
+        "air": 14,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::spec_types#controller_owner_ref",
+        "bucket-kind": "spinoff",
+        "total": 131,
+        "air": 7,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::exec_types#default",
+        "bucket-kind": "spinoff",
+        "total": 130,
+        "air": 8,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::spec_types#marshal_spec",
+        "bucket-kind": "spinoff",
+        "total": 130,
+        "air": 7,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::rely_guarantee#vd_rely",
+        "bucket-kind": "spinoff",
+        "total": 130,
+        "air": 14,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::helper_lemmas#owner_references_contains_ignoring_uid_is_invariant_if_owner_references_unchanged",
+        "bucket-kind": "spinoff",
+        "total": 129,
+        "air": 19,
+        "smt-init": 0,
+        "smt-init-micros": 32,
+        "smt-init-rlimit": 315,
+        "smt-run": 3,
+        "smt-run-micros": 3827,
+        "smt-run-rlimit": 13384,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::proof::helper_lemmas::owner_references_contains_ignoring_uid_is_invariant_if_owner_references_unchanged",
+            "mode": "proof",
+            "smt-time": 3,
+            "smt-time-micros": 3827,
+            "rlimit": 13384,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::trusted::spec_types#spec_status_validation",
+        "bucket-kind": "spinoff",
+        "total": 128,
+        "air": 10,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::predicate#vd_reconcile_request_only_interferes_with_itself_condition",
+        "bucket-kind": "spinoff",
+        "total": 128,
+        "air": 13,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::spec_types#default",
+        "bucket-kind": "spinoff",
+        "total": 128,
+        "air": 8,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::spec_types#transition_validation",
+        "bucket-kind": "spinoff",
+        "total": 128,
+        "air": 6,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::exec::reconciler#done_state",
+        "bucket-kind": "spinoff",
+        "total": 127,
+        "air": 39,
+        "smt-init": 0,
+        "smt-init-micros": 27,
+        "smt-init-rlimit": 57,
+        "smt-run": 1,
+        "smt-run-micros": 1862,
+        "smt-run-rlimit": 6564,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::exec::reconciler::done_state",
+            "mode": "exec",
+            "smt-time": 1,
+            "smt-time-micros": 1862,
+            "rlimit": 6564,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::trusted::rely_guarantee#vd_rely_delete_req",
+        "bucket-kind": "spinoff",
+        "total": 127,
+        "air": 13,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::rolling_update::composition#is_old_vrs_of",
+        "bucket-kind": "spinoff",
+        "total": 127,
+        "air": 9,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::helper_invariants::predicate#vd_in_schedule_has_the_same_spec_uid_name_namespace_and_labels_as_vd",
+        "bucket-kind": "spinoff",
+        "total": 127,
+        "air": 13,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::spec_types#unmarshal_spec",
+        "bucket-kind": "spinoff",
+        "total": 126,
+        "air": 7,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::liveness_theorem#filter_new_vrs_keys",
+        "bucket-kind": "spinoff",
+        "total": 126,
+        "air": 13,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::spec_types#marshal_spec_preserves_integrity",
+        "bucket-kind": "spinoff",
+        "total": 126,
+        "air": 7,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::spec_types#unmarshal",
+        "bucket-kind": "spinoff",
+        "total": 125,
+        "air": 7,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::model::reconciler#scale_down_old_vrs",
+        "bucket-kind": "spinoff",
+        "total": 125,
+        "air": 8,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::helper_invariants::predicate#vrs_objects_in_local_reconcile_state_are_controllerly_owned_by_vd",
+        "bucket-kind": "spinoff",
+        "total": 124,
+        "air": 13,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::model::reconciler#reconcile_init_state",
+        "bucket-kind": "spinoff",
+        "total": 124,
+        "air": 6,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::exec::reconciler#error_state",
+        "bucket-kind": "spinoff",
+        "total": 124,
+        "air": 40,
+        "smt-init": 0,
+        "smt-init-micros": 29,
+        "smt-init-rlimit": 57,
+        "smt-run": 1,
+        "smt-run-micros": 1829,
+        "smt-run-rlimit": 6660,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::exec::reconciler::error_state",
+            "mode": "exec",
+            "smt-time": 1,
+            "smt-time-micros": 1829,
+            "rlimit": 6660,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::helper_invariants::predicate#vd_reconcile_request_only_interferes_with_itself",
+        "bucket-kind": "spinoff",
+        "total": 124,
+        "air": 11,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::exec_types#deep_view",
+        "bucket-kind": "spinoff",
+        "total": 123,
+        "air": 7,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::rely_guarantee#vd_guarantee_create_req",
+        "bucket-kind": "spinoff",
+        "total": 123,
+        "air": 13,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::spec_types#_transition_validation",
+        "bucket-kind": "spinoff",
+        "total": 122,
+        "air": 7,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::helper_invariants::predicate#vd_reconcile_get_then_update_request_only_interferes_with_itself",
+        "bucket-kind": "spinoff",
+        "total": 122,
+        "air": 13,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::exec_types#template",
+        "bucket-kind": "spinoff",
+        "total": 122,
+        "air": 7,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::predicate#old_vrs_list_len",
+        "bucket-kind": "spinoff",
+        "total": 122,
+        "air": 7,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::spec#invariants_since_phase_i",
+        "bucket-kind": "spinoff",
+        "total": 121,
+        "air": 12,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::rely_guarantee#vd_rely_get_then_delete_req",
+        "bucket-kind": "spinoff",
+        "total": 121,
+        "air": 12,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::exec_types#well_formed",
+        "bucket-kind": "spinoff",
+        "total": 121,
+        "air": 9,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::exec_types#progress_deadline_seconds",
+        "bucket-kind": "spinoff",
+        "total": 120,
+        "air": 7,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::step#clone",
+        "bucket-kind": "spinoff",
+        "total": 120,
+        "air": 20,
+        "smt-init": 0,
+        "smt-init-micros": 30,
+        "smt-init-rlimit": 15,
+        "smt-run": 0,
+        "smt-run-micros": 70,
+        "smt-run-rlimit": 2,
+        "function-breakdown": [
+          {
+            "function": "esr_composition::vdeployment_controller::trusted::step::VDeploymentReconcileStep::clone",
+            "mode": "exec",
+            "smt-time": 0,
+            "smt-time-micros": 70,
+            "rlimit": 2,
+            "success": true
+          }
+        ]
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::terminate#make_vd",
+        "bucket-kind": "spinoff",
+        "total": 120,
+        "air": 6,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::spec_types#marshal_status_preserves_integrity",
+        "bucket-kind": "spinoff",
+        "total": 120,
+        "air": 7,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::spec_types#status",
+        "bucket-kind": "spinoff",
+        "total": 120,
+        "air": 6,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::model::reconciler#scale_new_vrs",
+        "bucket-kind": "spinoff",
+        "total": 120,
+        "air": 11,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::resource_match#make_vd",
+        "bucket-kind": "spinoff",
+        "total": 120,
+        "air": 7,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::terminate#new_vrs_some_and_replicas",
+        "bucket-kind": "spinoff",
+        "total": 119,
+        "air": 7,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::spec_types#unmarshal_status",
+        "bucket-kind": "spinoff",
+        "total": 118,
+        "air": 6,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::rely_guarantee#vd_guarantee_get_then_update_req",
+        "bucket-kind": "spinoff",
+        "total": 118,
+        "air": 12,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::exec_types#view",
+        "bucket-kind": "spinoff",
+        "total": 118,
+        "air": 7,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::exec_types#min_ready_seconds",
+        "bucket-kind": "spinoff",
+        "total": 118,
+        "air": 7,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::liveness_theorem#filter_old_vrs_keys",
+        "bucket-kind": "spinoff",
+        "total": 118,
+        "air": 12,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::helper_invariants::predicate#no_other_pending_get_then_update_request_interferes_with_vd_reconcile",
+        "bucket-kind": "spinoff",
+        "total": 117,
+        "air": 13,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::exec_types#view",
+        "bucket-kind": "spinoff",
+        "total": 117,
+        "air": 7,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::spec_types#object_ref",
+        "bucket-kind": "spinoff",
+        "total": 117,
+        "air": 7,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::helper_invariants::proof#make_vd",
+        "bucket-kind": "spinoff",
+        "total": 116,
+        "air": 5,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::helper_invariants::predicate#vd_reconcile_create_request_only_interferes_with_itself",
+        "bucket-kind": "spinoff",
+        "total": 116,
+        "air": 9,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::exec_types#replicas",
+        "bucket-kind": "spinoff",
+        "total": 116,
+        "air": 7,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::rely_guarantee#vd_guarantee_get_then_delete_req",
+        "bucket-kind": "spinoff",
+        "total": 116,
+        "air": 6,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::rolling_update::composition#replicas_diff",
+        "bucket-kind": "spinoff",
+        "total": 115,
+        "air": 6,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::predicate#req_msg_is_list_vrs_req",
+        "bucket-kind": "spinoff",
+        "total": 115,
+        "air": 12,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::helper_invariants::predicate#no_other_pending_update_request_interferes_with_vd_reconcile",
+        "bucket-kind": "spinoff",
+        "total": 115,
+        "air": 13,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::spec_types#marshal_status",
+        "bucket-kind": "spinoff",
+        "total": 115,
+        "air": 6,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::exec_types#api_resource",
+        "bucket-kind": "spinoff",
+        "total": 115,
+        "air": 7,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::predicate#replicas_ok",
+        "bucket-kind": "spinoff",
+        "total": 115,
+        "air": 12,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::spec_types#metadata",
+        "bucket-kind": "spinoff",
+        "total": 114,
+        "air": 6,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::exec_types#controller_owner_ref",
+        "bucket-kind": "spinoff",
+        "total": 114,
+        "air": 7,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::exec_types#unmarshal",
+        "bucket-kind": "spinoff",
+        "total": 114,
+        "air": 9,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::exec_types#rolling_update",
+        "bucket-kind": "spinoff",
+        "total": 113,
+        "air": 1,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::exec_types#selector",
+        "bucket-kind": "spinoff",
+        "total": 113,
+        "air": 7,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::spec_types#_kind",
+        "bucket-kind": "spinoff",
+        "total": 112,
+        "air": 0,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::liveness_theorem#match_template_without_hash",
+        "bucket-kind": "spinoff",
+        "total": 112,
+        "air": 8,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::exec_types#clone",
+        "bucket-kind": "spinoff",
+        "total": 111,
+        "air": 3,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::helper_invariants::predicate#no_other_pending_create_request_interferes_with_vd_reconcile",
+        "bucket-kind": "spinoff",
+        "total": 111,
+        "air": 12,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::exec_types#metadata",
+        "bucket-kind": "spinoff",
+        "total": 110,
+        "air": 7,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::helper_invariants::predicate#no_other_pending_delete_request_interferes_with_vd_reconcile",
+        "bucket-kind": "spinoff",
+        "total": 110,
+        "air": 11,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::terminate#scale_down_old_vrs_rank_n",
+        "bucket-kind": "spinoff",
+        "total": 110,
+        "air": 8,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::spec_types#state_validation",
+        "bucket-kind": "spinoff",
+        "total": 110,
+        "air": 9,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::spec_types#spec",
+        "bucket-kind": "spinoff",
+        "total": 110,
+        "air": 6,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::exec_types#set_metadata",
+        "bucket-kind": "spinoff",
+        "total": 110,
+        "air": 8,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::helper_invariants::predicate#vd_in_ongoing_reconciles_does_not_have_deletion_timestamp",
+        "bucket-kind": "spinoff",
+        "total": 109,
+        "air": 9,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::helper_invariants::predicate#no_other_pending_get_then_delete_request_interferes_with_vd_reconcile",
+        "bucket-kind": "spinoff",
+        "total": 109,
+        "air": 9,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::liveness::api_actions#make_vd",
+        "bucket-kind": "spinoff",
+        "total": 109,
+        "air": 6,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::model::install#marshal_preserves_integrity",
+        "bucket-kind": "spinoff",
+        "total": 109,
+        "air": 6,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::exec_types#strategy",
+        "bucket-kind": "spinoff",
+        "total": 109,
+        "air": 7,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::spec_types#marshal",
+        "bucket-kind": "spinoff",
+        "total": 108,
+        "air": 7,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::spec_types#kind",
+        "bucket-kind": "spinoff",
+        "total": 108,
+        "air": 10,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::exec_types#clone",
+        "bucket-kind": "spinoff",
+        "total": 108,
+        "air": 2,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::exec_types#set_max_surge",
+        "bucket-kind": "spinoff",
+        "total": 108,
+        "air": 1,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::predicate#get_replicas",
+        "bucket-kind": "spinoff",
+        "total": 108,
+        "air": 0,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::exec_types#paused",
+        "bucket-kind": "spinoff",
+        "total": 107,
+        "air": 7,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::helper_invariants::predicate#vd_in_etcd_does_not_have_deletion_timestamp",
+        "bucket-kind": "spinoff",
+        "total": 107,
+        "air": 14,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::helper_invariants::predicate#no_pending_interfering_update_request",
+        "bucket-kind": "spinoff",
+        "total": 107,
+        "air": 12,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::helper_invariants::predicate#vd_in_reconciles_has_the_same_spec_uid_name_namespace_and_labels_as_vd",
+        "bucket-kind": "spinoff",
+        "total": 106,
+        "air": 10,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::step#eq_step",
+        "bucket-kind": "spinoff",
+        "total": 106,
+        "air": 0,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::spec_types#with_metadata",
+        "bucket-kind": "spinoff",
+        "total": 106,
+        "air": 6,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::model::reconciler#template_with_hash",
+        "bucket-kind": "spinoff",
+        "total": 106,
+        "air": 5,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::predicate#owner_references_contains_ignoring_uid",
+        "bucket-kind": "spinoff",
+        "total": 105,
+        "air": 1,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::predicate#updated_replicas",
+        "bucket-kind": "spinoff",
+        "total": 105,
+        "air": 0,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::spec_types#default",
+        "bucket-kind": "spinoff",
+        "total": 104,
+        "air": 0,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::model::reconciler#vrs_with_no_rv_status",
+        "bucket-kind": "spinoff",
+        "total": 104,
+        "air": 6,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::exec_types#spec",
+        "bucket-kind": "spinoff",
+        "total": 104,
+        "air": 7,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::model::reconciler#reconcile_done",
+        "bucket-kind": "spinoff",
+        "total": 103,
+        "air": 6,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::exec_types#default",
+        "bucket-kind": "spinoff",
+        "total": 103,
+        "air": 1,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::helper_invariants::predicate#no_other_pending_request_interferes_with_vd_reconcile",
+        "bucket-kind": "spinoff",
+        "total": 103,
+        "air": 11,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::spec_types#default",
+        "bucket-kind": "spinoff",
+        "total": 102,
+        "air": 7,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::exec_types#default",
+        "bucket-kind": "spinoff",
+        "total": 102,
+        "air": 2,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::exec_types#set_rolling_update",
+        "bucket-kind": "spinoff",
+        "total": 102,
+        "air": 1,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::step#view",
+        "bucket-kind": "spinoff",
+        "total": 102,
+        "air": 0,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::exec_types#max_surge",
+        "bucket-kind": "spinoff",
+        "total": 102,
+        "air": 1,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::helper_invariants::predicate#vd_in_schedule_does_not_have_deletion_timestamp",
+        "bucket-kind": "spinoff",
+        "total": 101,
+        "air": 10,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::helper_invariants::predicate#no_other_pending_update_status_request_interferes_with_vd_reconcile",
+        "bucket-kind": "spinoff",
+        "total": 101,
+        "air": 11,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::model::install#unmarshal",
+        "bucket-kind": "spinoff",
+        "total": 101,
+        "air": 5,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::predicate#created_replicas",
+        "bucket-kind": "spinoff",
+        "total": 100,
+        "air": 0,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::model::install#marshal",
+        "bucket-kind": "spinoff",
+        "total": 100,
+        "air": 4,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::helper_invariants::predicate#every_msg_from_vd_controller_carries_vd_key",
+        "bucket-kind": "spinoff",
+        "total": 100,
+        "air": 9,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::spec_types#with_type",
+        "bucket-kind": "spinoff",
+        "total": 99,
+        "air": 1,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::helper_invariants::predicate#garbage_collector_does_not_delete_vd_vrs_objects",
+        "bucket-kind": "spinoff",
+        "total": 99,
+        "air": 9,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::exec_types#deep_view",
+        "bucket-kind": "spinoff",
+        "total": 99,
+        "air": 1,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::proof::predicate#dummy",
+        "bucket-kind": "spinoff",
+        "total": 98,
+        "air": 0,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::exec_types#set_type",
+        "bucket-kind": "spinoff",
+        "total": 98,
+        "air": 1,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::exec_types#max_unavailable",
+        "bucket-kind": "spinoff",
+        "total": 95,
+        "air": 1,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::model::reconciler#make_replica_set",
+        "bucket-kind": "spinoff",
+        "total": 95,
+        "air": 6,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::exec_types#view",
+        "bucket-kind": "spinoff",
+        "total": 95,
+        "air": 0,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::spec_types#with_rolling_update",
+        "bucket-kind": "spinoff",
+        "total": 95,
+        "air": 0,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::model::reconciler#create_new_vrs",
+        "bucket-kind": "spinoff",
+        "total": 95,
+        "air": 9,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::exec_types#type_",
+        "bucket-kind": "spinoff",
+        "total": 95,
+        "air": 1,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::model::reconciler#done_state",
+        "bucket-kind": "spinoff",
+        "total": 93,
+        "air": 6,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::exec_types#deep_view",
+        "bucket-kind": "spinoff",
+        "total": 93,
+        "air": 1,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::spec_types#default",
+        "bucket-kind": "spinoff",
+        "total": 93,
+        "air": 0,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::spec_types#with_max_surge",
+        "bucket-kind": "spinoff",
+        "total": 92,
+        "air": 0,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::model::reconciler#make_owner_references",
+        "bucket-kind": "spinoff",
+        "total": 92,
+        "air": 5,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::model::reconciler#new_vrs_ensured_state",
+        "bucket-kind": "spinoff",
+        "total": 91,
+        "air": 5,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::exec_types#set_max_unavailable",
+        "bucket-kind": "spinoff",
+        "total": 91,
+        "air": 1,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::model::reconciler#mismatch_replicas",
+        "bucket-kind": "spinoff",
+        "total": 90,
+        "air": 5,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::model::reconciler#filter_old_and_new_vrs",
+        "bucket-kind": "spinoff",
+        "total": 90,
+        "air": 6,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::model::reconciler#reconcile_error",
+        "bucket-kind": "spinoff",
+        "total": 89,
+        "air": 5,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::exec_types#view",
+        "bucket-kind": "spinoff",
+        "total": 87,
+        "air": 1,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::model::reconciler#reconcile_init_state",
+        "bucket-kind": "spinoff",
+        "total": 87,
+        "air": 5,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::model::reconciler#objects_to_vrs_list",
+        "bucket-kind": "spinoff",
+        "total": 85,
+        "air": 6,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::model::reconciler#error_state",
+        "bucket-kind": "spinoff",
+        "total": 84,
+        "air": 5,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::trusted::spec_types#with_max_unavailable",
+        "bucket-kind": "spinoff",
+        "total": 84,
+        "air": 0,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::model::reconciler#reconcile_error",
+        "bucket-kind": "spinoff",
+        "total": 84,
+        "air": 5,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::exec::reconciler#view",
+        "bucket-kind": "spinoff",
+        "total": 80,
+        "air": 7,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller::model::reconciler#reconcile_done",
+        "bucket-kind": "spinoff",
+        "total": 79,
+        "air": 5,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      },
+      {
+        "module": "vdeployment_controller#trivial",
+        "bucket-kind": "spinoff",
+        "total": 69,
+        "air": 0,
+        "smt-init": 0,
+        "smt-init-micros": 0,
+        "smt-init-rlimit": 0,
+        "smt-run": 0,
+        "smt-run-micros": 0,
+        "smt-run-rlimit": 0,
+        "function-breakdown": []
+      }
+    ]
+  },
+  "verus": {
+    "profile": "release",
+    "version": "0.2026.05.07.d011664",
+    "platform": {
+      "os": "linux",
+      "arch": "x86_64"
+    },
+    "toolchain": "1.95.0-x86_64-unknown-linux-gnu",
+    "commit": "d011664bb9f46377082749381225ef1b8d63e869"
+  }
+}
